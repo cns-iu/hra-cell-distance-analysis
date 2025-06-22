@@ -25,7 +25,7 @@ Then, to save the notebooks and render them using the `nbdev` library,
 you can run the following command in the root directory of the
 repository:
 
-    nbdev_proc_nbs && cd _proc && quarto publish gh-pages
+    nbdev_proc_nbs && cd _proc && quarto publish gh-pages --no-prompt
 
 Then, push to GitHub:
 
@@ -35,4 +35,5 @@ Then, push to GitHub:
 
 The rendered and deployed notebooks will be available via GitHub Pages
 at the following URL:
-https://cns-iu.github.io/hra-cell-distance-analysis/
+
+<https://cns-iu.github.io/hra-cell-distance-analysis>
