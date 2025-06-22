@@ -152,3 +152,11 @@ checklink/cookies.txt
 .quarto
 
 nbs/index copy.ipynb
+
+# data directory - ignore all subdirectories except mapping_files
+data/*/
+# But keep mapping_files subdirectory and its contents
+!data/mapping_files/
+!data/mapping_files/**
+
+_extras
