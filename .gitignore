@@ -158,3 +158,6 @@ data/*/
 # But keep mapping_files subdirectory and its contents
 !data/mapping_files/
 !data/mapping_files/**
+# keep the generated-figures directory
+!data/generated-figures/
+!data/generated-figures/**
