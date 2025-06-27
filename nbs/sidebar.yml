@@ -4,9 +4,7 @@ website:
       - index.ipynb
       - 00_data_processing__convert_to_cde_format.ipynb
       - 01_data_processing__crosswalk_cell_type_names.ipynb
-      - 02_data_processing__generate_edges_files_for_level_1_cell_type_labels.ipynb
-      - 03_data_processing__generate_edges_files_for_level_2_cell_type_labels.ipynb
-      - 04_data_processing__generate_edges_files_for_level_3_cell_type_labels.ipynb
+      - 02_data_analysis__cell_distribution_across_datasets.ipynb
       - 99_core.ipynb
       - index copy.ipynb
       - nbdev.yml
