@@ -25,7 +25,7 @@ Then, to save the notebooks and render them using the `nbdev` library,
 you can run the following command in the root directory of the
 repository:
 
-    nbdev_proc_nbs && cd _proc && quarto publish gh-pages --no-prompt
+    rm -rf _proc && nbdev_proc_nbs && cd _proc && quarto publish gh-pages --no-prompt
 
 Then, push to GitHub:
 
