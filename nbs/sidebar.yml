@@ -5,8 +5,17 @@ website:
       - 00_data_processing__convert_to_cde_format.ipynb
       - 01_data_processing__crosswalk_cell_type_names.ipynb
       - 02_data_analysis__cell_distribution_across_datasets.ipynb
-      - 99_core.ipynb
-      - index copy.ipynb
+      - 03_data_processing__distance_computation_for_all_datasets.ipynb
+      - 04_distance_analysis__intestine-codex-stanford.ipynb
+      - 05_distance_analysis__pancreas-geomx-ufl.ipynb
+      - 06_distance_analysis__oralcavity-codex-czi.ipynb
+      - 07_distance_analysis__lung-codex-urmc.ipynb
+      - 08_distance_analysis__skin-confocal-sorgerlab.ipynb
+      - 09_distance_analysis__bonemarrow-codex-chop.ipynb
+      - 10_distance_analysis__colon-cycif-sorgerlab-colon-xenium-stanford.ipynb
+      # - 99_core.ipynb
+      # - cde_compute_edges_from_nodes.py
+      # - index copy.ipynb
       - nbdev.yml
       - sidebar.yml
       - styles.css
