@@ -13,6 +13,11 @@ website:
       - 08_distance_analysis__skin-confocal-sorgerlab.ipynb
       - 09_distance_analysis__bonemarrow-codex-chop.ipynb
       - 10_distance_analysis__colon-cycif-sorgerlab-colon-xenium-stanford.ipynb
+      - 11_distance_analysis__lymphnode-codex-yale.ipynb
+      - 12_distance_analysis__spleen-codex-ufl.ipynb
+      - 13_distance_analysis__tonsil-codex-stanford-esophagus-codex-stanford.ipynb
+      - 14_distance_analysis__skin-celldive-ge.ipynb
+      - 15_distance_analysis__maternalfetalinterface-mibitof-stanford.ipynb
       - nbdev.yml
       - sidebar.yml
       - styles.css
