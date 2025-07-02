@@ -17,15 +17,6 @@ website:
     background: primary
     search: true
   sidebar:
-    style: floating
-
-render: 
-    - "*.qmd"
-    - "*.ipynb"
-    - "!cde_compute_edges_from_nodes.py"
-
-title: "HRA: Cell Distance Analysis"
-site-url: "https://cns-iu.github.io/hra-cell-distance-analysis"
-description: "Cell Distance Analysis for Spatial Omics Datasets, primarily focused on vascular cells."
+    style: floating  
 
 metadata-files: [nbdev.yml, sidebar.yml]
