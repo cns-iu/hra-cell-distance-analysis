@@ -13,9 +13,7 @@ website:
       - 08_distance_analysis__skin-confocal-sorgerlab.ipynb
       - 09_distance_analysis__bonemarrow-codex-chop.ipynb
       - 10_distance_analysis__colon-cycif-sorgerlab-colon-xenium-stanford.ipynb
-      # - 99_core.ipynb
-      # - cde_compute_edges_from_nodes.py
-      # - index copy.ipynb
+      - cde_compute_edges_from_nodes.py
       - nbdev.yml
       - sidebar.yml
       - styles.css
