@@ -13,8 +13,8 @@
 
 ## For Developers
 
-The repository uses `quarto` for documentation and `nbdev` for notebook
-processing.
+The repository uses [`quarto`](https://quarto.org/) for documentation
+and [`nbdev`](https://nbdev.fast.ai/) for notebook processing.
 
 To update the README file from the `nbs/index.ipynb` notebook, run the
 following command in the root directory of the repository:
