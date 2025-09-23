@@ -11,6 +11,49 @@
 > types and to visualize the results using histograms, violin plots, and
 > other visualizations.
 
+## Data Availability
+
+All datasets (cell coordinates and cell types) used in the paper,
+original and processed (including harmonized cell type labels), are made
+publicly available
+(https://drive.google.com/drive/folders/1VYhnCay3j4Oe1BMidTvKOxSGz9nrcJyc?usp=sharing).
+
+For more information and original imaging datasets for individual
+studies used in this paper, see relevant citations in the *Methods*
+section.
+
+Pancreas dataset (GeoMX) is available on Figshare
+(https://figshare.com/projects/HuBMAP_TMC\_-\_Pacific_Northwest_National_Laboratory_GeoMX_DSP_Images/256367).
+
+## Code Availability
+
+All code for data processing and analysis for distance analysis is
+available on GitHub
+(https://github.com/cns-iu/hra-cell-distance-analysis).
+
+Rendered Jupyter notebooks for the entire workflow are also available on
+GitHub Pages (https://cns-iu.github.io/hra-cell-distance-analysis).
+
+The file containing all cell types, original and 3-level typology,
+mapped to Cell Ontology, is available as a CSV file on GitHub
+(https://github.com/cns-iu/hra-cell-distance-analysis/blob/main/data/mapping_files/generated_cell_type_complete_crosswalk.csv).
+
+Code for hierarchical neighborhood analysis is available on GitHub
+(https://github.com/HickeyLab/Vasculature_neighborhoods).
+
+The Cell Distance Explorer application is available on the Human
+Reference Atlas website (https://apps.humanatlas.io/cde).
+
+More information, including usage tutorial, about the CDE can be found
+at https://humanatlas.io/user-story/5.
+
+The python package for CDE can be found as part of HRA Jupyter Widgets
+(https://github.com/x-atlas-consortia/hra-jupyter-widgets/).
+
+Documentation to embed the CDE in webpages as a lightweight component is
+available at
+https://github.com/hubmapconsortium/hra-ui/blob/main/apps/cde-visualization-wc/EMBEDDING.md.
+
 ## For Developers
 
 The repository uses [`quarto`](https://quarto.org/) for documentation
