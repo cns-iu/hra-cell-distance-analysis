@@ -1,19 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <!-- Regular metadata. Customize as you see fit -->
     <meta charset="utf-8" />
-    <title>intestine-codex-stanford / B004_Ascending</title>
+    <title>CDE Visualization</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="favicon.png" />
 
-    <script src="https://cdn.humanatlas.io/ui/node-dist-vis-wc/wc.js" type="module"></script>
+    <!-- The important bits -->
+    <link href="https://cdn.humanatlas.io/ui/cde-visualization-wc/styles.css" rel="stylesheet" />
+    <script src="https://cdn.humanatlas.io/ui/cde-visualization-wc/wc.js" type="module"></script>
   </head>
-
-  <body style="height: 100vh; background-color: black">
-    <hra-node-dist-vis
+  <body>
+    <cde-visualization id="cde"
       nodes="https://cdn.humanatlas.io/image-store/vccf-data-cell-nodes/published/intestine-codex-stanford/B004_Ascending-nodes.csv"
       edges="https://cdn.humanatlas.io/image-store/vccf-data-cell-nodes/published/intestine-codex-stanford/B004_Ascending-edges.csv"
-    >
-    </hra-node-dist-vis>
+    ></cde-visualization>
   </body>
 </html>
