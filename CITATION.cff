@@ -1,0 +1,95 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it using the metadata below."
+title: "Exploring endothelial cell environments across organs in spatially resolved omics data"
+type: article
+authors:
+  - family-names: Jain
+    given-names: Yashvardhan
+  - family-names: Jepson
+    given-names: Jodie
+  - family-names: Chen
+    given-names: Roy
+  - family-names: Maier
+    given-names: Elizabeth
+  - family-names: Herr
+    given-names: Bruce W.
+    name-suffix: II
+  - family-names: Puig-Barbe
+    given-names: Aleix
+  - family-names: Quardokus
+    given-names: Ellen M.
+  - family-names: Qaurooni
+    given-names: Danial
+  - family-names: Yapp
+    given-names: Clarence
+  - family-names: Ewing
+    given-names: Samuel L.
+  - family-names: Enninful
+    given-names: Archibald
+  - family-names: Farzad
+    given-names: Negin
+  - family-names: Bueckle
+    given-names: Andreas
+  - family-names: Easter
+    given-names: Quinn T.
+  - family-names: Matuck
+    given-names: Bruno
+  - family-names: Zhu
+    given-names: Chenchen
+  - family-names: Monte
+    given-names: Emma Marie
+  - family-names: Purkerson
+    given-names: Jeffrey M.
+  - family-names: Jehrio
+    given-names: Matthew
+  - family-names: Misra
+    given-names: Ravi S.
+  - family-names: Fan
+    given-names: Rong
+  - family-names: Ginty
+    given-names: Fiona
+  - family-names: Karunamurthy
+    given-names: Arivarasan
+  - family-names: Fan
+    given-names: Jean
+  - family-names: Campbell-Thompson
+    given-names: Martha
+  - family-names: Pryhuber
+    given-names: Gloria S.
+  - family-names: Byrd
+    given-names: Kevin M.
+  - family-names: Hickey
+    given-names: John W.
+  - family-names: Börner
+    given-names: Katy
+doi: 10.1101/2025.09.23.678129
+date-released: 2025-09-25
+url: "https://www.biorxiv.org/content/10.1101/2025.09.23.678129v1"
+repository-code: "https://github.com/cns-iu/hra-cell-distance-analysis"
+license: MIT
+abstract: >
+  Endothelial cells are ubiquitously present in the human body and line the
+  luminal surface of blood and lymphatic vessels. The oxygen-dependence of
+  cells impacts their proximity to blood vessels, and consequently, to
+  endothelial cells depending on their functional properties and priorities.
+  This paper presents cell-to-nearest-endothelial-cell distance distributions
+  for various cell types using 399 spatially resolved omics datasets from 14
+  studies comprising 12 tissue types with a total of 47,349,496 cells.
+  Additionally, we developed an open-source web-based interactive tool, Cell
+  Distance Explorer, that allows researchers to interactively visualize cell
+  graphs and linkages in 2D and 3D datasets. Finally, we present a hierarchical
+  neighborhood analysis focused on the endothelial cell neighborhoods in small
+  and large intestine datasets. This paper provides an open-access resource
+  (datasets, tools, and analyses) to characterize and compare cell distances
+  and cell neighborhoods in spatially resolved omics data.
+keywords:
+  - endothelial cells
+  - spatially resolved omics
+  - cell distance
+  - cell neighborhoods
+  - spatial transcriptomics
+  - spatial proteomics
+  - HuBMAP
+  - bioinformatics
+journal: bioRxiv
+year: 2025
