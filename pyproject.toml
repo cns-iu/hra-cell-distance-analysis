@@ -1,3 +1,31 @@
 [build-system]
-requires = ["setuptools>=64.0"]
+requires = ["setuptools>=64"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "hra-cell-distance-analysis"
+dynamic = ["version"]
+description = "Cell Distance Analysis for Spatial Omics Datasets, primarily focused on vascular cells."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT license"}
+authors = [{name = "j-yash", email = "yashvrdnjain@gmail.com"}]
+keywords = ['nbdev', 'jupyter', 'notebook', 'python']
+classifiers = ["Natural Language :: English", "Intended Audience :: Developers", "Development Status :: 3 - Alpha", "Programming Language :: Python :: 3", "Programming Language :: Python :: 3 :: Only"]
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/cns-iu/hra-cell-distance-analysis"
+Documentation = "https://cns-iu.github.io/hra-cell-distance-analysis"
+
+[project.entry-points.nbdev]
+hra_cell_distance_analysis = "hra_cell_distance_analysis._modidx:d"
+
+[tool.setuptools.dynamic]
+version = {attr = "hra_cell_distance_analysis.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["hra_cell_distance_analysis"]
+
+[tool.nbdev]
+title = 'HRA: Cell Distance Analysis'
