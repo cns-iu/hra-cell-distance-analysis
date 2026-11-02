@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "skin-confocal-sorgerlab"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -294,6 +297,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -555,8 +559,11 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Invasive Margin' 'Melanoma In Situ']
+    <StringArray>
+    ['Invasive Margin', 'Melanoma In Situ']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
@@ -612,7 +619,7 @@ df_all_edges.head(5)
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
@@ -626,7 +633,7 @@ df_all_edges.head(5)
 <td>120.685607</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
@@ -640,7 +647,7 @@ df_all_edges.head(5)
 <td>117.835963</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
@@ -654,7 +661,7 @@ df_all_edges.head(5)
 <td>64.583832</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
@@ -668,7 +675,7 @@ df_all_edges.head(5)
 <td>95.412064</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -750,8 +757,11 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Invasive Margin' 'Melanoma In Situ']
+    <StringArray>
+    ['Invasive Margin', 'Melanoma In Situ']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
@@ -933,7 +943,7 @@ df_all_edges.head(1)
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 <td>Invasive Margin</td>
 </tr>
 </tbody>
@@ -992,7 +1002,7 @@ df_all_edges_with_cell_types.head(1)
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
@@ -1277,6 +1287,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Invasive Margin:
       Level One Cell Type  mean_distance
     2        unknown cell      49.094668
@@ -1328,6 +1339,7 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
 
     Top 5 cell types in Invasive Margin:
       Level One Cell Type  median_distance
@@ -1386,6 +1398,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1825,6 +1838,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Invasive Margin:
       Level Two Cell Type  mean_distance
     0       abnormal cell      53.754723
@@ -1868,6 +1882,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Invasive Margin:
       Level Two Cell Type  median_distance
     0       abnormal cell        46.413112
@@ -1903,6 +1918,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2231,6 +2247,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Invasive Margin:
        Level Three Cell Type  mean_distance
     10            tumor cell      53.754723
@@ -2274,6 +2291,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Invasive Margin:
        Level Three Cell Type  median_distance
     10            tumor cell        46.413112
@@ -2309,6 +2327,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region

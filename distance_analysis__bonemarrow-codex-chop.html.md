@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "bonemarrow-codex-chop"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -156,27 +159,8 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>5776.546667</td>
-<td>4000.546667</td>
-<td>Erythroid</td>
-<td>erythroid lineage cell</td>
-<td>erythroid lineage cell</td>
-<td>CL:0000764</td>
-<td>skos:exactMatch</td>
-<td>erythroid precursor</td>
-<td>erythroid progenitor cell</td>
-<td>CL:0000038</td>
-<td>skos:exactMatch</td>
-<td>hematopoietic precursor cell</td>
-<td>hematopoietic precursor cell</td>
-<td>CL:0008001</td>
-<td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">1</td>
-<td>6406.298077</td>
-<td>4001.134615</td>
+<td>13204.695402</td>
+<td>4000.045977</td>
 <td>B-Cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -190,12 +174,31 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">1</td>
+<td>13101.335664</td>
+<td>4000.930070</td>
+<td>Mature Myeloid</td>
+<td>myeloid cell:mature</td>
+<td>myeloid cell:mature</td>
+<td>CL:0000763</td>
+<td>skos:narrowMatch</td>
+<td>myeloid cell</td>
+<td>myeloid cell</td>
+<td>CL:0000763</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>6805.010526</td>
-<td>4000.701754</td>
+<td>13193.566265</td>
+<td>4003.518072</td>
 <td>Erythroid</td>
 <td>erythroid lineage cell</td>
 <td>erythroid lineage cell</td>
@@ -209,45 +212,45 @@ df_all_nodes.head(5)
 <td>hematopoietic precursor cell</td>
 <td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>6032.794326</td>
-<td>4002.039007</td>
-<td>AEC</td>
-<td>endothelial cell of artery</td>
-<td>endothelial cell of artery</td>
-<td>CL:1000413</td>
+<td>12933.586854</td>
+<td>4004.563380</td>
+<td>Erythroid</td>
+<td>erythroid lineage cell</td>
+<td>erythroid lineage cell</td>
+<td>CL:0000764</td>
 <td>skos:exactMatch</td>
-<td>endothelial cell of artery</td>
-<td>endothelial cell of artery</td>
-<td>CL:1000413</td>
+<td>erythroid precursor</td>
+<td>erythroid progenitor cell</td>
+<td>CL:0000038</td>
 <td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
+<td>hematopoietic precursor cell</td>
+<td>hematopoietic precursor cell</td>
+<td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>6159.116364</td>
-<td>4001.763636</td>
-<td>Early Myeloid Progenitor</td>
-<td>myeloid progenitor cell:common</td>
-<td>common myeloid progenitor</td>
-<td>CL:0000049</td>
+<td>12570.385650</td>
+<td>4005.883408</td>
+<td>Erythroid</td>
+<td>erythroid lineage cell</td>
+<td>erythroid lineage cell</td>
+<td>CL:0000764</td>
 <td>skos:exactMatch</td>
-<td>progenitor cell</td>
+<td>erythroid precursor</td>
+<td>erythroid progenitor cell</td>
+<td>CL:0000038</td>
+<td>skos:exactMatch</td>
+<td>hematopoietic precursor cell</td>
 <td>hematopoietic precursor cell</td>
 <td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>hematopoietic precursor cell</td>
-<td>hematopoietic precursor cell</td>
-<td>CL:0008001</td>
-<td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 </tbody>
 </table>
@@ -289,17 +292,18 @@ for level, cell_types in endothelial_cell_types.items():
         print(f"  - {cell}")
 ```
 
+
     Endothelial cell types per cell type annotation level:
 
     Original Cell Type:
 
     Level Three Cell Type:
-      - endothelial cell of artery
       - endothelial cell of sinusoid
+      - endothelial cell of artery
 
     Level Two Cell Type:
-      - endothelial cell of artery
       - endothelial cell of sinusoid
+      - endothelial cell of artery
 
     Level One Cell Type:
       - endothelial cell
@@ -323,8 +327,9 @@ print("\nUnique values in Dataset column:")
 print(df_all_edges['Dataset'].unique().tolist())
 ```
 
+
     Unique values in Dataset column:
-    ['SB67_NBM48_NSM1_1720', 'SB67_NBM49_NSM2_1086', 'SB67_NBM47_NSM3_1996', 'SB67_NBM51_AML1_183', 'SB67_NBM46_AML1_382', 'SB67_NBM44_AML2_191', 'SB67_NBM52_AML3_1329', 'SB67_NBM54_AML3_1443', 'SB67_NBM27_H10', 'SB67_NBM28_H14', 'SB67_NBM36_H26', 'SB67_NBM41_H27', 'SB67_NBM31_H32', 'SB67_NBM38_H33', 'SB67_NBM37_H35', 'SB67_NBM33_H36', 'SB67_NBM32_H37', 'SB67_NBM34_H38', 'SB67_NBM40_H39', 'SB67_NBM39_H41']
+    ['SB67_NBM47_NSM3_1996', 'SB67_NBM39_H41', 'SB67_NBM33_H36', 'SB67_NBM36_H26', 'SB67_NBM49_NSM2_1086', 'SB67_NBM40_H39', 'SB67_NBM34_H38', 'SB67_NBM52_AML3_1329', 'SB67_NBM28_H14', 'SB67_NBM54_AML3_1443', 'SB67_NBM46_AML1_382', 'SB67_NBM38_H33', 'SB67_NBM44_AML2_191', 'SB67_NBM27_H10', 'SB67_NBM32_H37', 'SB67_NBM41_H27', 'SB67_NBM48_NSM1_1720', 'SB67_NBM31_H32', 'SB67_NBM37_H35', 'SB67_NBM51_AML1_183']
 
 ``` python
 # Create a dictionary to map bone marrow regions to correct region names (conditions).
@@ -397,27 +402,8 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>5776.546667</td>
-<td>4000.546667</td>
-<td>Erythroid</td>
-<td>erythroid lineage cell</td>
-<td>erythroid lineage cell</td>
-<td>CL:0000764</td>
-<td>skos:exactMatch</td>
-<td>erythroid precursor</td>
-<td>erythroid progenitor cell</td>
-<td>CL:0000038</td>
-<td>skos:exactMatch</td>
-<td>hematopoietic precursor cell</td>
-<td>hematopoietic precursor cell</td>
-<td>CL:0008001</td>
-<td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">1</td>
-<td>6406.298077</td>
-<td>4001.134615</td>
+<td>13204.695402</td>
+<td>4000.045977</td>
 <td>B-Cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -431,12 +417,31 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">1</td>
+<td>13101.335664</td>
+<td>4000.930070</td>
+<td>Mature Myeloid</td>
+<td>myeloid cell:mature</td>
+<td>myeloid cell:mature</td>
+<td>CL:0000763</td>
+<td>skos:narrowMatch</td>
+<td>myeloid cell</td>
+<td>myeloid cell</td>
+<td>CL:0000763</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>6805.010526</td>
-<td>4000.701754</td>
+<td>13193.566265</td>
+<td>4003.518072</td>
 <td>Erythroid</td>
 <td>erythroid lineage cell</td>
 <td>erythroid lineage cell</td>
@@ -450,45 +455,45 @@ df_all_nodes.head()
 <td>hematopoietic precursor cell</td>
 <td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>6032.794326</td>
-<td>4002.039007</td>
-<td>AEC</td>
-<td>endothelial cell of artery</td>
-<td>endothelial cell of artery</td>
-<td>CL:1000413</td>
+<td>12933.586854</td>
+<td>4004.563380</td>
+<td>Erythroid</td>
+<td>erythroid lineage cell</td>
+<td>erythroid lineage cell</td>
+<td>CL:0000764</td>
 <td>skos:exactMatch</td>
-<td>endothelial cell of artery</td>
-<td>endothelial cell of artery</td>
-<td>CL:1000413</td>
+<td>erythroid precursor</td>
+<td>erythroid progenitor cell</td>
+<td>CL:0000038</td>
 <td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
+<td>hematopoietic precursor cell</td>
+<td>hematopoietic precursor cell</td>
+<td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>6159.116364</td>
-<td>4001.763636</td>
-<td>Early Myeloid Progenitor</td>
-<td>myeloid progenitor cell:common</td>
-<td>common myeloid progenitor</td>
-<td>CL:0000049</td>
+<td>12570.385650</td>
+<td>4005.883408</td>
+<td>Erythroid</td>
+<td>erythroid lineage cell</td>
+<td>erythroid lineage cell</td>
+<td>CL:0000764</td>
 <td>skos:exactMatch</td>
-<td>progenitor cell</td>
+<td>erythroid precursor</td>
+<td>erythroid progenitor cell</td>
+<td>CL:0000038</td>
+<td>skos:exactMatch</td>
+<td>hematopoietic precursor cell</td>
 <td>hematopoietic precursor cell</td>
 <td>CL:0008001</td>
 <td>skos:exactMatch</td>
-<td>hematopoietic precursor cell</td>
-<td>hematopoietic precursor cell</td>
-<td>CL:0008001</td>
-<td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 </tr>
 </tbody>
 </table>
@@ -529,27 +534,27 @@ df_all_nodes[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -572,14 +577,17 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['NSM' 'AML' 'NBM']
+    <StringArray>
+    ['NSM', 'NBM', 'AML']
+    Length: 3, dtype: str
     Total number of unique regions: 3
 
     Number of unique datasets per unique region:
     NSM: 3
-    AML: 5
     NBM: 12
+    AML: 5
 
 ## Process datasets to add region information to Edges files.
 
@@ -620,73 +628,73 @@ df_all_edges.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1117</td>
-<td>5746.650000</td>
-<td>4541.361111</td>
+<td>50</td>
+<td>13200.117021</td>
+<td>4078.244681</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13006.682540</td>
+<td>4113.671958</td>
 <td>0</td>
-<td>152.209644</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>196.651953</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1145</td>
-<td>5734.788679</td>
-<td>4551.400000</td>
+<td>61</td>
+<td>13200.039735</td>
+<td>4093.920530</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13006.682540</td>
+<td>4113.671958</td>
 <td>0</td>
-<td>162.143496</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>194.363381</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>1151</td>
-<td>5756.300000</td>
-<td>4553.104348</td>
+<td>164</td>
+<td>13207.820513</td>
+<td>4247.897436</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13071.168539</td>
+<td>4355.275281</td>
 <td>0</td>
-<td>140.607141</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>173.792300</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>1185</td>
-<td>5746.238095</td>
-<td>4563.619048</td>
+<td>248</td>
+<td>13212.402778</td>
+<td>4312.222222</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13071.168539</td>
+<td>4355.275281</td>
 <td>0</td>
-<td>149.499714</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>147.650520</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>1268</td>
-<td>5624.227027</td>
-<td>4594.664865</td>
+<td>278</td>
+<td>13244.609756</td>
+<td>4335.195122</td>
 <td>0</td>
-<td>5541.917031</td>
-<td>4700.170306</td>
+<td>13071.168539</td>
+<td>4355.275281</td>
 <td>0</td>
-<td>133.814549</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>174.599738</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -725,27 +733,27 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -768,14 +776,17 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['NSM' 'AML' 'NBM']
+    <StringArray>
+    ['NSM', 'NBM', 'AML']
+    Length: 3, dtype: str
     Total number of unique regions: 3
 
     Number of unique datasets per unique region:
     NSM: 3
-    AML: 5
     NBM: 12
+    AML: 5
 
 ``` python
 df_all_edges_with_cell_types['Unique Region'] = df_all_edges_with_cell_types['Dataset'].map(region_map)
@@ -808,27 +819,27 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -879,22 +890,22 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>5776.546667</td>
-<td>4000.546667</td>
-<td>Erythroid</td>
-<td>erythroid lineage cell</td>
-<td>erythroid lineage cell</td>
-<td>CL:0000764</td>
+<td>13204.695402</td>
+<td>4000.045977</td>
+<td>B-Cells</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
 <td>skos:exactMatch</td>
-<td>erythroid precursor</td>
-<td>erythroid progenitor cell</td>
-<td>CL:0000038</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
 <td>skos:exactMatch</td>
-<td>hematopoietic precursor cell</td>
-<td>hematopoietic precursor cell</td>
-<td>CL:0008001</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>SB67_NBM48_NSM1_1720</td>
+<td>SB67_NBM47_NSM3_1996</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -940,17 +951,17 @@ df_all_edges.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1117</td>
-<td>5746.65</td>
-<td>4541.361111</td>
+<td>50</td>
+<td>13200.117021</td>
+<td>4078.244681</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13006.68254</td>
+<td>4113.671958</td>
 <td>0</td>
-<td>152.209644</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
+<td>196.651953</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -999,20 +1010,20 @@ df_all_edges_with_cell_types.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1117</td>
-<td>5746.65</td>
-<td>4541.361111</td>
+<td>50</td>
+<td>13200.117021</td>
+<td>4078.244681</td>
 <td>0</td>
-<td>5895.403361</td>
-<td>4573.613445</td>
+<td>13006.68254</td>
+<td>4113.671958</td>
 <td>0</td>
-<td>152.209644</td>
-<td>SB67_NBM48_NSM1_1720</td>
-<td>endothelial cell of artery</td>
-<td>Level Three Cell Type</td>
-<td>erythroid lineage cell</td>
-<td>erythroid precursor</td>
-<td>hematopoietic precursor cell</td>
+<td>196.651953</td>
+<td>SB67_NBM47_NSM3_1996</td>
+<td>endothelial cell of sinusoid</td>
+<td>Level Two Cell Type</td>
+<td>myeloid cell:mature</td>
+<td>myeloid cell</td>
+<td>immune cell</td>
 <td>NSM</td>
 </tr>
 </tbody>
@@ -1438,31 +1449,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in NSM:
-                Level One Cell Type  mean_distance
-    0  hematopoietic precursor cell      95.233485
-    1                   immune cell      93.334766
-    2              mesenchymal cell      79.140648
-
-    Bottom 5 cell types in NSM:
-                Level One Cell Type  mean_distance
-    0  hematopoietic precursor cell      95.233485
-    1                   immune cell      93.334766
-    2              mesenchymal cell      79.140648
-
-    Top 5 cell types in AML:
-                Level One Cell Type  mean_distance
-    3                   neural cell      79.843632
-    0  hematopoietic precursor cell      75.807458
-    1                   immune cell      72.244373
-    2              mesenchymal cell      68.072424
-
-    Bottom 5 cell types in AML:
-                Level One Cell Type  mean_distance
-    3                   neural cell      79.843632
-    0  hematopoietic precursor cell      75.807458
-    1                   immune cell      72.244373
-    2              mesenchymal cell      68.072424
 
     Top 5 cell types in NBM:
                 Level One Cell Type  mean_distance
@@ -1479,6 +1465,32 @@ for region in unique_regions:
     1                   immune cell      89.656605
     2              mesenchymal cell      82.079626
     3                   neural cell      57.869702
+
+    Top 5 cell types in AML:
+                Level One Cell Type  mean_distance
+    3                   neural cell      79.843632
+    0  hematopoietic precursor cell      75.807458
+    1                   immune cell      72.244373
+    2              mesenchymal cell      68.072424
+
+    Bottom 5 cell types in AML:
+                Level One Cell Type  mean_distance
+    3                   neural cell      79.843632
+    0  hematopoietic precursor cell      75.807458
+    1                   immune cell      72.244373
+    2              mesenchymal cell      68.072424
+
+    Top 5 cell types in NSM:
+                Level One Cell Type  mean_distance
+    0  hematopoietic precursor cell      95.233485
+    1                   immune cell      93.334766
+    2              mesenchymal cell      79.140648
+
+    Bottom 5 cell types in NSM:
+                Level One Cell Type  mean_distance
+    0  hematopoietic precursor cell      95.233485
+    1                   immune cell      93.334766
+    2              mesenchymal cell      79.140648
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1508,31 +1520,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in NSM:
-                Level One Cell Type  median_distance
-    0  hematopoietic precursor cell        89.641506
-    1                   immune cell        87.175896
-    2              mesenchymal cell        69.671854
-
-    Bottom 5 cell types in NSM:
-                Level One Cell Type  median_distance
-    0  hematopoietic precursor cell        89.641506
-    1                   immune cell        87.175896
-    2              mesenchymal cell        69.671854
-
-    Top 5 cell types in AML:
-                Level One Cell Type  median_distance
-    3                   neural cell        79.843632
-    0  hematopoietic precursor cell        68.350787
-    1                   immune cell        64.713204
-    2              mesenchymal cell        59.045392
-
-    Bottom 5 cell types in AML:
-                Level One Cell Type  median_distance
-    3                   neural cell        79.843632
-    0  hematopoietic precursor cell        68.350787
-    1                   immune cell        64.713204
-    2              mesenchymal cell        59.045392
 
     Top 5 cell types in NBM:
                 Level One Cell Type  median_distance
@@ -1549,6 +1536,32 @@ for region in unique_regions:
     1                   immune cell        84.596595
     2              mesenchymal cell        75.429180
     3                   neural cell        49.944344
+
+    Top 5 cell types in AML:
+                Level One Cell Type  median_distance
+    3                   neural cell        79.843632
+    0  hematopoietic precursor cell        68.350787
+    1                   immune cell        64.713204
+    2              mesenchymal cell        59.045392
+
+    Bottom 5 cell types in AML:
+                Level One Cell Type  median_distance
+    3                   neural cell        79.843632
+    0  hematopoietic precursor cell        68.350787
+    1                   immune cell        64.713204
+    2              mesenchymal cell        59.045392
+
+    Top 5 cell types in NSM:
+                Level One Cell Type  median_distance
+    0  hematopoietic precursor cell        89.641506
+    1                   immune cell        87.175896
+    2              mesenchymal cell        69.671854
+
+    Bottom 5 cell types in NSM:
+                Level One Cell Type  median_distance
+    0  hematopoietic precursor cell        89.641506
+    1                   immune cell        87.175896
+    2              mesenchymal cell        69.671854
 
 ``` python
 # Calculate regional variability
@@ -1583,6 +1596,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2357,6 +2371,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in NSM:
                            Level Two Cell Type  mean_distance
     5   hematopoietic stem and progenitor cell     104.959083
@@ -2372,22 +2387,6 @@ for region in unique_regions:
     0                    adipocyte      84.007363
     3   endothelial cell of artery      65.333875
     11                 muscle cell      55.313443
-
-    Top 5 cell types in AML:
-       Level Two Cell Type  mean_distance
-    15     neuroglial cell     128.321993
-    0        abnormal cell      84.612826
-    11            monocyte      82.273906
-    14   myeloid precursor      80.963771
-    19              t cell      80.957774
-
-    Bottom 5 cell types in AML:
-                           Level Two Cell Type  mean_distance
-    1                                adipocyte      72.044065
-    18                               stem cell      70.097786
-    12                             muscle cell      69.735721
-    4               endothelial cell of artery      66.552461
-    6   hematopoietic stem and progenitor cell      54.563528
 
     Top 5 cell types in NBM:
        Level Two Cell Type  mean_distance
@@ -2405,6 +2404,22 @@ for region in unique_regions:
     14                neuroglial cell      86.411262
     3      endothelial cell of artery      80.875474
 
+    Top 5 cell types in AML:
+       Level Two Cell Type  mean_distance
+    15     neuroglial cell     128.321993
+    0        abnormal cell      84.612826
+    11            monocyte      82.273906
+    14   myeloid precursor      80.963771
+    19              t cell      80.957774
+
+    Bottom 5 cell types in AML:
+                           Level Two Cell Type  mean_distance
+    1                                adipocyte      72.044065
+    18                               stem cell      70.097786
+    12                             muscle cell      69.735721
+    4               endothelial cell of artery      66.552461
+    6   hematopoietic stem and progenitor cell      54.563528
+
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -2415,6 +2430,7 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
 
     Top 5 cell types in NSM:
                            Level Two Cell Type  median_distance
@@ -2432,22 +2448,6 @@ for region in unique_regions:
     3      endothelial cell of artery        55.348929
     11                    muscle cell        46.465657
 
-    Top 5 cell types in AML:
-       Level Two Cell Type  median_distance
-    15     neuroglial cell       128.321993
-    0        abnormal cell        78.755366
-    11            monocyte        76.137286
-    19              t cell        73.440678
-    14   myeloid precursor        73.387438
-
-    Bottom 5 cell types in AML:
-                           Level Two Cell Type  median_distance
-    1                                adipocyte        61.569803
-    18                               stem cell        59.523007
-    12                             muscle cell        59.183423
-    4               endothelial cell of artery        57.188080
-    6   hematopoietic stem and progenitor cell        37.139774
-
     Top 5 cell types in NBM:
                            Level Two Cell Type  median_distance
     15                         progenitor cell        96.413601
@@ -2464,9 +2464,26 @@ for region in unique_regions:
     14                neuroglial cell        78.933059
     3      endothelial cell of artery        71.598061
 
+    Top 5 cell types in AML:
+       Level Two Cell Type  median_distance
+    15     neuroglial cell       128.321993
+    0        abnormal cell        78.755366
+    11            monocyte        76.137286
+    19              t cell        73.440678
+    14   myeloid precursor        73.387438
+
+    Bottom 5 cell types in AML:
+                           Level Two Cell Type  median_distance
+    1                                adipocyte        61.569803
+    18                               stem cell        59.523007
+    12                             muscle cell        59.183423
+    4               endothelial cell of artery        57.188080
+    6   hematopoietic stem and progenitor cell        37.139774
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2495,8 +2512,8 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     abnormal cell                           84.61  44.08    52.1
     erythroid precursor                     92.48  48.09    52.0
     myeloid precursor                       94.87  49.06    51.7
-    stem cell                               94.15  48.57    51.6
     macrophage                              92.25  47.60    51.6
+    stem cell                               94.15  48.57    51.6
     b cell                                  94.91  48.86    51.5
     progenitor cell                         95.58  49.02    51.3
     unknown cell                            96.31  48.92    50.8
@@ -3404,6 +3421,23 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
+    Top 5 cell types in NBM:
+                       Level Three Cell Type  mean_distance
+    14       lymphoid progenitor cell:common     101.297912
+    26                           plasma cell     100.456866
+    10  granulocyte monocyte progenitor cell      99.994036
+    17                  megakaryocyte:gata1-      99.683106
+    2                        b cell:immature      99.501175
+
+    Bottom 5 cell types in NBM:
+                          Level Three Cell Type  mean_distance
+    20                                 monocyte      91.803183
+    18  mesenchymal stem cell of adipose tissue      91.666993
+    21                   monocyte:non-classical      89.394134
+    27                             schwann cell      86.411262
+    6                endothelial cell of artery      80.875474
+
     Top 5 cell types in NSM:
                                  Level Three Cell Type  mean_distance
     10            granulocyte monocyte progenitor cell     113.471237
@@ -3436,22 +3470,6 @@ for region in unique_regions:
     12  hematopoietic stem and progenitor cell:spink2+      54.563528
     8                          erythroblast:basophilic      52.951975
 
-    Top 5 cell types in NBM:
-                       Level Three Cell Type  mean_distance
-    14       lymphoid progenitor cell:common     101.297912
-    26                           plasma cell     100.456866
-    10  granulocyte monocyte progenitor cell      99.994036
-    17                  megakaryocyte:gata1-      99.683106
-    2                        b cell:immature      99.501175
-
-    Bottom 5 cell types in NBM:
-                          Level Three Cell Type  mean_distance
-    20                                 monocyte      91.803183
-    18  mesenchymal stem cell of adipose tissue      91.666993
-    21                   monocyte:non-classical      89.394134
-    27                             schwann cell      86.411262
-    6                endothelial cell of artery      80.875474
-
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -3462,6 +3480,23 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
+
+    Top 5 cell types in NBM:
+                       Level Three Cell Type  median_distance
+    14       lymphoid progenitor cell:common       103.775147
+    26                           plasma cell        99.888396
+    3                       cell:cd34+ cd61+        99.005114
+    10  granulocyte monocyte progenitor cell        96.974877
+    2                        b cell:immature        96.731118
+
+    Bottom 5 cell types in NBM:
+                      Level Three Cell Type  median_distance
+    20                             monocyte        87.198437
+    19  mesenchymal stem/stromal cell:thy1+        86.924087
+    21               monocyte:non-classical        83.017617
+    27                         schwann cell        78.933059
+    6            endothelial cell of artery        71.598061
 
     Top 5 cell types in NSM:
                                  Level Three Cell Type  median_distance
@@ -3495,25 +3530,10 @@ for region in unique_regions:
     12  hematopoietic stem and progenitor cell:spink2+        37.139774
     14                 lymphoid progenitor cell:common        33.321110
 
-    Top 5 cell types in NBM:
-                       Level Three Cell Type  median_distance
-    14       lymphoid progenitor cell:common       103.775147
-    26                           plasma cell        99.888396
-    3                       cell:cd34+ cd61+        99.005114
-    10  granulocyte monocyte progenitor cell        96.974877
-    2                        b cell:immature        96.731118
-
-    Bottom 5 cell types in NBM:
-                      Level Three Cell Type  median_distance
-    20                             monocyte        87.198437
-    19  mesenchymal stem/stromal cell:thy1+        86.924087
-    21               monocyte:non-classical        83.017617
-    27                         schwann cell        78.933059
-    6            endothelial cell of artery        71.598061
-
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3545,14 +3565,14 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     myeloid cell:mature                              93.01  49.27    53.0
     hematopoietic stem and progenitor cell:spink2+   93.87  49.72    53.0
     cell:cd34+ cd61+                                 95.01  49.89    52.5
-    mutant blast:npm1                                84.61  44.08    52.1
     erythroblast                                     90.48  47.17    52.1
+    mutant blast:npm1                                84.61  44.08    52.1
     erythroid lineage cell                           92.67  48.17    52.0
     granulocyte monocyte progenitor cell/myeloblast  94.91  49.05    51.7
     myeloid cell:intermediate                        94.93  49.07    51.7
-    b cell:immature                                  96.95  50.01    51.6
-    b cell                                           94.57  48.82    51.6
     macrophage                                       92.25  47.60    51.6
+    b cell                                           94.57  48.82    51.6
+    b cell:immature                                  96.95  50.01    51.6
     hematopoietic stem cell                          94.15  48.57    51.6
     megakaryocyte:gata1+                             90.24  46.49    51.5
     myeloid progenitor cell:common                   95.58  49.01    51.3

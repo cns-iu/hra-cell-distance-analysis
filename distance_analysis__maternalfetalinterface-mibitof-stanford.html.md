@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "maternalfetalinterface-mibitof-stanford" 
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -156,27 +159,27 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>448.086</td>
-<td>13.685</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
+<td>1.564</td>
+<td>264.707</td>
+<td>other</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>486.795</td>
-<td>245.939</td>
+<td>3.128</td>
+<td>432.055</td>
 <td>other</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -190,50 +193,31 @@ df_all_nodes.head(5)
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>297.160</td>
-<td>464.899</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
-<td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
+<td>364.021</td>
+<td>479.757</td>
+<td>CD4T</td>
+<td>t cell:cd4+ alpha-beta</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>450.041</td>
-<td>748.374</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
-<td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>3.910</td>
-<td>125.902</td>
+<td>473.501</td>
+<td>430.100</td>
 <td>other</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -247,7 +231,26 @@ df_all_nodes.head(5)
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>602.922</td>
+<td>539.971</td>
+<td>NK2</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>6_31732_11_12</td>
 </tr>
 </tbody>
 </table>
@@ -288,6 +291,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -358,27 +362,27 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>448.086</td>
-<td>13.685</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
+<td>1.564</td>
+<td>264.707</td>
+<td>other</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>486.795</td>
-<td>245.939</td>
+<td>3.128</td>
+<td>432.055</td>
 <td>other</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -392,50 +396,31 @@ df_all_nodes.head()
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>297.160</td>
-<td>464.899</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
-<td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
+<td>364.021</td>
+<td>479.757</td>
+<td>CD4T</td>
+<td>t cell:cd4+ alpha-beta</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>450.041</td>
-<td>748.374</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
-<td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>3.910</td>
-<td>125.902</td>
+<td>473.501</td>
+<td>430.100</td>
 <td>other</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -449,7 +434,26 @@ df_all_nodes.head()
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>602.922</td>
+<td>539.971</td>
+<td>NK2</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>6_31732_11_12</td>
 </tr>
 </tbody>
 </table>
@@ -490,27 +494,27 @@ df_all_nodes[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 </tbody>
@@ -533,8 +537,11 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
+    <StringArray>
     ['maternalfetalinterface-mibitof-stanford']
+    Length: 1, dtype: str
     Total number of unique regions: 1
 
     Number of unique datasets per unique region:
@@ -580,70 +587,70 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>448.086</td>
-<td>13.685</td>
+<td>1.564</td>
+<td>264.707</td>
 <td>0</td>
-<td>475.456</td>
-<td>50.439</td>
+<td>133.722</td>
+<td>293.25</td>
 <td>0</td>
-<td>45.825467</td>
-<td>10_31742_1_2</td>
+<td>135.205177</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>7</td>
-<td>465.290</td>
+<td>6</td>
+<td>30.107</td>
+<td>278.783</td>
+<td>0</td>
 <td>133.722</td>
+<td>293.25</td>
 <td>0</td>
-<td>469.982</td>
-<td>70.380</td>
-<td>0</td>
-<td>63.515540</td>
-<td>10_31742_1_2</td>
+<td>104.620086</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>59</td>
-<td>450.041</td>
-<td>1.173</td>
+<td>17</td>
+<td>51.612</td>
+<td>215.832</td>
 <td>0</td>
-<td>475.456</td>
-<td>50.439</td>
+<td>32.062</td>
+<td>130.203</td>
 <td>0</td>
-<td>55.435196</td>
-<td>10_31742_1_2</td>
+<td>87.832387</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>82</td>
-<td>477.411</td>
-<td>163.438</td>
+<td>52</td>
+<td>120.819</td>
+<td>204.493</td>
 <td>0</td>
-<td>469.982</td>
-<td>70.380</td>
+<td>133.722</td>
+<td>293.25</td>
 <td>0</td>
-<td>93.354065</td>
-<td>10_31742_1_2</td>
+<td>89.689980</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>99</td>
-<td>420.325</td>
-<td>31.671</td>
+<td>64</td>
+<td>50.048</td>
+<td>208.794</td>
 <td>0</td>
-<td>389.045</td>
-<td>42.619</td>
+<td>32.062</td>
+<td>130.203</td>
 <td>0</td>
-<td>33.140566</td>
-<td>10_31742_1_2</td>
+<td>80.622835</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
@@ -685,27 +692,27 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 </tbody>
@@ -728,8 +735,11 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
+    <StringArray>
     ['maternalfetalinterface-mibitof-stanford']
+    Length: 1, dtype: str
     Total number of unique regions: 1
 
     Number of unique datasets per unique region:
@@ -767,27 +777,27 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>10_31742_1_2</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 </tbody>
@@ -838,22 +848,22 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>448.086</td>
-<td>13.685</td>
-<td>Mac2a</td>
-<td>macrophage:2a</td>
-<td>macrophage:2a</td>
-<td>CL:0000235</td>
+<td>1.564</td>
+<td>264.707</td>
+<td>other</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>10_31742_1_2</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>6_31732_11_12</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 </tbody>
@@ -900,14 +910,14 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>448.086</td>
-<td>13.685</td>
+<td>1.564</td>
+<td>264.707</td>
 <td>0</td>
-<td>475.456</td>
-<td>50.439</td>
+<td>133.722</td>
+<td>293.25</td>
 <td>0</td>
-<td>45.825467</td>
-<td>10_31742_1_2</td>
+<td>135.205177</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
@@ -959,19 +969,19 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>448.086</td>
-<td>13.685</td>
+<td>1.564</td>
+<td>264.707</td>
 <td>0</td>
-<td>475.456</td>
-<td>50.439</td>
+<td>133.722</td>
+<td>293.25</td>
 <td>0</td>
-<td>45.825467</td>
-<td>10_31742_1_2</td>
+<td>135.205177</td>
+<td>6_31732_11_12</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
-<td>macrophage:2a</td>
-<td>macrophage</td>
-<td>immune cell</td>
+<td>unknown cell</td>
+<td>unknown cell</td>
+<td>unknown cell</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 </tbody>
@@ -1205,6 +1215,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
       Level One Cell Type  mean_distance
     0     epithelial cell      71.729685
@@ -1246,6 +1257,7 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
 
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
       Level One Cell Type  median_distance
@@ -1295,6 +1307,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
 
+
     Regional Variability Analysis:
     Mean: Average distance in each region
     Std: Standard deviation of distances
@@ -1318,6 +1331,7 @@ regions = df_all_edges_with_cell_types['Unique Region'].unique().tolist()
 print("\nRegions in the data:")
 print(regions)
 ```
+
 
     Regions in the data:
     ['maternalfetalinterface-mibitof-stanford']
@@ -1647,6 +1661,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
        Level Two Cell Type  mean_distance
     8         trophoblast       81.257066
@@ -1674,6 +1689,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
        Level Two Cell Type  median_distance
     8         trophoblast         72.895027
@@ -1693,6 +1709,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1996,6 +2013,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
                        Level Three Cell Type  mean_distance
     19  trophoblast:hla-g+ ck7+ extravillous      83.334643
@@ -2023,6 +2041,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in maternalfetalinterface-mibitof-stanford:
                        Level Three Cell Type  median_distance
     20  trophoblast:hla-g+ ck7- extravillous        75.506038
@@ -2042,6 +2061,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2071,8 +2091,8 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     natural killer cell                                 67.90  42.91    63.2
     macrophage:2b                                       76.81  46.70    60.8
     macrophage:2c                                       79.31  47.08    59.4
-    macrophage:1a                                       75.80  44.50    58.7
     fibroblast                                          77.89  45.73    58.7
+    macrophage:1a                                       75.80  44.50    58.7
     trophoblast:hla-g+ ck7- extravillous                83.22  48.60    58.4
     trophoblast:hla-g+ ck7+ extravillous                83.33  48.07    57.7
     hofbauer cell                                       51.97    NaN     NaN

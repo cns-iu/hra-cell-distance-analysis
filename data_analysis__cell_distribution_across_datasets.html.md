@@ -28,7 +28,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 data_filedir = "data-processed-nodes-with-harmonized-cell-types"
 figures_output_dir = "generated-figures"
 ```
@@ -121,6 +121,7 @@ df_all_data.head(5)
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">x</th>
 <th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">z</th>
 <th data-quarto-table-cell-role="th">Original Cell Type</th>
 <th data-quarto-table-cell-role="th">Level Three Cell Type</th>
 <th data-quarto-table-cell-role="th">Level Three CL Label</th>
@@ -136,114 +137,113 @@ df_all_data.head(5)
 <th data-quarto-table-cell-role="th">CL_Match/1</th>
 <th data-quarto-table-cell-role="th">Tissue Type</th>
 <th data-quarto-table-cell-role="th">Dataset</th>
-<th data-quarto-table-cell-role="th">z</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-<td>B004_Ascending</td>
-<td>NaN</td>
+<td>732.21</td>
+<td>18.569</td>
+<td>0.87001</td>
+<td>Unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>skin-confocal-sorgerlab</td>
+<td>phenotypes_invasive_margin</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1958.05496</td>
-<td>1553.46072</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>733.07</td>
+<td>22.936</td>
+<td>4.77910</td>
+<td>Tumor</td>
+<td>tumor cell</td>
+<td>neoplastic cell</td>
+<td>CL:0001063</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>abnormal cell</td>
+<td>abnormal cell</td>
+<td>CL:0001061</td>
 <td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-<td>B004_Ascending</td>
-<td>NaN</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>skin-confocal-sorgerlab</td>
+<td>phenotypes_invasive_margin</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>2290.93940</td>
-<td>1187.36332</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>736.84</td>
+<td>29.739</td>
+<td>4.43490</td>
+<td>Tumor</td>
+<td>tumor cell</td>
+<td>neoplastic cell</td>
+<td>CL:0001063</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>abnormal cell</td>
+<td>abnormal cell</td>
+<td>CL:0001061</td>
 <td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-<td>B004_Ascending</td>
-<td>NaN</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>skin-confocal-sorgerlab</td>
+<td>phenotypes_invasive_margin</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>2863.48554</td>
-<td>891.08862</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>732.12</td>
+<td>143.700</td>
+<td>15.22900</td>
+<td>Tumor</td>
+<td>tumor cell</td>
+<td>neoplastic cell</td>
+<td>CL:0001063</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>abnormal cell</td>
+<td>abnormal cell</td>
+<td>CL:0001061</td>
 <td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-<td>B004_Ascending</td>
-<td>NaN</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>skin-confocal-sorgerlab</td>
+<td>phenotypes_invasive_margin</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>2563.43664</td>
-<td>1468.54122</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-<td>B004_Ascending</td>
-<td>NaN</td>
+<td>714.57</td>
+<td>544.400</td>
+<td>1.40060</td>
+<td>Unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>skin-confocal-sorgerlab</td>
+<td>phenotypes_invasive_margin</td>
 </tr>
 </tbody>
 </table>
@@ -270,7 +270,7 @@ print(df_all_data['Dataset'].nunique())
     lung-codex-urmc                              2
     lymphnode-codex-yale                         5
     maternalfetalinterface-mibitof-stanford    209
-    mouth-codex-czi                        13
+    mouth-codex-czi                             13
     pancreas-geomx-ufl                          12
     skin-celldive-ge                            10
     skin-confocal-sorgerlab                      2
@@ -366,6 +366,42 @@ summary_df
 </thead>
 <tbody>
 <tr>
+<td data-quarto-table-cell-role="th">skin-confocal-sorgerlab</td>
+<td>15</td>
+<td>15</td>
+<td>11</td>
+<td>4</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">colon-xenium-stanford</td>
+<td>41</td>
+<td>38</td>
+<td>20</td>
+<td>6</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">colon-cycif-sorgerlab</td>
+<td>21</td>
+<td>21</td>
+<td>7</td>
+<td>5</td>
+</tr>
+<tr>
+<td
+data-quarto-table-cell-role="th">maternalfetalinterface-mibitof-stanford</td>
+<td>26</td>
+<td>23</td>
+<td>11</td>
+<td>5</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">pancreas-geomx-ufl</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">intestine-codex-stanford</td>
 <td>25</td>
 <td>25</td>
@@ -373,23 +409,9 @@ summary_df
 <td>5</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">tonsil-codex-stanford</td>
-<td>10</td>
-<td>10</td>
-<td>8</td>
-<td>5</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">esophagus-codex-stanford</td>
-<td>12</td>
-<td>12</td>
-<td>11</td>
-<td>5</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">colon-xenium-stanford</td>
-<td>41</td>
-<td>38</td>
+<td data-quarto-table-cell-role="th">mouth-codex-czi</td>
+<td>39</td>
+<td>28</td>
 <td>20</td>
 <td>6</td>
 </tr>
@@ -401,47 +423,18 @@ summary_df
 <td>3</td>
 </tr>
 <tr>
-<td
-data-quarto-table-cell-role="th">maternalfetalinterface-mibitof-stanford</td>
-<td>26</td>
-<td>23</td>
-<td>11</td>
-<td>5</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">mouth-codex-czi</td>
-<td>39</td>
-<td>28</td>
-<td>20</td>
-<td>6</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">pancreas-geomx-ufl</td>
-<td>4</td>
-<td>4</td>
-<td>4</td>
-<td>3</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">skin-celldive-ge</td>
-<td>8</td>
-<td>8</td>
-<td>4</td>
-<td>3</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">skin-confocal-sorgerlab</td>
-<td>15</td>
-<td>15</td>
-<td>11</td>
-<td>4</td>
-</tr>
-<tr>
 <td data-quarto-table-cell-role="th">spleen-codex-ufl</td>
 <td>12</td>
 <td>12</td>
 <td>9</td>
 <td>3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">tonsil-codex-stanford</td>
+<td>10</td>
+<td>10</td>
+<td>8</td>
+<td>5</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">lung-codex-urmc</td>
@@ -451,18 +444,25 @@ data-quarto-table-cell-role="th">maternalfetalinterface-mibitof-stanford</td>
 <td>7</td>
 </tr>
 <tr>
+<td data-quarto-table-cell-role="th">esophagus-codex-stanford</td>
+<td>12</td>
+<td>12</td>
+<td>11</td>
+<td>5</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">skin-celldive-ge</td>
+<td>8</td>
+<td>8</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">bonemarrow-codex-chop</td>
 <td>37</td>
 <td>33</td>
 <td>22</td>
 <td>6</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">colon-cycif-sorgerlab</td>
-<td>21</td>
-<td>21</td>
-<td>7</td>
-<td>5</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">Total Unique Cell Types</td>
@@ -588,27 +588,10 @@ unique_combinations
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>Adipocytes</td>
-<td>adipocyte</td>
-<td>adipocyte</td>
-<td>CL:0000136</td>
-<td>skos:exactMatch</td>
-<td>adipocyte</td>
-<td>adipocyte</td>
-<td>CL:0000136</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">4</td>
+<td data-quarto-table-cell-role="th">3</td>
 <td>Adipocyte</td>
 <td>adipocyte</td>
 <td>adipocyte</td>
@@ -623,6 +606,23 @@ unique_combinations
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
 <td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>Adipocytes</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">5</td>
@@ -643,40 +643,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">6</td>
-<td>B</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>tonsil-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">7</td>
-<td>B cell</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">8</td>
 <td>B cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -693,7 +659,24 @@ unique_combinations
 <td>colon-cycif-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">9</td>
+<td data-quarto-table-cell-role="th">7</td>
+<td>B cells, red pulp</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>spleen-codex-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">8</td>
 <td>B Cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -710,7 +693,41 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
+<td data-quarto-table-cell-role="th">9</td>
+<td>B</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>tonsil-codex-stanford</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">10</td>
+<td>B cell</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">11</td>
 <td>B cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -727,7 +744,7 @@ unique_combinations
 <td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">11</td>
+<td data-quarto-table-cell-role="th">12</td>
 <td>B</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -742,23 +759,6 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">12</td>
-<td>B cells, red pulp</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>spleen-codex-ufl</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">13</td>
@@ -813,7 +813,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">16</td>
-<td>B_GC_DZ</td>
+<td>B_GC_LZ</td>
 <td>b cell:germinal center</td>
 <td>germinal center B cell</td>
 <td>CL:0000844</td>
@@ -830,7 +830,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">17</td>
-<td>B_GC_LZ</td>
+<td>B_GC_DZ</td>
 <td>b cell:germinal center</td>
 <td>germinal center B cell</td>
 <td>CL:0000844</td>
@@ -898,23 +898,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">21</td>
-<td>B_mem</td>
-<td>b cell:memory</td>
-<td>memory B cell</td>
-<td>CL:0000787</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">22</td>
 <td>Memory B</td>
 <td>b cell:memory</td>
 <td>memory B cell</td>
@@ -931,11 +914,11 @@ unique_combinations
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">23</td>
-<td>B_naive</td>
-<td>b cell:naive</td>
-<td>naive B cell</td>
-<td>CL:0000788</td>
+<td data-quarto-table-cell-role="th">22</td>
+<td>B_mem</td>
+<td>b cell:memory</td>
+<td>memory B cell</td>
+<td>CL:0000787</td>
 <td>skos:exactMatch</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -948,7 +931,7 @@ unique_combinations
 <td>lymphnode-codex-yale</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">24</td>
+<td data-quarto-table-cell-role="th">23</td>
 <td>Naive B</td>
 <td>b cell:naive</td>
 <td>naive B cell</td>
@@ -963,6 +946,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">24</td>
+<td>B_naive</td>
+<td>b cell:naive</td>
+<td>naive B cell</td>
+<td>CL:0000788</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">25</td>
@@ -1064,10 +1064,27 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">31</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
+<td>skos:exactMatch</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">32</td>
 <td>Dendritic cells</td>
 <td>dendritic cell</td>
 <td>dendritic cell</td>
@@ -1082,23 +1099,6 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">32</td>
-<td>DC</td>
-<td>dendritic cell</td>
-<td>dendritic cell</td>
-<td>CL:0000451</td>
-<td>skos:exactMatch</td>
-<td>dendritic cell</td>
-<td>dendritic cell</td>
-<td>CL:0000451</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">33</td>
@@ -1285,7 +1285,7 @@ unique_combinations
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">44</td>
@@ -1319,146 +1319,10 @@ unique_combinations
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">46</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>pancreas-geomx-ufl</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">47</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">48</td>
-<td>Endo_p</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">49</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">50</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">51</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">52</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>colon-cycif-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">53</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">54</td>
+<td data-quarto-table-cell-role="th">46</td>
 <td>ENDO_SMC</td>
 <td>endothelial cell</td>
 <td>endothelial cell</td>
@@ -1475,7 +1339,58 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">55</td>
+<td data-quarto-table-cell-role="th">47</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">48</td>
+<td>ENDO_1</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">49</td>
+<td>Endo_p</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">50</td>
 <td>Endo_2</td>
 <td>endothelial cell</td>
 <td>endothelial cell</td>
@@ -1492,8 +1407,93 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
+<td data-quarto-table-cell-role="th">51</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>pancreas-geomx-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">52</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>esophagus-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">53</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>colon-cycif-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">54</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">55</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">56</td>
-<td>ENDO_1</td>
+<td>Endothelial</td>
 <td>endothelial cell</td>
 <td>endothelial cell</td>
 <td>CL:0000115</td>
@@ -1506,7 +1506,7 @@ unique_combinations
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
+<td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">57</td>
@@ -1544,74 +1544,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">59</td>
-<td>Podoplanin</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>spleen-codex-ufl</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">60</td>
-<td>Lymphatic endothelial cells</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">61</td>
-<td>Lymphatic</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">62</td>
-<td>Lymphatic_Endothelium</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>endothelial cell of lymphatic vessel</td>
-<td>CL:0002138</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">63</td>
 <td>lymphatic Endothelium</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>endothelial cell of lymphatic vessel</td>
@@ -1628,7 +1560,24 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">64</td>
+<td data-quarto-table-cell-role="th">60</td>
+<td>Lymphatic_Endothelium</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">61</td>
 <td>Lymphatic Endothelial Cells</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>endothelial cell of lymphatic vessel</td>
@@ -1643,6 +1592,57 @@ unique_combinations
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
 <td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">62</td>
+<td>Podoplanin</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>spleen-codex-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">63</td>
+<td>Lymphatic</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">64</td>
+<td>Lymphatic endothelial cells</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>endothelial cell of lymphatic vessel</td>
+<td>CL:0002138</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">65</td>
@@ -1663,23 +1663,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">66</td>
-<td>SEC</td>
-<td>endothelial cell of sinusoid</td>
-<td>endothelial cell of sinusoid</td>
-<td>CL:0002262</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell of sinusoid</td>
-<td>endothelial cell of sinusoid</td>
-<td>CL:0002262</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">67</td>
 <td>Sinusoidal cells</td>
 <td>endothelial cell of sinusoid</td>
 <td>endothelial cell of sinusoid</td>
@@ -1694,6 +1677,23 @@ unique_combinations
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
 <td>spleen-codex-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">67</td>
+<td>SEC</td>
+<td>endothelial cell of sinusoid</td>
+<td>endothelial cell of sinusoid</td>
+<td>CL:0002262</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell of sinusoid</td>
+<td>endothelial cell of sinusoid</td>
+<td>CL:0002262</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">68</td>
@@ -1748,23 +1748,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">71</td>
-<td>Enterocytes</td>
-<td>enterocyte</td>
-<td>enterocyte</td>
-<td>CL:0000584</td>
-<td>skos:exactMatch</td>
-<td>enterocyte</td>
-<td>enterocyte</td>
-<td>CL:0000584</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">72</td>
 <td>Enterocyte</td>
 <td>enterocyte</td>
 <td>enterocyte</td>
@@ -1779,6 +1762,23 @@ unique_combinations
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
 <td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">72</td>
+<td>Enterocytes</td>
+<td>enterocyte</td>
+<td>enterocyte</td>
+<td>CL:0000584</td>
+<td>skos:exactMatch</td>
+<td>enterocyte</td>
+<td>enterocyte</td>
+<td>CL:0000584</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">73</td>
@@ -1901,40 +1901,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">80</td>
-<td>Epithelial</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">81</td>
-<td>Ionocytes</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">82</td>
 <td>Melanocytes</td>
 <td>epithelial cell</td>
 <td>epithelial cell</td>
@@ -1951,8 +1917,8 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">83</td>
-<td>Lung_Epithelial_1</td>
+<td data-quarto-table-cell-role="th">81</td>
+<td>Epithelial</td>
 <td>epithelial cell</td>
 <td>epithelial cell</td>
 <td>CL:0000066</td>
@@ -1965,27 +1931,10 @@ unique_combinations
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">84</td>
-<td>Lung_Epithelial_4</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">85</td>
+<td data-quarto-table-cell-role="th">82</td>
 <td>Merkel Cells</td>
 <td>epithelial cell</td>
 <td>epithelial cell</td>
@@ -2002,7 +1951,7 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">86</td>
+<td data-quarto-table-cell-role="th">83</td>
 <td>Lung_Epithelial_p</td>
 <td>epithelial cell</td>
 <td>epithelial cell</td>
@@ -2019,16 +1968,50 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">87</td>
-<td>Ducts</td>
-<td>epithelial cell:ductal</td>
-<td>duct epithelial cell</td>
-<td>CL:0000068</td>
-<td>skos:exactMatch</td>
-<td>gland epithelium cell</td>
-<td>epithelial cell:gland</td>
+<td data-quarto-table-cell-role="th">84</td>
+<td>Lung_Epithelial_1</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
 <td>CL:0000066</td>
-<td>skos:narrowMatch</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">85</td>
+<td>Lung_Epithelial_4</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">86</td>
+<td>Ionocytes</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
 <td>epithelial cell</td>
 <td>epithelial cell</td>
 <td>CL:0000066</td>
@@ -2036,7 +2019,7 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">88</td>
+<td data-quarto-table-cell-role="th">87</td>
 <td>Ductal Epithelial Cells</td>
 <td>epithelial cell:ductal</td>
 <td>duct epithelial cell</td>
@@ -2053,7 +2036,7 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">89</td>
+<td data-quarto-table-cell-role="th">88</td>
 <td>Ductal cell</td>
 <td>epithelial cell:ductal</td>
 <td>duct epithelial cell</td>
@@ -2068,6 +2051,23 @@ unique_combinations
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
 <td>pancreas-geomx-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">89</td>
+<td>Ducts</td>
+<td>epithelial cell:ductal</td>
+<td>duct epithelial cell</td>
+<td>CL:0000068</td>
+<td>skos:exactMatch</td>
+<td>gland epithelium cell</td>
+<td>epithelial cell:gland</td>
+<td>CL:0000066</td>
+<td>skos:narrowMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">90</td>
@@ -2186,7 +2186,7 @@ unique_combinations
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">97</td>
@@ -2203,7 +2203,7 @@ unique_combinations
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">98</td>
@@ -2377,7 +2377,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">108</td>
-<td>GC</td>
+<td>Goblet</td>
 <td>goblet cell</td>
 <td>goblet cell</td>
 <td>CL:0000160</td>
@@ -2394,7 +2394,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">109</td>
-<td>Goblet</td>
+<td>GC</td>
 <td>goblet cell</td>
 <td>goblet cell</td>
 <td>CL:0000160</td>
@@ -2407,7 +2407,7 @@ unique_combinations
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">110</td>
@@ -2424,7 +2424,7 @@ unique_combinations
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">111</td>
@@ -2581,7 +2581,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">120</td>
-<td>Keratinocyte</td>
+<td>Suprabasal Keratinocytes</td>
 <td>keratinocyte</td>
 <td>keratinocyte</td>
 <td>CL:0000312</td>
@@ -2615,7 +2615,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">122</td>
-<td>Suprabasal Keratinocytes</td>
+<td>Keratinocyte</td>
 <td>keratinocyte</td>
 <td>keratinocyte</td>
 <td>CL:0000312</td>
@@ -2700,23 +2700,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">127</td>
-<td>Langerhan cells</td>
-<td>langerhans cell</td>
-<td>Langerhans cell</td>
-<td>CL:0000453</td>
-<td>skos:exactMatch</td>
-<td>langerhans cell</td>
-<td>Langerhans cell</td>
-<td>CL:0000453</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">128</td>
 <td>Langerhans Cells</td>
 <td>langerhans cell</td>
 <td>Langerhans cell</td>
@@ -2733,24 +2716,24 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">129</td>
-<td>Leukocyte</td>
-<td>leukocyte</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
+<td data-quarto-table-cell-role="th">128</td>
+<td>Langerhan cells</td>
+<td>langerhans cell</td>
+<td>Langerhans cell</td>
+<td>CL:0000453</td>
 <td>skos:exactMatch</td>
-<td>leukocyte</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
+<td>langerhans cell</td>
+<td>Langerhans cell</td>
+<td>CL:0000453</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
+<td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">130</td>
+<td data-quarto-table-cell-role="th">129</td>
 <td>Other Immune</td>
 <td>leukocyte</td>
 <td>leukocyte</td>
@@ -2765,6 +2748,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>skin-confocal-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">130</td>
+<td>Leukocyte</td>
+<td>leukocyte</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>leukocyte</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">131</td>
@@ -2866,10 +2866,27 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>tonsil-codex-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">137</td>
+<td>ILCs</td>
+<td>lymphoid cell:innate</td>
+<td>innate lymphoid cell</td>
+<td>CL:0001065</td>
+<td>skos:exactMatch</td>
+<td>lymphoid cell</td>
+<td>lymphocyte</td>
+<td>CL:0000542</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">138</td>
 <td>ILC</td>
 <td>lymphoid cell:innate</td>
 <td>innate lymphoid cell</td>
@@ -2886,7 +2903,7 @@ unique_combinations
 <td>lymphnode-codex-yale</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">138</td>
+<td data-quarto-table-cell-role="th">139</td>
 <td>Innate</td>
 <td>lymphoid cell:innate</td>
 <td>innate lymphoid cell</td>
@@ -2900,24 +2917,7 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">139</td>
-<td>ILCs</td>
-<td>lymphoid cell:innate</td>
-<td>innate lymphoid cell</td>
-<td>CL:0001065</td>
-<td>skos:exactMatch</td>
-<td>lymphoid cell</td>
-<td>lymphocyte</td>
-<td>CL:0000542</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>tonsil-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">140</td>
@@ -2938,7 +2938,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">141</td>
-<td>Macrophages_M2</td>
+<td>Macrophages</td>
 <td>macrophage</td>
 <td>macrophage</td>
 <td>CL:0000235</td>
@@ -2951,48 +2951,14 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>spleen-codex-ufl</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">142</td>
-<td>M2 Macrophage</td>
+<td>macrophage_2</td>
 <td>macrophage</td>
 <td>macrophage</td>
 <td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">143</td>
-<td>Macrophage</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">144</td>
-<td>macrophage_CD1c+_myeloidDC</td>
-<td>macrophage</td>
-<td>alveolar macrophage</td>
-<td>CL:0000583</td>
 <td>skos:exactMatch</td>
 <td>macrophage</td>
 <td>macrophage</td>
@@ -3005,41 +2971,7 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">145</td>
-<td>Macrophages</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">146</td>
-<td>Macrophages</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">147</td>
+<td data-quarto-table-cell-role="th">143</td>
 <td>CD68</td>
 <td>macrophage</td>
 <td>macrophage</td>
@@ -3056,7 +2988,24 @@ unique_combinations
 <td>skin-celldive-ge</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">148</td>
+<td data-quarto-table-cell-role="th">144</td>
+<td>macrophage_p</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">145</td>
 <td>Macrophage</td>
 <td>macrophage</td>
 <td>macrophage</td>
@@ -3073,8 +3022,8 @@ unique_combinations
 <td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">149</td>
-<td>macrophage</td>
+<td data-quarto-table-cell-role="th">146</td>
+<td>Macrophages_M1</td>
 <td>macrophage</td>
 <td>macrophage</td>
 <td>CL:0000235</td>
@@ -3087,7 +3036,58 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">147</td>
+<td>M2 Macrophage</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">148</td>
+<td>Macrophages_M2</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">149</td>
+<td>Macrophages</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">150</td>
@@ -3108,40 +3108,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">151</td>
-<td>macrophage_2</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">152</td>
-<td>Macrophages_M1</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">153</td>
 <td>Macrophages</td>
 <td>macrophage</td>
 <td>macrophage</td>
@@ -3155,11 +3121,45 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>spleen-codex-ufl</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">152</td>
+<td>Macrophage</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">153</td>
+<td>macrophage_CD1c+_myeloidDC</td>
+<td>macrophage</td>
+<td>alveolar macrophage</td>
+<td>CL:0000583</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">154</td>
-<td>macrophage_p</td>
+<td>macrophage</td>
 <td>macrophage</td>
 <td>macrophage</td>
 <td>CL:0000235</td>
@@ -3380,23 +3380,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">167</td>
-<td>Mast</td>
-<td>mast cell</td>
-<td>mast cell</td>
-<td>CL:0000097</td>
-<td>skos:exactMatch</td>
-<td>mast cell</td>
-<td>mast cell</td>
-<td>CL:0000097</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">168</td>
 <td>Mast Cells</td>
 <td>mast cell</td>
 <td>mast cell</td>
@@ -3413,8 +3396,8 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">169</td>
-<td>Mast</td>
+<td data-quarto-table-cell-role="th">168</td>
+<td>Mast cell</td>
 <td>mast cell</td>
 <td>mast cell</td>
 <td>CL:0000097</td>
@@ -3427,10 +3410,10 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">170</td>
+<td data-quarto-table-cell-role="th">169</td>
 <td>Mast</td>
 <td>mast cell</td>
 <td>mast cell</td>
@@ -3447,8 +3430,8 @@ unique_combinations
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">171</td>
-<td>Mast cell</td>
+<td data-quarto-table-cell-role="th">170</td>
+<td>Mast</td>
 <td>mast cell</td>
 <td>mast cell</td>
 <td>CL:0000097</td>
@@ -3461,7 +3444,24 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">171</td>
+<td>Mast</td>
+<td>mast cell</td>
+<td>mast cell</td>
+<td>CL:0000097</td>
+<td>skos:exactMatch</td>
+<td>mast cell</td>
+<td>mast cell</td>
+<td>CL:0000097</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">172</td>
@@ -3584,23 +3584,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">179</td>
-<td>Monocytes</td>
-<td>monocyte</td>
-<td>monocyte</td>
-<td>CL:0000576</td>
-<td>skos:exactMatch</td>
-<td>monocyte</td>
-<td>monocyte</td>
-<td>CL:0000576</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">180</td>
 <td>Monocyte-Macrophage</td>
 <td>monocyte</td>
 <td>monocyte</td>
@@ -3615,6 +3598,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">180</td>
+<td>Monocytes</td>
+<td>monocyte</td>
+<td>monocyte</td>
+<td>CL:0000576</td>
+<td>skos:exactMatch</td>
+<td>monocyte</td>
+<td>monocyte</td>
+<td>CL:0000576</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">181</td>
@@ -3686,74 +3686,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">185</td>
-<td>Smooth muscle</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell</td>
-<td>CL:0000192</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">186</td>
-<td>SMC_1</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell</td>
-<td>CL:0000192</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">187</td>
-<td>VSMC</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell</td>
-<td>CL:0000192</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">188</td>
-<td>SMC_2</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell</td>
-<td>CL:0000192</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">189</td>
 <td>SmoothMuscle</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell</td>
@@ -3770,8 +3702,25 @@ unique_combinations
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">190</td>
-<td>smooth muscle_2</td>
+<td data-quarto-table-cell-role="th">186</td>
+<td>Smooth muscle</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell</td>
+<td>CL:0000192</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">187</td>
+<td>SMC_2</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell</td>
 <td>CL:0000192</td>
@@ -3787,7 +3736,24 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">191</td>
+<td data-quarto-table-cell-role="th">188</td>
+<td>VSMC</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell</td>
+<td>CL:0000192</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">189</td>
 <td>SmoothMuscle</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell of the esophagus</td>
@@ -3804,7 +3770,7 @@ unique_combinations
 <td>esophagus-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">192</td>
+<td data-quarto-table-cell-role="th">190</td>
 <td>VSMC</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell</td>
@@ -3818,7 +3784,41 @@ unique_combinations
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">191</td>
+<td>smooth muscle_2</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell</td>
+<td>CL:0000192</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">192</td>
+<td>SMC_1</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell</td>
+<td>CL:0000192</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">193</td>
@@ -3975,23 +3975,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">202</td>
-<td>Myofibroblasts</td>
-<td>myofibroblast</td>
-<td>myofibroblast cell</td>
-<td>CL:0000186</td>
-<td>skos:exactMatch</td>
-<td>fibroblast</td>
-<td>fibroblast</td>
-<td>CL:0000057</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">203</td>
 <td>myofibroblast</td>
 <td>myofibroblast</td>
 <td>myofibroblast cell</td>
@@ -4006,6 +3989,23 @@ unique_combinations
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
 <td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">203</td>
+<td>Myofibroblasts</td>
+<td>myofibroblast</td>
+<td>myofibroblast cell</td>
+<td>CL:0000186</td>
+<td>skos:exactMatch</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">204</td>
@@ -4060,57 +4060,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">207</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">208</td>
-<td>NK1</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">209</td>
-<td>NK2</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">210</td>
 <td>NK3</td>
 <td>natural killer cell</td>
 <td>natural killer cell</td>
@@ -4127,7 +4076,24 @@ unique_combinations
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">211</td>
+<td data-quarto-table-cell-role="th">208</td>
+<td>NK2</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">209</td>
 <td>NK4</td>
 <td>natural killer cell</td>
 <td>natural killer cell</td>
@@ -4144,7 +4110,7 @@ unique_combinations
 <td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">212</td>
+<td data-quarto-table-cell-role="th">210</td>
 <td>NK Cells</td>
 <td>natural killer cell</td>
 <td>natural killer cell</td>
@@ -4159,6 +4125,40 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">211</td>
+<td>NK</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">212</td>
+<td>NK1</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>natural killer cell</td>
+<td>natural killer cell</td>
+<td>CL:0000623</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">213</td>
@@ -4230,23 +4230,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">217</td>
-<td>Neurons</td>
-<td>neuron</td>
-<td>neuron</td>
-<td>CL:0000540</td>
-<td>skos:exactMatch</td>
-<td>neuron</td>
-<td>neuron</td>
-<td>CL:0000540</td>
-<td>skos:exactMatch</td>
-<td>neural cell</td>
-<td>neural cell</td>
-<td>CL:0002319</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">218</td>
 <td>Nerve</td>
 <td>neuron</td>
 <td>neuron</td>
@@ -4263,7 +4246,7 @@ unique_combinations
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">219</td>
+<td data-quarto-table-cell-role="th">218</td>
 <td>Nerve</td>
 <td>neuron</td>
 <td>neuron</td>
@@ -4278,6 +4261,23 @@ unique_combinations
 <td>CL:0002319</td>
 <td>skos:exactMatch</td>
 <td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">219</td>
+<td>Neurons</td>
+<td>neuron</td>
+<td>neuron</td>
+<td>CL:0000540</td>
+<td>skos:exactMatch</td>
+<td>neuron</td>
+<td>neuron</td>
+<td>CL:0000540</td>
+<td>skos:exactMatch</td>
+<td>neural cell</td>
+<td>neural cell</td>
+<td>CL:0002319</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">220</td>
@@ -4315,23 +4315,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">222</td>
-<td>Neutrophils</td>
-<td>neutrophil</td>
-<td>neutrophil</td>
-<td>CL:0000775</td>
-<td>skos:exactMatch</td>
-<td>neutrophil</td>
-<td>neutrophil</td>
-<td>CL:0000775</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">223</td>
 <td>neutrophil</td>
 <td>neutrophil</td>
 <td>neutrophil</td>
@@ -4346,6 +4329,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">223</td>
+<td>Neutrophils</td>
+<td>neutrophil</td>
+<td>neutrophil</td>
+<td>CL:0000775</td>
+<td>skos:exactMatch</td>
+<td>neutrophil</td>
+<td>neutrophil</td>
+<td>CL:0000775</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">224</td>
@@ -4379,7 +4379,7 @@ unique_combinations
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">226</td>
@@ -4396,7 +4396,7 @@ unique_combinations
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">227</td>
@@ -4434,7 +4434,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">229</td>
-<td>B_plasma</td>
+<td>Plasma</td>
 <td>plasma cell</td>
 <td>plasma cell</td>
 <td>CL:0000786</td>
@@ -4447,7 +4447,7 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">230</td>
@@ -4468,6 +4468,23 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">231</td>
+<td>B_plasma</td>
+<td>plasma cell</td>
+<td>plasma cell</td>
+<td>CL:0000786</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">232</td>
 <td>Plasma</td>
 <td>plasma cell</td>
 <td>plasma cell</td>
@@ -4481,10 +4498,10 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">232</td>
+<td data-quarto-table-cell-role="th">233</td>
 <td>Plasma Cells</td>
 <td>plasma cell</td>
 <td>plasma cell</td>
@@ -4501,23 +4518,6 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">233</td>
-<td>Plasma</td>
-<td>plasma cell</td>
-<td>plasma cell</td>
-<td>CL:0000786</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
 <td data-quarto-table-cell-role="th">234</td>
 <td>Plasma</td>
 <td>plasma cell</td>
@@ -4532,7 +4532,7 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">235</td>
@@ -4587,7 +4587,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">238</td>
-<td>AT2_2</td>
+<td>AT2</td>
 <td>pneumocyte:type 2</td>
 <td>pulmonary alveolar type 2 cell</td>
 <td>CL:0002063</td>
@@ -4604,7 +4604,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">239</td>
-<td>AT2</td>
+<td>AT2_2</td>
 <td>pneumocyte:type 2</td>
 <td>pulmonary alveolar type 2 cell</td>
 <td>CL:0002063</td>
@@ -4791,23 +4791,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">250</td>
-<td>T</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">251</td>
 <td>gd T Cells</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -4822,6 +4805,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">251</td>
+<td>T</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">252</td>
@@ -4842,23 +4842,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">253</td>
-<td>CD8 T</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">254</td>
 <td>CD8+_T_cell_CD_4+_T_cell</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -4875,28 +4858,11 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">255</td>
-<td>CD4 T Cells</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
+<td data-quarto-table-cell-role="th">254</td>
+<td>CD8 T</td>
 <td>t cell</td>
 <td>T cell</td>
 <td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">256</td>
-<td>CD4 T</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -4909,58 +4875,7 @@ unique_combinations
 <td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">257</td>
-<td>CD4+ T cell</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">258</td>
-<td>Th</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">259</td>
-<td>T helper</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-cycif-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">260</td>
+<td data-quarto-table-cell-role="th">255</td>
 <td>T-Helper</td>
 <td>t cell:cd4+</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -4977,9 +4892,9 @@ unique_combinations
 <td>skin-celldive-ge</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">261</td>
-<td>CD4+ T-Cell</td>
-<td>t cell:cd4+ alpha-beta</td>
+<td data-quarto-table-cell-role="th">256</td>
+<td>CD4+ T cell</td>
+<td>t cell:cd4+</td>
 <td>CD4-positive, alpha-beta T cell</td>
 <td>CL:0000624</td>
 <td>skos:exactMatch</td>
@@ -4991,10 +4906,78 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">262</td>
+<td data-quarto-table-cell-role="th">257</td>
+<td>T helper</td>
+<td>t cell:cd4+</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-cycif-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">258</td>
+<td>CD4 T</td>
+<td>t cell:cd4+</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>skin-confocal-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">259</td>
+<td>CD4 T Cells</td>
+<td>t cell:cd4+</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">260</td>
+<td>Th</td>
+<td>t cell:cd4+</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">261</td>
 <td>CD4+</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -5011,41 +4994,7 @@ unique_combinations
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">263</td>
-<td>CD4+_T_cell_2</td>
-<td>t cell:cd4+ alpha-beta</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">264</td>
-<td>CD4+_T_cell_3</td>
-<td>t cell:cd4+ alpha-beta</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">265</td>
+<td data-quarto-table-cell-role="th">262</td>
 <td>CD4_+_Tcell/macrophage</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>lung resident memory CD4-positive, alpha-beta ...</td>
@@ -5062,7 +5011,24 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">266</td>
+<td data-quarto-table-cell-role="th">263</td>
+<td>CD4T</td>
+<td>t cell:cd4+ alpha-beta</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">264</td>
 <td>CD4+_T_cell_1</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -5079,7 +5045,7 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">267</td>
+<td data-quarto-table-cell-role="th">265</td>
 <td>CD4+ T cell</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -5096,8 +5062,8 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">268</td>
-<td>CD4T</td>
+<td data-quarto-table-cell-role="th">266</td>
+<td>CD4+_T_cell_3</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>CD4-positive, alpha-beta T cell</td>
 <td>CL:0000624</td>
@@ -5110,7 +5076,41 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">267</td>
+<td>CD4+_T_cell_2</td>
+<td>t cell:cd4+ alpha-beta</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">268</td>
+<td>CD4+ T-Cell</td>
+<td>t cell:cd4+ alpha-beta</td>
+<td>CD4-positive, alpha-beta T cell</td>
+<td>CL:0000624</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">269</td>
@@ -5182,40 +5182,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">273</td>
-<td>T-Killer</td>
-<td>t cell:cd8+</td>
-<td>CD8-positive, alpha-beta T cell</td>
-<td>CL:0000625</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>skin-celldive-ge</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">274</td>
-<td>CD8+ T cell_2</td>
-<td>t cell:cd8+</td>
-<td>lung resident memory CD8-positive, alpha-beta ...</td>
-<td>CL:4033039</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">275</td>
 <td>CD8 T Cells</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -5232,41 +5198,7 @@ unique_combinations
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">276</td>
-<td>CD8+_T_cell_1</td>
-<td>t cell:cd8+</td>
-<td>lung resident memory CD8-positive, alpha-beta ...</td>
-<td>CL:4033039</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">277</td>
-<td>T_CD8+_cytotoxic</td>
-<td>t cell:cd8+</td>
-<td>CD8-positive, alpha-beta T cell</td>
-<td>CL:0000625</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">278</td>
+<td data-quarto-table-cell-role="th">274</td>
 <td>T_CD8+_naive</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -5283,8 +5215,8 @@ unique_combinations
 <td>lymphnode-codex-yale</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">279</td>
-<td>Tc</td>
+<td data-quarto-table-cell-role="th">275</td>
+<td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
 <td>CL:0000625</td>
@@ -5297,10 +5229,27 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
+<td>skin-celldive-ge</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">280</td>
+<td data-quarto-table-cell-role="th">276</td>
+<td>T_CD8+_cytotoxic</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">277</td>
 <td>CD8 + T cell_1</td>
 <td>t cell:cd8+</td>
 <td>lung resident memory CD8-positive, alpha-beta ...</td>
@@ -5317,7 +5266,24 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">281</td>
+<td data-quarto-table-cell-role="th">278</td>
+<td>Tc</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">279</td>
 <td>CD8+_T_cell_3</td>
 <td>t cell:cd8+</td>
 <td>lung resident memory CD8-positive, alpha-beta ...</td>
@@ -5334,7 +5300,24 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">282</td>
+<td data-quarto-table-cell-role="th">280</td>
+<td>CD8+ T cell_2</td>
+<td>t cell:cd8+</td>
+<td>lung resident memory CD8-positive, alpha-beta ...</td>
+<td>CL:4033039</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">281</td>
 <td>Tc cell</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -5349,6 +5332,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>colon-cycif-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">282</td>
+<td>CD8+_T_cell_1</td>
+<td>t cell:cd8+</td>
+<td>lung resident memory CD8-positive, alpha-beta ...</td>
+<td>CL:4033039</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lung-codex-urmc</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">283</td>
@@ -5369,23 +5369,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">284</td>
-<td>CD8+ T</td>
-<td>t cell:cd8+ alpha-beta</td>
-<td>CD8-positive, alpha-beta T cell</td>
-<td>CL:0000625</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">285</td>
 <td>CD8T</td>
 <td>t cell:cd8+ alpha-beta</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -5400,6 +5383,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">285</td>
+<td>CD8+ T</td>
+<td>t cell:cd8+ alpha-beta</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">286</td>
@@ -5488,7 +5488,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">291</td>
-<td>T_CD4+_TfH_GC</td>
+<td>T_CD4+_TfH</td>
 <td>t cell:follicular helper</td>
 <td>T follicular helper cell</td>
 <td>CL:0002038</td>
@@ -5505,7 +5505,7 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">292</td>
-<td>T_CD4+_TfH</td>
+<td>T_CD4+_TfH_GC</td>
 <td>t cell:follicular helper</td>
 <td>T follicular helper cell</td>
 <td>CL:0002038</td>
@@ -5535,7 +5535,7 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">294</td>
@@ -5552,7 +5552,7 @@ unique_combinations
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>lymphnode-codex-yale</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">295</td>
@@ -5607,91 +5607,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">298</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">299</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">300</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-cycif-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">301</td>
-<td>T_Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">302</td>
-<td>T-Reg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>skin-celldive-ge</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">303</td>
 <td>Tregs</td>
 <td>t cell:regulatory</td>
 <td>regulatory T cell</td>
@@ -5708,7 +5623,75 @@ unique_combinations
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">304</td>
+<td data-quarto-table-cell-role="th">299</td>
+<td>Treg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-cycif-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">300</td>
+<td>T_Treg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">301</td>
+<td>T-Reg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>skin-celldive-ge</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">302</td>
+<td>Treg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">303</td>
 <td>T_TfR</td>
 <td>t cell:regulatory</td>
 <td>regulatory T cell</td>
@@ -5723,6 +5706,23 @@ unique_combinations
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
 <td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">304</td>
+<td>Treg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">305</td>
@@ -5760,23 +5760,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">307</td>
-<td>TA2</td>
-<td>transit amplifying cell</td>
-<td>transit amplifying cell</td>
-<td>CL:0009010</td>
-<td>skos:exactMatch</td>
-<td>enterocyte</td>
-<td>enterocyte</td>
-<td>CL:0000584</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">308</td>
 <td>TA</td>
 <td>transit amplifying cell</td>
 <td>transit amplifying cell</td>
@@ -5791,6 +5774,23 @@ unique_combinations
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
 <td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">308</td>
+<td>TA2</td>
+<td>transit amplifying cell</td>
+<td>transit amplifying cell</td>
+<td>CL:0009010</td>
+<td>skos:exactMatch</td>
+<td>enterocyte</td>
+<td>enterocyte</td>
+<td>CL:0000584</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">309</td>
@@ -5811,23 +5811,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">310</td>
-<td>CyclingTA</td>
-<td>transit amplifying cell:proliferating</td>
-<td>transit amplifying cell:proliferating</td>
-<td>CL:0009010</td>
-<td>skos:narrowMatch</td>
-<td>transit amplifying cell</td>
-<td>transit amplifying cell</td>
-<td>CL:0009010</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">311</td>
 <td>Cycling TA</td>
 <td>transit amplifying cell:proliferating</td>
 <td>transit amplifying cell:proliferating</td>
@@ -5842,6 +5825,23 @@ unique_combinations
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
 <td>intestine-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">311</td>
+<td>CyclingTA</td>
+<td>transit amplifying cell:proliferating</td>
+<td>transit amplifying cell:proliferating</td>
+<td>CL:0009010</td>
+<td>skos:narrowMatch</td>
+<td>transit amplifying cell</td>
+<td>transit amplifying cell</td>
+<td>CL:0009010</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">312</td>
@@ -5981,40 +5981,6 @@ unique_combinations
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">320</td>
-<td>UNK_3</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">321</td>
-<td>UNK_2</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">322</td>
 <td>UNK_5_ambiguous</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -6031,8 +5997,8 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">323</td>
-<td>UNK_1_APC</td>
+<td data-quarto-table-cell-role="th">321</td>
+<td>ENDO_CD8+_T_Cell</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
 <td>CL:0000000</td>
@@ -6048,126 +6014,7 @@ unique_combinations
 <td>lung-codex-urmc</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">324</td>
-<td>UNK_3_(col1a1-driven_cluster)</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">325</td>
-<td>UNK_4_(col1a1_driven_cluster)</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">326</td>
-<td>Unknown</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">327</td>
-<td>other</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">328</td>
-<td>UNK_1</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>lung-codex-urmc</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">329</td>
-<td>Unknown_lowcount</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">330</td>
-<td>unknown</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>pancreas-geomx-ufl</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">331</td>
+<td data-quarto-table-cell-role="th">322</td>
 <td>Artifact</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -6184,8 +6031,8 @@ unique_combinations
 <td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">332</td>
-<td>Undetermined</td>
+<td data-quarto-table-cell-role="th">323</td>
+<td>Unknown_lowcount</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
 <td>CL:0000000</td>
@@ -6198,44 +6045,10 @@ unique_combinations
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>bonemarrow-codex-chop</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">333</td>
-<td>Autofluorescent</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">334</td>
-<td>CD44+ Undetermined</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">335</td>
+<td data-quarto-table-cell-role="th">324</td>
 <td>Other</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -6252,8 +6065,195 @@ unique_combinations
 <td>colon-cycif-sorgerlab</td>
 </tr>
 <tr>
+<td data-quarto-table-cell-role="th">325</td>
+<td>UNK_3_(col1a1-driven_cluster)</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">326</td>
+<td>CD44+ Undetermined</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">327</td>
+<td>unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>pancreas-geomx-ufl</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">328</td>
+<td>UNK_4_(col1a1_driven_cluster)</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">329</td>
+<td>Autofluorescent</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">330</td>
+<td>UNK_1</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">331</td>
+<td>UNK_2</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">332</td>
+<td>other</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">333</td>
+<td>Unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">334</td>
+<td>UNK_3</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>lung-codex-urmc</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">335</td>
+<td>Undetermined</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">336</td>
-<td>ENDO_CD8+_T_Cell</td>
+<td>UNK_1_APC</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
 <td>CL:0000000</td>
@@ -6356,10 +6356,10 @@ duplicates
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">3</td>
+<td data-quarto-table-cell-role="th">4</td>
 <td>Adipocytes</td>
 <td>adipocyte</td>
 <td>adipocyte</td>
@@ -6373,27 +6373,10 @@ duplicates
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">6</td>
-<td>B</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>tonsil-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">8</td>
 <td>B cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -6410,7 +6393,24 @@ duplicates
 <td>colon-cycif-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">10</td>
+<td data-quarto-table-cell-role="th">9</td>
+<td>B</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>tonsil-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">11</td>
 <td>B cells</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -6427,7 +6427,7 @@ duplicates
 <td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">11</td>
+<td data-quarto-table-cell-role="th">12</td>
 <td>B</td>
 <td>b cell</td>
 <td>B cell</td>
@@ -6458,10 +6458,10 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">32</td>
+<td data-quarto-table-cell-role="th">31</td>
 <td>DC</td>
 <td>dendritic cell</td>
 <td>dendritic cell</td>
@@ -6475,7 +6475,7 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">33</td>
@@ -6509,7 +6509,7 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">44</td>
@@ -6543,24 +6543,7 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">46</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>pancreas-geomx-ufl</td>
+<td>tonsil-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">47</td>
@@ -6577,41 +6560,7 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">49</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>tonsil-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">50</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">51</td>
@@ -6628,7 +6577,7 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>pancreas-geomx-ufl</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">52</td>
@@ -6645,7 +6594,7 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>colon-cycif-sorgerlab</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">53</td>
@@ -6662,7 +6611,58 @@ duplicates
 <td>endothelial cell</td>
 <td>CL:0000115</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>colon-cycif-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">54</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">55</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">56</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>skin-confocal-sorgerlab</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">96</td>
@@ -6679,7 +6679,7 @@ duplicates
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">97</td>
@@ -6696,10 +6696,10 @@ duplicates
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">109</td>
+<td data-quarto-table-cell-role="th">108</td>
 <td>Goblet</td>
 <td>goblet cell</td>
 <td>goblet cell</td>
@@ -6713,7 +6713,7 @@ duplicates
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">110</td>
@@ -6730,7 +6730,7 @@ duplicates
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">136</td>
@@ -6747,10 +6747,10 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>tonsil-codex-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">138</td>
+<td data-quarto-table-cell-role="th">139</td>
 <td>Innate</td>
 <td>lymphoid cell:innate</td>
 <td>innate lymphoid cell</td>
@@ -6764,78 +6764,10 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">143</td>
-<td>Macrophage</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">145</td>
-<td>Macrophages</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>bonemarrow-codex-chop</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">146</td>
-<td>Macrophages</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">148</td>
-<td>Macrophage</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>macrophage</td>
-<td>macrophage</td>
-<td>CL:0000235</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>skin-confocal-sorgerlab</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">153</td>
+<td data-quarto-table-cell-role="th">141</td>
 <td>Macrophages</td>
 <td>macrophage</td>
 <td>macrophage</td>
@@ -6852,21 +6784,72 @@ duplicates
 <td>spleen-codex-ufl</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">167</td>
-<td>Mast</td>
-<td>mast cell</td>
-<td>mast cell</td>
-<td>CL:0000097</td>
+<td data-quarto-table-cell-role="th">145</td>
+<td>Macrophage</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
 <td>skos:exactMatch</td>
-<td>mast cell</td>
-<td>mast cell</td>
-<td>CL:0000097</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>skin-confocal-sorgerlab</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">149</td>
+<td>Macrophages</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>bonemarrow-codex-chop</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">151</td>
+<td>Macrophages</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">152</td>
+<td>Macrophage</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>macrophage</td>
+<td>macrophage</td>
+<td>CL:0000235</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">169</td>
@@ -6883,7 +6866,7 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">170</td>
@@ -6900,7 +6883,24 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">171</td>
+<td>Mast</td>
+<td>mast cell</td>
+<td>mast cell</td>
+<td>CL:0000097</td>
+<td>skos:exactMatch</td>
+<td>mast cell</td>
+<td>mast cell</td>
+<td>CL:0000097</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">178</td>
@@ -6920,7 +6920,7 @@ duplicates
 <td>lymphnode-codex-yale</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">179</td>
+<td data-quarto-table-cell-role="th">180</td>
 <td>Monocytes</td>
 <td>monocyte</td>
 <td>monocyte</td>
@@ -6937,24 +6937,7 @@ duplicates
 <td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">187</td>
-<td>VSMC</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell</td>
-<td>CL:0000192</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">189</td>
+<td data-quarto-table-cell-role="th">185</td>
 <td>SmoothMuscle</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell</td>
@@ -6971,24 +6954,7 @@ duplicates
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">191</td>
-<td>SmoothMuscle</td>
-<td>muscle cell:smooth</td>
-<td>smooth muscle cell of the esophagus</td>
-<td>CL:0002599</td>
-<td>skos:exactMatch</td>
-<td>muscle cell</td>
-<td>muscle cell</td>
-<td>CL:0000187</td>
-<td>skos:exactMatch</td>
-<td>mesenchymal cell</td>
-<td>mesenchymal cell</td>
-<td>CL:0008019</td>
-<td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">192</td>
+<td data-quarto-table-cell-role="th">188</td>
 <td>VSMC</td>
 <td>muscle cell:smooth</td>
 <td>smooth muscle cell</td>
@@ -7005,7 +6971,41 @@ duplicates
 <td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">207</td>
+<td data-quarto-table-cell-role="th">189</td>
+<td>SmoothMuscle</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell of the esophagus</td>
+<td>CL:0002599</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>esophagus-codex-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">190</td>
+<td>VSMC</td>
+<td>muscle cell:smooth</td>
+<td>smooth muscle cell</td>
+<td>CL:0000192</td>
+<td>skos:exactMatch</td>
+<td>muscle cell</td>
+<td>muscle cell</td>
+<td>CL:0000187</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>lymphnode-codex-yale</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">211</td>
 <td>NK</td>
 <td>natural killer cell</td>
 <td>natural killer cell</td>
@@ -7056,7 +7056,7 @@ duplicates
 <td>esophagus-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">218</td>
+<td data-quarto-table-cell-role="th">217</td>
 <td>Nerve</td>
 <td>neuron</td>
 <td>neuron</td>
@@ -7073,7 +7073,7 @@ duplicates
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">219</td>
+<td data-quarto-table-cell-role="th">218</td>
 <td>Nerve</td>
 <td>neuron</td>
 <td>neuron</td>
@@ -7104,7 +7104,7 @@ duplicates
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">226</td>
@@ -7121,7 +7121,7 @@ duplicates
 <td>epithelial cell</td>
 <td>CL:0000066</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>intestine-codex-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">228</td>
@@ -7141,6 +7141,23 @@ duplicates
 <td>bonemarrow-codex-chop</td>
 </tr>
 <tr>
+<td data-quarto-table-cell-role="th">229</td>
+<td>Plasma</td>
+<td>plasma cell</td>
+<td>plasma cell</td>
+<td>CL:0000786</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>intestine-codex-stanford</td>
+</tr>
+<tr>
 <td data-quarto-table-cell-role="th">230</td>
 <td>Plasma</td>
 <td>plasma cell</td>
@@ -7158,7 +7175,7 @@ duplicates
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">231</td>
+<td data-quarto-table-cell-role="th">232</td>
 <td>Plasma</td>
 <td>plasma cell</td>
 <td>plasma cell</td>
@@ -7172,10 +7189,10 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-xenium-stanford</td>
+<td>esophagus-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">232</td>
+<td data-quarto-table-cell-role="th">233</td>
 <td>Plasma Cells</td>
 <td>plasma cell</td>
 <td>plasma cell</td>
@@ -7192,23 +7209,6 @@ duplicates
 <td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">233</td>
-<td>Plasma</td>
-<td>plasma cell</td>
-<td>plasma cell</td>
-<td>CL:0000786</td>
-<td>skos:exactMatch</td>
-<td>b cell</td>
-<td>B cell</td>
-<td>CL:0000236</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>intestine-codex-stanford</td>
-</tr>
-<tr>
 <td data-quarto-table-cell-role="th">234</td>
 <td>Plasma</td>
 <td>plasma cell</td>
@@ -7223,7 +7223,7 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>esophagus-codex-stanford</td>
+<td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">242</td>
@@ -7345,7 +7345,7 @@ duplicates
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">250</td>
+<td data-quarto-table-cell-role="th">251</td>
 <td>T</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -7379,7 +7379,7 @@ duplicates
 <td>tonsil-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">257</td>
+<td data-quarto-table-cell-role="th">256</td>
 <td>CD4+ T cell</td>
 <td>t cell:cd4+</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -7396,7 +7396,7 @@ duplicates
 <td>intestine-codex-stanford</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">267</td>
+<td data-quarto-table-cell-role="th">265</td>
 <td>CD4+ T cell</td>
 <td>t cell:cd4+ alpha-beta</td>
 <td>CD4-positive, alpha-beta T cell</td>
@@ -7427,7 +7427,7 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>lymphnode-codex-yale</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">294</td>
@@ -7444,24 +7444,7 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">298</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
-<td>skos:exactMatch</td>
-<td>t cell</td>
-<td>T cell</td>
-<td>CL:0000084</td>
-<td>skos:exactMatch</td>
-<td>immune cell</td>
-<td>leukocyte</td>
-<td>CL:0000738</td>
-<td>skos:exactMatch</td>
-<td>mouth-codex-czi</td>
+<td>lymphnode-codex-yale</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">299</td>
@@ -7478,10 +7461,10 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>maternalfetalinterface-mibitof-stanford</td>
+<td>colon-cycif-sorgerlab</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">300</td>
+<td data-quarto-table-cell-role="th">302</td>
 <td>Treg</td>
 <td>t cell:regulatory</td>
 <td>regulatory T cell</td>
@@ -7495,10 +7478,27 @@ duplicates
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>colon-cycif-sorgerlab</td>
+<td>mouth-codex-czi</td>
 </tr>
 <tr>
-<td data-quarto-table-cell-role="th">326</td>
+<td data-quarto-table-cell-role="th">304</td>
+<td>Treg</td>
+<td>t cell:regulatory</td>
+<td>regulatory T cell</td>
+<td>CL:0000815</td>
+<td>skos:exactMatch</td>
+<td>t cell</td>
+<td>T cell</td>
+<td>CL:0000084</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>maternalfetalinterface-mibitof-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">333</td>
 <td>Unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -7581,7 +7581,7 @@ def create_heatmap(df, normalize_method='percent', cell_type_level='Level Three 
     custom_cmap = sns.color_palette([absent_color, present_color], n_colors=2)
     
     # Create annotations with custom formatting (float for non-zero, integer for zero)
-    annotations = df_plot.copy()
+    annotations = df_plot.copy().astype(object)  # object dtype so cells can hold strings (pandas >= 2.1 rejects str into float columns)
     for i in range(len(annotations)):
         for j in range(len(annotations.columns)):
             val = annotations.iloc[i, j]
@@ -7628,9 +7628,10 @@ def create_heatmap(df, normalize_method='percent', cell_type_level='Level Three 
     # Adjust layout with specific margins
     plt.tight_layout(pad=1.5)
     
-    # Save figure with high quality
+    # Save figure with high quality. Cap the PNG dpi so the pixel width stays under ~30,000 (FreeType raster limit); wide figures fail at dpi=300.
+    png_dpi = min(300, int(30000 / width))
     plt.savefig(f'{os.path.join(basepath, figures_output_dir)}/cell_type_distribution_binary_heatmap_{cell_type_level}.png',
-                dpi=300,
+                dpi=png_dpi,
                 bbox_inches='tight',
                 pad_inches=0.5,
                 facecolor=bg_color)
@@ -16392,16 +16393,16 @@ def create_bar_distribution_plot (df, cell_type_level='Original Cell Type', log_
 create_bar_distribution_plot(df_all_data, cell_type_level='Original Cell Type', log_scale=True)
 ```
 
-        <script type="text/javascript">
+        <script>
         window.PlotlyConfig = {MathJaxConfig: 'local'};
         if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}
         </script>
-        <script type="module">import "https://cdn.plot.ly/plotly-3.0.1.min"</script>
+        <script type="module">import "https://cdn.plot.ly/plotly-4.1.1.min"</script>
         
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="530968d5-267b-49fa-ac57-8c725abe602d" class="plotly-graph-div" style="height:600px; width:1200px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("530968d5-267b-49fa-ac57-8c725abe602d")) {                    Plotly.newPlot(                        "530968d5-267b-49fa-ac57-8c725abe602d",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown","Endothelial","Tumor\u002fEpithelial","Ductal cell","B_mem","Muscle\u002fFibroblast","Tc cell","Lymphocyte(III)","T_CD4+_naive","Immature Goblet","B_naive","T_CD8+_cytotoxic","Other","B cells","B_Cycling","T_CD4+_TfH","Enterocyte","T helper","Treg","Fibroblasts","B_plasma","Macrophage(III)","NK","Ki67+ Tumor\u002fEpithelial","Smooth muscle","B_GC_LZ","T_Treg","Monocytes","T_CD4+_TfH_GC","Others","ILC","T_CD4+","Erythroid","Mature Myeloid","Stroma","Goblet","Macrophages","DP Lymphocyte","CD8+ T","TA2","DC_pDC","Macrophage(IV)","Sinusoidal cells","Plasma","Cancer Associated Fibroblasts","Acinar Cells","PD1+ T helper","Neutrophils\u002fMonocytes","CyclingTA","B_GC_DZ","CD4+ T cell","Stem","CD8+","PDL1+ Macrophage","B_activated","Macrophage(I)","Beta cell","Macrophages_M2","M2 Macrophage","Intermediate Myeloid","Myofibroblasts\u002fSmooth Muscle 1","Myoepithelial Cells","Fol B cells","AT2","ENDO_1","Mast","CD8 Memory T cells","Unknown_lowcount","Immature Enterocytes","macrophage","Cycling TA","Pericytes","Early Myeloid Progenitor","PDL1+ Tumor\u002fEpithelial","Nerve","T_CD8+_CD161+","Myeloid cells","Ducts","B-Cells","B","TA1","T_CD8+_naive","Innate","Lymphatic","Acini","Myofibroblasts","indistinct","Lung_Epithelial_1","NKT","TA","Vascular Endothelial Cells","Epithelial","B cells, red pulp","T_TfR","CD4+","CD4 Memory T cells","PD1+ Tc","AT2_1","T","CD66+ Enterocyte","CD4+_T_cell_1","CD4_+_Tcell\u002fmacrophage","Macrophage","Best4+ Enterocytes","blood endothelial","Ductal Epithelial Cells","Endo_2","DN Lymphocyte","CAP_ENDO","Plasma Cells","Neutrophils","DC_cDC2","Ki67 proliferating","neutrophil","Macrophage(II)","Mac2a","macrophage_2","ENDO_SMC","Autofluorescent","CD4+ T-Cell","NPM1 Mutant Blast","Myofibroblasts\u002fSmooth Muscle 3","Enterocyte Progenitors","other","Lung_Epithelil_2_CD4+_T_cell","NK1","VSMC","CD8+ T-Cell","UNK_1","DC","ICC","CD8+_T_cell_1","DC_cDC1","PDL1+ lymphocyte","SMC_1","smooth muscle 1","AT1_1","Artifact","Macrophages_M1","FDC","myofibroblast","UNK_2","B_preGC","SEC","Tumor","Erythroblast","Adipocyte","GC","Enterocytes","Glia","M1 Macrophage","Paneth","EVT1a","Crypt Fibroblasts 4","Adipocytes","T_TIM3+","AT2_2","Endo_p","Naive B","EVT1b","Glandular","MUC1+ Enterocyte","Crypt Fibroblasts 3","AT2_p","lymphatic Endothelium","CD8+_T_cell_2","ENDO_CD8+_T_Cell","Dendritic Cells","CD8 + T cell_1","macrophage_CD1c+_myeloidDC","NK2","Tuft","Neuroendocrine","AT1 _2","Glandular_epi","Neutrophil","B_GC_prePB","B Cells","SMC_2","Lymphatic Endothelial Cells","Undetermined","PDPN","Leukocyte","macrophage_3","Immature_B_Cell","Crypt Fibroblasts 1","Podoplanin","T-Helper","smooth muscle_2","CD4+_T_cell_2","Tc","Keratinocyte","VEC Progen","macrophage_p","Mac1b","CD8+ T cell_2","SmoothMuscle","Enteroendocrine","pDC","CD4 T","Adipo-MSC","DC_CCR7+","Unknown","Villus Fibroblasts WNT5B+","CD8+_T_cell_CD_4+_T_cell","Mast cell","CD7+ Immune","AEC","Th","NK Cells","Naive T","KI67","Mural Cells","DP","Mac2c","NK3","Suprabasal Keratinocytes","Non-Classical Monocyte","Squamous_epithelial","Memory B","Dendritic cells","CD8T","Mac1a","Myofibroblasts\u002fSmooth Muscle 2","megakaryocyte","CD8 T Cells","HSPC","THY1+ MSC","B_IFN","Basal Keratincytes","DDB2","Endosteal","Tregs","GATA1neg_Mks","EVT1c","muscle","GATA1pos_Mks","Monocyte-Macrophage","Glial\u002fNeuron","Lung_Epithelial_p","SPINK2+ HSPC","gd T Cells","Lung_Epithelial_4","neutrophil_2","EVT2","Crypt Fibroblasts 2","GMP\u002fMyeloblast","NK4","CD4T","CD57+ Enterocyte","CD4 T Cells","Melanocytes","Merkel Cells","Mac2b","Lymphatic endothelial cells","Neurons","CD44+ Undetermined","P53","Langerhans Cells","Tissue T","CD8+_T_cell_3","CD68","T reg","Ionocytes","T-Reg","keratinocytes","GMP","CD11B+ CD11C- cells","B_cell_1","Secretory_epithelial","B cell","Mast Cells","MEP\u002fEarly Erythroblast","CD8 T","Skeletal Myocytes","Other Immune","CD34+ CD61+","T-Killer","lung Intersitial macrophage","CLP","CD4+_T_cell_3","HSC","UNK_3","Lymphatic Vascular Cells","Schwann Cells","UNK_1_APC","ILCs","Myeloid","Langerhan cells","B_cell_macrophage_p?","UNK_3_(col1a1-driven_cluster)","Lymphatic_Endothelium","UNK_5_ambiguous","UNK_4_(col1a1_driven_cluster)","Placental_Mac"],"xaxis":"x","y":{"dtype":"i4","bdata":"01F8AAcRSQAGpUQAQfYyAKgcHAA3KBcAy9wQANsyDQCjKQsAh4AKAFBFCgBe1wkA5dQJAHHYBwBNzQcAk60HAABmBwAV+wYAAsAGAKOABgB5XQYAwBQGAA4IBgAf+AUAZ7kFALiaBQDC6AQAuLwEACq3BADChQQA8RUEAMzoAwAO3wMAW70DADVzAwB\u002fPAMA\u002fDQDAHwdAwDRDgMANA4DAID7AgAo7wIAg+oCAO2rAgC9qgIAfqUCAIJ6AgClbgIAa0sCACgjAgC4FwIAFRYCAB0QAgDM9gEAtuwBAKHqAQCi5AEA1N4BAF63AQAVrwEAAZIBAOyQAQB+gAEAjX4BAIZ8AQBLfAEALGcBAPVRAQCaSQEAmUcBAKFDAQDMQgEArj4BAC47AQB\u002fNQEALS8BALwaAQBuDQEANwgBAC0HAQAEBgEAtgIBAKYCAQDy+wAAcvYAAArzAAAJ8gAAz+oAACHoAACl3wAAoN4AAHjdAAC22wAAYNkAAH\u002fXAADf0gAA3MwAACfEAACuwwAAIcEAANW\u002fAABbvwAAPr8AAL6+AABHvAAAvbkAACG5AACotQAA47QAAK2wAABbsAAA2q8AABauAACurQAAe6oAAIGnAAA2pAAAWJ4AAFKeAAC6nAAAtZsAADKaAACklAAA7Y4AAOiMAAB\u002fiwAAFokAAAaJAADAhQAAQYUAACiEAACufAAAm3wAAFB7AAD5eAAA1nQAAA9zAACScAAAu20AAPdoAABrZwAAm2MAAONhAABAYAAAZF0AADpdAAD2XAAAJFwAAOxaAABZWgAAQVUAAJhUAABeVAAAMVQAAGtTAADuUQAAI00AAJRMAAD6SAAAF0cAAJFGAADNRQAA8UMAAMtDAABiQwAAD0MAAKdCAACEQgAAsEAAAFs8AABCPAAA0zsAAHo6AACHOQAAYjkAAEE5AABiNgAAqzMAANcyAADbMQAAGjEAALswAAAJMAAAaS8AAGIuAAAULQAAPSsAAMEqAABCKgAAWykAAFMnAABGJwAA+SYAACklAAAjJQAA8CMAANcjAACbIgAAYCIAAPAfAAAfHwAAoh4AAJMeAABrHgAAxx0AAEcdAAAGHAAA1xsAAHgbAAAYGwAACBsAALIaAACXGgAAbBoAAFMaAAA6GgAAnBkAAEoYAADKFwAAtxcAAGEXAABKFwAA4RYAAOsVAADbFQAARRUAAAoUAADuEgAAzxIAAGMQAAAeEAAAug8AANgOAABBDgAAgwwAAAwMAABLCgAAFAoAAN0JAACACQAAyggAAKEIAABXCAAAMggAAPwHAADFBwAAqAcAAIkHAACCBwAAZwcAACAHAAAXBwAA7QYAAOUGAACOBgAAYAYAAMQFAACnBQAAjQUAAMsEAACCBAAAbQQAAE8EAABLBAAAMgQAALQDAACxAwAA7wIAAKwCAACSAgAAdgIAAEACAAAuAgAAAwIAAOoBAACGAQAAgwEAAFEBAADlAAAApQAAAFQAAAA9AAAAOgAAADkAAAA0AAAAHQAAABUAAAASAAAADQAAAAoAAAAGAAAAAwAAAAIAAAACAAAAAQAAAA=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Original Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('530968d5-267b-49fa-ac57-8c725abe602d');
+<div style="height:600px; width:1200px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="37c883dd-8ade-458f-ae58-7dd8412e1e64" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("37c883dd-8ade-458f-ae58-7dd8412e1e64")) {                    Plotly.newPlot(                        "37c883dd-8ade-458f-ae58-7dd8412e1e64",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown","Endothelial","Tumor\u002fEpithelial","Ductal cell","B_mem","Muscle\u002fFibroblast","Tc cell","Lymphocyte(III)","T_CD4+_naive","Immature Goblet","B_naive","T_CD8+_cytotoxic","Other","B cells","B_Cycling","T_CD4+_TfH","Enterocyte","T helper","Treg","Fibroblasts","B_plasma","Macrophage(III)","NK","Ki67+ Tumor\u002fEpithelial","Smooth muscle","B_GC_LZ","T_Treg","Monocytes","T_CD4+_TfH_GC","Others","ILC","T_CD4+","Erythroid","Mature Myeloid","Stroma","Goblet","Macrophages","DP Lymphocyte","CD8+ T","TA2","DC_pDC","Macrophage(IV)","Sinusoidal cells","Plasma","Cancer Associated Fibroblasts","Acinar Cells","PD1+ T helper","Neutrophils\u002fMonocytes","CyclingTA","B_GC_DZ","CD4+ T cell","Stem","CD8+","PDL1+ Macrophage","B_activated","Macrophage(I)","Beta cell","Macrophages_M2","M2 Macrophage","Intermediate Myeloid","Myofibroblasts\u002fSmooth Muscle 1","Myoepithelial Cells","Fol B cells","AT2","ENDO_1","Mast","CD8 Memory T cells","Unknown_lowcount","Immature Enterocytes","macrophage","Cycling TA","Pericytes","Early Myeloid Progenitor","PDL1+ Tumor\u002fEpithelial","Nerve","T_CD8+_CD161+","Myeloid cells","Ducts","B-Cells","B","TA1","T_CD8+_naive","Innate","Lymphatic","Acini","Myofibroblasts","indistinct","Lung_Epithelial_1","NKT","TA","Vascular Endothelial Cells","Epithelial","B cells, red pulp","T_TfR","CD4+","CD4 Memory T cells","PD1+ Tc","AT2_1","T","CD66+ Enterocyte","CD4+_T_cell_1","CD4_+_Tcell\u002fmacrophage","Macrophage","Best4+ Enterocytes","blood endothelial","Ductal Epithelial Cells","Endo_2","DN Lymphocyte","CAP_ENDO","Plasma Cells","Neutrophils","DC_cDC2","Ki67 proliferating","neutrophil","Macrophage(II)","Mac2a","macrophage_2","ENDO_SMC","Autofluorescent","CD4+ T-Cell","NPM1 Mutant Blast","Myofibroblasts\u002fSmooth Muscle 3","Enterocyte Progenitors","other","Lung_Epithelil_2_CD4+_T_cell","NK1","VSMC","CD8+ T-Cell","UNK_1","DC","ICC","CD8+_T_cell_1","DC_cDC1","PDL1+ lymphocyte","SMC_1","smooth muscle 1","AT1_1","Artifact","Macrophages_M1","FDC","myofibroblast","UNK_2","B_preGC","SEC","Tumor","Erythroblast","Adipocyte","GC","Enterocytes","Glia","M1 Macrophage","Paneth","EVT1a","Crypt Fibroblasts 4","Adipocytes","T_TIM3+","AT2_2","Endo_p","Naive B","EVT1b","Glandular","MUC1+ Enterocyte","Crypt Fibroblasts 3","AT2_p","lymphatic Endothelium","CD8+_T_cell_2","ENDO_CD8+_T_Cell","Dendritic Cells","CD8 + T cell_1","macrophage_CD1c+_myeloidDC","NK2","Tuft","Neuroendocrine","AT1 _2","Glandular_epi","Neutrophil","B_GC_prePB","B Cells","SMC_2","Lymphatic Endothelial Cells","Undetermined","PDPN","Leukocyte","macrophage_3","Immature_B_Cell","Crypt Fibroblasts 1","Podoplanin","T-Helper","smooth muscle_2","CD4+_T_cell_2","Tc","Keratinocyte","VEC Progen","macrophage_p","Mac1b","CD8+ T cell_2","SmoothMuscle","Enteroendocrine","pDC","CD4 T","Adipo-MSC","DC_CCR7+","Unknown","Villus Fibroblasts WNT5B+","CD8+_T_cell_CD_4+_T_cell","Mast cell","CD7+ Immune","AEC","Th","NK Cells","Naive T","KI67","Mural Cells","DP","Mac2c","NK3","Suprabasal Keratinocytes","Non-Classical Monocyte","Squamous_epithelial","Memory B","Dendritic cells","CD8T","Mac1a","Myofibroblasts\u002fSmooth Muscle 2","megakaryocyte","CD8 T Cells","HSPC","THY1+ MSC","B_IFN","Basal Keratincytes","DDB2","Endosteal","Tregs","GATA1neg_Mks","EVT1c","muscle","GATA1pos_Mks","Monocyte-Macrophage","Glial\u002fNeuron","Lung_Epithelial_p","SPINK2+ HSPC","gd T Cells","Lung_Epithelial_4","neutrophil_2","EVT2","Crypt Fibroblasts 2","GMP\u002fMyeloblast","NK4","CD4T","CD57+ Enterocyte","CD4 T Cells","Melanocytes","Merkel Cells","Mac2b","Lymphatic endothelial cells","Neurons","CD44+ Undetermined","P53","Langerhans Cells","Tissue T","CD8+_T_cell_3","CD68","T reg","Ionocytes","T-Reg","keratinocytes","GMP","CD11B+ CD11C- cells","B_cell_1","Secretory_epithelial","B cell","Mast Cells","MEP\u002fEarly Erythroblast","CD8 T","Skeletal Myocytes","Other Immune","CD34+ CD61+","T-Killer","lung Intersitial macrophage","CLP","CD4+_T_cell_3","HSC","UNK_3","Lymphatic Vascular Cells","Schwann Cells","UNK_1_APC","ILCs","Myeloid","Langerhan cells","B_cell_macrophage_p?","UNK_3_(col1a1-driven_cluster)","Lymphatic_Endothelium","UNK_5_ambiguous","UNK_4_(col1a1_driven_cluster)","Placental_Mac"],"xaxis":"x","y":{"dtype":"i4","bdata":"01F8AAcRSQAGpUQAQfYyAKgcHAA3KBcAy9wQANsyDQCjKQsAh4AKAFBFCgBe1wkA5dQJAHHYBwBNzQcAk60HAABmBwAV+wYAAsAGAKOABgB5XQYAwBQGAA4IBgAf+AUAZ7kFALiaBQDC6AQAuLwEACq3BADChQQA8RUEAMzoAwAO3wMAW70DADVzAwB\u002fPAMA\u002fDQDAHwdAwDRDgMANA4DAID7AgAo7wIAg+oCAO2rAgC9qgIAfqUCAIJ6AgClbgIAa0sCACgjAgC4FwIAFRYCAB0QAgDM9gEAtuwBAKHqAQCi5AEA1N4BAF63AQAVrwEAAZIBAOyQAQB+gAEAjX4BAIZ8AQBLfAEALGcBAPVRAQCaSQEAmUcBAKFDAQDMQgEArj4BAC47AQB\u002fNQEALS8BALwaAQBuDQEANwgBAC0HAQAEBgEAtgIBAKYCAQDy+wAAcvYAAArzAAAJ8gAAz+oAACHoAACl3wAAoN4AAHjdAAC22wAAYNkAAH\u002fXAADf0gAA3MwAACfEAACuwwAAIcEAANW\u002fAABbvwAAPr8AAL6+AABHvAAAvbkAACG5AACotQAA47QAAK2wAABbsAAA2q8AABauAACurQAAe6oAAIGnAAA2pAAAWJ4AAFKeAAC6nAAAtZsAADKaAACklAAA7Y4AAOiMAAB\u002fiwAAFokAAAaJAADAhQAAQYUAACiEAACufAAAm3wAAFB7AAD5eAAA1nQAAA9zAACScAAAu20AAPdoAABrZwAAm2MAAONhAABAYAAAZF0AADpdAAD2XAAAJFwAAOxaAABZWgAAQVUAAJhUAABeVAAAMVQAAGtTAADuUQAAI00AAJRMAAD6SAAAF0cAAJFGAADNRQAA8UMAAMtDAABiQwAAD0MAAKdCAACEQgAAsEAAAFs8AABCPAAA0zsAAHo6AACHOQAAYjkAAEE5AABiNgAAqzMAANcyAADbMQAAGjEAALswAAAJMAAAaS8AAGIuAAAULQAAPSsAAMEqAABCKgAAWykAAFMnAABGJwAA+SYAACklAAAjJQAA8CMAANcjAACbIgAAYCIAAPAfAAAfHwAAoh4AAJMeAABrHgAAxx0AAEcdAAAGHAAA1xsAAHgbAAAYGwAACBsAALIaAACXGgAAbBoAAFMaAAA6GgAAnBkAAEoYAADKFwAAtxcAAGEXAABKFwAA4RYAAOsVAADbFQAARRUAAAoUAADuEgAAzxIAAGMQAAAeEAAAug8AANgOAABBDgAAgwwAAAwMAABLCgAAFAoAAN0JAACACQAAyggAAKEIAABXCAAAMggAAPwHAADFBwAAqAcAAIkHAACCBwAAZwcAACAHAAAXBwAA7QYAAOUGAACOBgAAYAYAAMQFAACnBQAAjQUAAMsEAACCBAAAbQQAAE8EAABLBAAAMgQAALQDAACxAwAA7wIAAKwCAACSAgAAdgIAAEACAAAuAgAAAwIAAOoBAACGAQAAgwEAAFEBAADlAAAApQAAAFQAAAA9AAAAOgAAADkAAAA0AAAAHQAAABUAAAASAAAADQAAAAoAAAAGAAAAAwAAAAIAAAACAAAAAQAAAA=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Original Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('37c883dd-8ade-458f-ae58-7dd8412e1e64');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16428,9 +16429,9 @@ if (outputEl) {{
 create_bar_distribution_plot(df_all_data, cell_type_level='Level Three Cell Type', log_scale=True)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="fedf3a7a-c58b-4448-824f-a5f2025c48dd" class="plotly-graph-div" style="height:600px; width:1200px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("fedf3a7a-c58b-4448-824f-a5f2025c48dd")) {                    Plotly.newPlot(                        "fedf3a7a-c58b-4448-824f-a5f2025c48dd",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown cell","endothelial cell","neoplastic cell","epithelial cell:ductal ","t cell:cd8+","b cell:memory","myofibroblast","lymphocyte:iii","t cell:regulatory","t cell:follicular helper","t cell:cd4+ alpha-beta naive thymus-derived","b cell","b cell:naive","goblet cell:immature","macrophage","plasma cell","t cell:cd4+","b cell:proliferating","enterocyte","b cell:germinal center","muscle cell:smooth","natural killer cell","fibroblast","macrophage:iii","epithelial cell:ki67+ proliferating tumor","lymphoid cell:innate","transit amplifying cell","monocyte","t cell:cd4+ alpha-beta effector","erythroid lineage cell","myeloid cell:mature","acinar cell of salivary gland","goblet cell","transit amplifying cell:proliferating","stromal cell","t cell:cd4+ alpha-beta","endothelial cell of sinusoid","t cell:cd8+ alpha-beta","dendritic cell:plasmacytoid","lymphocyte:double-positive alpha-beta","macrophage:iv","pneumocyte:type 2 ","fibroblast:cancer associated","t cell:cd4+ pdl1+","neutrophil\u002fmonocyte","stem cell","t cell:cd8+ alpha-beta effector memory","macrophage:pdl1+","b cell:activated","epithelial cell","macrophage:i","beta cell:pancreatic","endothelial cell of vascular tree","myeloid cell:intermediate","endothelial cell of lymphatic vessel","neutrophil","mast cell","myofibroblast cell:smooth muscle 1","myoepithelial cell","b cell:follicular","t cell:cd8+ alpha-beta memory","enterocyte:immature","pericyte","myeloid progenitor cell:common","neuron","epithelial cell:pdl1+ tumor","t cell:cd8+ cd161+","myeloid cell","t cell","t cell:mature natural killer ","dendritic cell","t cell:cd4+ alpha-beta memory","t cell:cd8+ pdl1+","enterocyte:cd66+","enteroycte:best4+","lymphocyte:double-negative","endothelial cell of capillary","adipocyte","dendritic cell:conventional 2","cell:proliferating","pneumocyte:type 1","macrophage:ii","macrophage:2a","mutant blast:npm1","myofibroblast cell:smooth muscle 3","enterocyte:progenitor","mixed t cell\u002fepithelial cell population","t cell:cd8+ alpha-beta regulatory ","interstitial cell of cajal","dendritic cell:conventional 1","lymphocyte:pdl1+","dendritic cell:follicular","b cell:pre-germinal center","tumor cell","erythroblast","glial cell","macrophage:inflammatory","keratinocyte","paneth cell","trophoblast:hla-g+ ck7+ extravillous","fibroblast:crypt 4","t cell:tim3+","trophoblast:hla-g+ ck7- extravillous","glandular cell of placenta","enterocyte:muc1+","fibroblast:crypt 3","tuft cell:intestinal","neuroendocrine cell","glandular cell of esophagus","b cell:germinal center pre-plasmablast","leukocyte","stromal cell:podoplanin+","b cell:immature","fibroblast:crypt 1","macrophage:1b","enteroendocrine cell","mesenchymal stem cell of adipose tissue","dendritic cell:migratory","fibroblast:wnt5b+ villus","lymphocyte:cd7+","endothelial cell of artery","t cell:naive","keratinocyte:ki67+ proliferating","mural cell","thymocyte:cd4-intermediate cd8+ double-positive","macrophage:2c","monocyte:non-classical","squamous epithelial cell","macrophage:1a","myofibroblast cell:smooth muscle 2","megakaryocyte","hematopoietic stem cell","mesenchymal stem\u002fstromal cell:thy1+","b cell:interferon","keratinocyte:ddb2+","endosteal cell","megakaryocyte:gata1-","trophoblast:hla-g+ cd56+ extravillous","muscle cell","megakaryocyte:gata1+","glial cell\u002fneuron","hematopoietic stem and progenitor cell:spink2+","trophoblast:hla-g minus, cd57- ck7 low extravillous","fibroblast:crypt 2","granulocyte monocyte progenitor cell\u002fmyeloblast","enterocyte:cd57+","macrophage:2b","keratinocyte:p53+ ","langerhans cell","t cell:memory","granulocyte monocyte progenitor cell","dendritic cell:cd11b+","epithelial cell:secretory","erythroblast:basophilic","muscle cell:skeletal","cell:cd34+ cd61+","macrophage:interstitial","lymphoid progenitor cell:common","schwann cell","immune cell","hofbauer cell"],"xaxis":"x","y":{"dtype":"i4","bdata":"HRCQAJoxTAAGpUQAbL00AKcdHQBfNBwArIIYANsyDQB9mQwAvWQMAKMpCwBY\u002fAoASo4KAIeACgBQeQoAE7oJAIIxCQBNzQcA7MAHAOC9BwA8sQcAqgwHAKOABgDAFAYAH\u002fgFAKwYBQDd8wQAzMYEAMzoAwAO3wMAW70DAPCbAwCjmAMADI8DADVzAwAucwMAw0oDABsmAwDgHQMAfB0DACjvAgCi0wIAvaoCAIJ6AgClbgIAFRYCAB0QAgDM9gEAtuwBAG3sAQCh6gEAouQBAODBAQAVrwEANqMBAHyfAQDSmwEAAZIBAOyQAQB+gAEALGcBAJpJAQDMQgEArj4BAN87AQAuOwEALS8BAM4aAQAZ7AAAIegAACbfAADf0gAA3MwAACHBAAC+vgAAqLUAAOO0AABhsAAA2q8AABauAACWrAAAe6oAAIGnAAC1mwAAMpoAAKSUAADojAAABokAACiEAACbfAAAUHsAAPdoAADjYQAAZF0AADpdAABZWgAAQVUAAPlUAACYVAAAXlQAADFUAADuUQAAF0cAAJFGAADNRQAA8UMAANM7AAB6OgAAYjkAAGI2AACPMQAAuzAAAGIuAAAULQAAIyUAAJsiAAAfHwAAoh4AAGseAAAGHAAA1xsAAAgbAACyGgAAlxoAAGwaAABTGgAAShgAAMoXAADhFgAA6xUAANsVAABHFAAA7hIAAM8SAAAeEAAAug8AAEEOAACDDAAADAwAAEsKAADdCQAAyggAAPwHAADFBwAAqAcAAGcHAADlBgAApwUAAJoFAADLBAAAsQMAAO8CAACSAgAALgIAAOoBAACDAQAA5QAAAKUAAAA0AAAACgAAAAEAAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level Three Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('fedf3a7a-c58b-4448-824f-a5f2025c48dd');
+<div style="height:600px; width:1200px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="a2480241-dff7-4f41-807b-7c2ab1e5d6f9" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a2480241-dff7-4f41-807b-7c2ab1e5d6f9")) {                    Plotly.newPlot(                        "a2480241-dff7-4f41-807b-7c2ab1e5d6f9",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown cell","endothelial cell","neoplastic cell","epithelial cell:ductal ","t cell:cd8+","b cell:memory","myofibroblast","lymphocyte:iii","t cell:regulatory","t cell:follicular helper","t cell:cd4+ alpha-beta naive thymus-derived","b cell","b cell:naive","goblet cell:immature","macrophage","plasma cell","t cell:cd4+","b cell:proliferating","enterocyte","b cell:germinal center","muscle cell:smooth","natural killer cell","fibroblast","macrophage:iii","epithelial cell:ki67+ proliferating tumor","lymphoid cell:innate","transit amplifying cell","monocyte","t cell:cd4+ alpha-beta effector","erythroid lineage cell","myeloid cell:mature","acinar cell of salivary gland","goblet cell","transit amplifying cell:proliferating","stromal cell","t cell:cd4+ alpha-beta","endothelial cell of sinusoid","t cell:cd8+ alpha-beta","dendritic cell:plasmacytoid","lymphocyte:double-positive alpha-beta","macrophage:iv","pneumocyte:type 2 ","fibroblast:cancer associated","t cell:cd4+ pdl1+","neutrophil\u002fmonocyte","stem cell","t cell:cd8+ alpha-beta effector memory","macrophage:pdl1+","b cell:activated","epithelial cell","macrophage:i","beta cell:pancreatic","endothelial cell of vascular tree","myeloid cell:intermediate","endothelial cell of lymphatic vessel","neutrophil","mast cell","myofibroblast cell:smooth muscle 1","myoepithelial cell","b cell:follicular","t cell:cd8+ alpha-beta memory","enterocyte:immature","pericyte","myeloid progenitor cell:common","neuron","epithelial cell:pdl1+ tumor","t cell:cd8+ cd161+","myeloid cell","t cell","t cell:mature natural killer ","dendritic cell","t cell:cd4+ alpha-beta memory","t cell:cd8+ pdl1+","enterocyte:cd66+","enteroycte:best4+","lymphocyte:double-negative","endothelial cell of capillary","adipocyte","dendritic cell:conventional 2","cell:proliferating","pneumocyte:type 1","macrophage:ii","macrophage:2a","mutant blast:npm1","myofibroblast cell:smooth muscle 3","enterocyte:progenitor","mixed t cell\u002fepithelial cell population","t cell:cd8+ alpha-beta regulatory ","interstitial cell of cajal","dendritic cell:conventional 1","lymphocyte:pdl1+","dendritic cell:follicular","b cell:pre-germinal center","tumor cell","erythroblast","glial cell","macrophage:inflammatory","keratinocyte","paneth cell","trophoblast:hla-g+ ck7+ extravillous","fibroblast:crypt 4","t cell:tim3+","trophoblast:hla-g+ ck7- extravillous","glandular cell of placenta","enterocyte:muc1+","fibroblast:crypt 3","tuft cell:intestinal","neuroendocrine cell","glandular cell of esophagus","b cell:germinal center pre-plasmablast","leukocyte","stromal cell:podoplanin+","b cell:immature","fibroblast:crypt 1","macrophage:1b","enteroendocrine cell","mesenchymal stem cell of adipose tissue","dendritic cell:migratory","fibroblast:wnt5b+ villus","lymphocyte:cd7+","endothelial cell of artery","t cell:naive","keratinocyte:ki67+ proliferating","mural cell","thymocyte:cd4-intermediate cd8+ double-positive","macrophage:2c","monocyte:non-classical","squamous epithelial cell","macrophage:1a","myofibroblast cell:smooth muscle 2","megakaryocyte","hematopoietic stem cell","mesenchymal stem\u002fstromal cell:thy1+","b cell:interferon","keratinocyte:ddb2+","endosteal cell","megakaryocyte:gata1-","trophoblast:hla-g+ cd56+ extravillous","muscle cell","megakaryocyte:gata1+","glial cell\u002fneuron","hematopoietic stem and progenitor cell:spink2+","trophoblast:hla-g minus, cd57- ck7 low extravillous","fibroblast:crypt 2","granulocyte monocyte progenitor cell\u002fmyeloblast","enterocyte:cd57+","macrophage:2b","keratinocyte:p53+ ","langerhans cell","t cell:memory","granulocyte monocyte progenitor cell","dendritic cell:cd11b+","epithelial cell:secretory","erythroblast:basophilic","muscle cell:skeletal","cell:cd34+ cd61+","macrophage:interstitial","lymphoid progenitor cell:common","schwann cell","immune cell","hofbauer cell"],"xaxis":"x","y":{"dtype":"i4","bdata":"HRCQAJoxTAAGpUQAbL00AKcdHQBfNBwArIIYANsyDQB9mQwAvWQMAKMpCwBY\u002fAoASo4KAIeACgBQeQoAE7oJAIIxCQBNzQcA7MAHAOC9BwA8sQcAqgwHAKOABgDAFAYAH\u002fgFAKwYBQDd8wQAzMYEAMzoAwAO3wMAW70DAPCbAwCjmAMADI8DADVzAwAucwMAw0oDABsmAwDgHQMAfB0DACjvAgCi0wIAvaoCAIJ6AgClbgIAFRYCAB0QAgDM9gEAtuwBAG3sAQCh6gEAouQBAODBAQAVrwEANqMBAHyfAQDSmwEAAZIBAOyQAQB+gAEALGcBAJpJAQDMQgEArj4BAN87AQAuOwEALS8BAM4aAQAZ7AAAIegAACbfAADf0gAA3MwAACHBAAC+vgAAqLUAAOO0AABhsAAA2q8AABauAACWrAAAe6oAAIGnAAC1mwAAMpoAAKSUAADojAAABokAACiEAACbfAAAUHsAAPdoAADjYQAAZF0AADpdAABZWgAAQVUAAPlUAACYVAAAXlQAADFUAADuUQAAF0cAAJFGAADNRQAA8UMAANM7AAB6OgAAYjkAAGI2AACPMQAAuzAAAGIuAAAULQAAIyUAAJsiAAAfHwAAoh4AAGseAAAGHAAA1xsAAAgbAACyGgAAlxoAAGwaAABTGgAAShgAAMoXAADhFgAA6xUAANsVAABHFAAA7hIAAM8SAAAeEAAAug8AAEEOAACDDAAADAwAAEsKAADdCQAAyggAAPwHAADFBwAAqAcAAGcHAADlBgAApwUAAJoFAADLBAAAsQMAAO8CAACSAgAALgIAAOoBAACDAQAA5QAAAKUAAAA0AAAACgAAAAEAAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level Three Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('a2480241-dff7-4f41-807b-7c2ab1e5d6f9');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16457,9 +16458,9 @@ if (outputEl) {{
 create_bar_distribution_plot(df_all_data, cell_type_level='Level Two Cell Type', log_scale=True)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="a2cf96f9-2e4b-4b65-a578-25f12c254bee" class="plotly-graph-div" style="height:600px; width:1200px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a2cf96f9-2e4b-4b65-a578-25f12c254bee")) {                    Plotly.newPlot(                        "a2cf96f9-2e4b-4b65-a578-25f12c254bee",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown cell","t cell","b cell","abnormal cell","endothelial cell","gland epithelium cell","fibroblast","macrophage","enterocyte","goblet cell","muscle cell","natural killer cell","dendritic cell","lymphoid cell","myeloid cell","monocyte","erythroid precursor ","neutrophil","stromal cell","endothelial cell of sinusoid","type 2 pneumocyte","transit amplifying cell","stem cell","epithelial cell","beta cell","endothelial cell of vascular tree","myeloid precursor","endothelial cell of lymphatic vessel","mast cell","myoepithelial cell","pericyte","progenitor cell","neuron","endothelial cell of capillary","adipocyte","trophoblast ","type 1 pneumocyte","mixed t cell\u002fepithelial cell population","keratinocyte","neurecto-epithelial cell","endocrine cell","neuroglial cell","paneth cell","tuft cell","leukocyte","megakaryocyte","mesenchymal stem cell","endothelial cell of artery","perivascular cell","squamous epithelial cell","mesenchymal stem\u002fstromal cell","skeletal stromal cell","neuroglial cell\u002fneuron","hematopoietic stem and progenitor cell","langerhans cell","secretory cell of esophagus","immune cell"],"xaxis":"x","y":{"dtype":"i4","bdata":"M76QAIokcgDrSk8AbNFMAJoxTABP2TgAkNskABhuGQC7oxEAKhkOADK\u002fBwCqDAcAA7QFALI0BQAp2AQAAtUEAHY+BAAhDgQA8KMDAMNKAwCi0wIAa0sCAFwqAgBt7AEAouQBAODBAQBuugEANqMBANKbAQDskAEAzEIBAFM\u002fAQDfOwEA47QAAGGwAAD0rwAAlqwAAOiMAABwhQAAKIQAABVdAACNWgAAmFQAANM7AACPMQAA6i8AAB8fAADXGwAAlxoAAMoXAADuEgAAug8AAN0JAADKCAAAmgUAAJICAAAKAAAA"},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level Two Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('a2cf96f9-2e4b-4b65-a578-25f12c254bee');
+<div style="height:600px; width:1200px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="04436d7d-e43c-40c2-a091-f983b13250ed" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("04436d7d-e43c-40c2-a091-f983b13250ed")) {                    Plotly.newPlot(                        "04436d7d-e43c-40c2-a091-f983b13250ed",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["unknown cell","t cell","b cell","abnormal cell","endothelial cell","gland epithelium cell","fibroblast","macrophage","enterocyte","goblet cell","muscle cell","natural killer cell","dendritic cell","lymphoid cell","myeloid cell","monocyte","erythroid precursor ","neutrophil","stromal cell","endothelial cell of sinusoid","type 2 pneumocyte","transit amplifying cell","stem cell","epithelial cell","beta cell","endothelial cell of vascular tree","myeloid precursor","endothelial cell of lymphatic vessel","mast cell","myoepithelial cell","pericyte","progenitor cell","neuron","endothelial cell of capillary","adipocyte","trophoblast ","type 1 pneumocyte","mixed t cell\u002fepithelial cell population","keratinocyte","neurecto-epithelial cell","endocrine cell","neuroglial cell","paneth cell","tuft cell","leukocyte","megakaryocyte","mesenchymal stem cell","endothelial cell of artery","perivascular cell","squamous epithelial cell","mesenchymal stem\u002fstromal cell","skeletal stromal cell","neuroglial cell\u002fneuron","hematopoietic stem and progenitor cell","langerhans cell","secretory cell of esophagus","immune cell"],"xaxis":"x","y":{"dtype":"i4","bdata":"M76QAIokcgDrSk8AbNFMAJoxTABP2TgAkNskABhuGQC7oxEAKhkOADK\u002fBwCqDAcAA7QFALI0BQAp2AQAAtUEAHY+BAAhDgQA8KMDAMNKAwCi0wIAa0sCAFwqAgBt7AEAouQBAODBAQBuugEANqMBANKbAQDskAEAzEIBAFM\u002fAQDfOwEA47QAAGGwAAD0rwAAlqwAAOiMAABwhQAAKIQAABVdAACNWgAAmFQAANM7AACPMQAA6i8AAB8fAADXGwAAlxoAAMoXAADuEgAAug8AAN0JAADKCAAAmgUAAJICAAAKAAAA"},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level Two Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('04436d7d-e43c-40c2-a091-f983b13250ed');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16486,9 +16487,9 @@ if (outputEl) {{
 create_bar_distribution_plot(df_all_data, cell_type_level='Level One Cell Type', log_scale=True)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="30775a20-5ce5-4952-9a98-825a320baddd" class="plotly-graph-div" style="height:600px; width:1200px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("30775a20-5ce5-4952-9a98-825a320baddd")) {                    Plotly.newPlot(                        "30775a20-5ce5-4952-9a98-825a320baddd",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["immune cell","epithelial cell","unknown cell","endothelial cell","mesenchymal cell","hematopoietic precursor cell","neural cell","mixed immune\u002fepithelial cell population"],"xaxis":"x","y":{"dtype":"i4","bdata":"sUP+AA+ksQCXG5EALbJTAG5oMwDVMwgASaABAOiMAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level One Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('30775a20-5ce5-4952-9a98-825a320baddd');
+<div style="height:600px; width:1200px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="1d95b721-179b-42c8-9139-17c852304d7c" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("1d95b721-179b-42c8-9139-17c852304d7c")) {                    Plotly.newPlot(                        "1d95b721-179b-42c8-9139-17c852304d7c",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["immune cell","epithelial cell","unknown cell","endothelial cell","mesenchymal cell","hematopoietic precursor cell","neural cell","mixed immune\u002fepithelial cell population"],"xaxis":"x","y":{"dtype":"i4","bdata":"sUP+AA+ksQCXG5EALbJTAG5oMwDVMwgASaABAOiMAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level One Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count (log scale)"},"type":"log"},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('1d95b721-179b-42c8-9139-17c852304d7c');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16515,9 +16516,9 @@ if (outputEl) {{
 create_bar_distribution_plot(df_all_data, cell_type_level='Level One Cell Type', log_scale=False)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="2320d20e-0e59-450d-8be3-066d0194f8e1" class="plotly-graph-div" style="height:600px; width:1200px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("2320d20e-0e59-450d-8be3-066d0194f8e1")) {                    Plotly.newPlot(                        "2320d20e-0e59-450d-8be3-066d0194f8e1",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["immune cell","epithelial cell","unknown cell","endothelial cell","mesenchymal cell","hematopoietic precursor cell","neural cell","mixed immune\u002fepithelial cell population"],"xaxis":"x","y":{"dtype":"i4","bdata":"sUP+AA+ksQCXG5EALbJTAG5oMwDVMwgASaABAOiMAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level One Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count"}},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('2320d20e-0e59-450d-8be3-066d0194f8e1');
+<div style="height:600px; width:1200px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="19de11fc-07eb-4d37-a9d2-82953d88abe9" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("19de11fc-07eb-4d37-a9d2-82953d88abe9")) {                    Plotly.newPlot(                        "19de11fc-07eb-4d37-a9d2-82953d88abe9",                        [{"hovertemplate":"Cell Type=%{x}\u003cbr\u003eCount=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#D5A023","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["immune cell","epithelial cell","unknown cell","endothelial cell","mesenchymal cell","hematopoietic precursor cell","neural cell","mixed immune\u002fepithelial cell population"],"xaxis":"x","y":{"dtype":"i4","bdata":"sUP+AA+ksQCXG5EALbJTAG5oMwDVMwgASaABAOiMAAA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Level One Cell Type"},"tickangle":-90},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Count"}},"legend":{"tracegroupgap":0},"title":{"text":"Distribution of Cell Types Across All Datasets","x":0.5},"barmode":"relative","margin":{"b":150},"showlegend":false,"height":600,"width":1200},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('19de11fc-07eb-4d37-a9d2-82953d88abe9');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16614,9 +16615,9 @@ def create_donut_chart_datasets_per_tissue(df):
 create_donut_chart_datasets_per_tissue(df_all_data)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="3bebe89b-9e5f-4cf8-8fe7-bff01fef6481" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("3bebe89b-9e5f-4cf8-8fe7-bff01fef6481")) {                    Plotly.newPlot(                        "3bebe89b-9e5f-4cf8-8fe7-bff01fef6481",                        [{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"hole":0.4,"hovertemplate":"label=%{label}\u003cbr\u003evalue=%{value}\u003cextra\u003e\u003c\u002fextra\u003e","labels":["maternalfetalinterface-mibitof-stanford","intestine-codex-stanford","colon-xenium-stanford","colon-cycif-sorgerlab","bonemarrow-codex-chop","mouth-codex-czi","pancreas-geomx-ufl","skin-celldive-ge","spleen-codex-ufl","lymphnode-codex-yale","skin-confocal-sorgerlab","lung-codex-urmc","esophagus-codex-stanford","tonsil-codex-stanford"],"legendgroup":"","name":"","showlegend":true,"values":{"dtype":"i2","bdata":"0QBAAB0AGQAUAA0ADAAKAAYABQACAAIAAQABAA=="},"type":"pie","textfont":{"size":9},"marker":{"line":{"color":"white","width":2}},"textinfo":"label+percent+value","textposition":"inside","texttemplate":"%{label}\u003cbr\u003e%{percent}\u003cbr\u003e(%{value})"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"legend":{"tracegroupgap":0,"orientation":"v","yanchor":"middle","y":0.5,"xanchor":"left","x":1.05},"title":{"text":"Distribution of Unique Datasets per Tissue Type","x":0.5},"piecolorway":["rgb(141,211,199)","rgb(255,255,179)","rgb(190,186,218)","rgb(251,128,114)","rgb(128,177,211)","rgb(253,180,98)","rgb(179,222,105)","rgb(252,205,229)","rgb(217,217,217)","rgb(188,128,189)","rgb(204,235,197)","rgb(255,237,111)"],"font":{"size":12},"showlegend":true,"width":800,"height":600,"annotations":[{"font":{"color":"black","size":16},"showarrow":false,"text":"Total\u003cbr\u003e399\u003cbr\u003eDatasets","x":0.5,"y":0.5}]},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('3bebe89b-9e5f-4cf8-8fe7-bff01fef6481');
+<div style="height:600px; width:800px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="0840657e-218c-4a96-a37a-5658957b2ba1" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("0840657e-218c-4a96-a37a-5658957b2ba1")) {                    Plotly.newPlot(                        "0840657e-218c-4a96-a37a-5658957b2ba1",                        [{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"hole":0.4,"hovertemplate":"label=%{label}\u003cbr\u003evalue=%{value}\u003cextra\u003e\u003c\u002fextra\u003e","labels":["maternalfetalinterface-mibitof-stanford","intestine-codex-stanford","colon-xenium-stanford","colon-cycif-sorgerlab","bonemarrow-codex-chop","mouth-codex-czi","pancreas-geomx-ufl","skin-celldive-ge","spleen-codex-ufl","lymphnode-codex-yale","lung-codex-urmc","skin-confocal-sorgerlab","esophagus-codex-stanford","tonsil-codex-stanford"],"legendgroup":"","name":"","showlegend":true,"values":{"dtype":"i2","bdata":"0QBAAB0AGQAUAA0ADAAKAAYABQACAAIAAQABAA=="},"type":"pie","textfont":{"size":9},"marker":{"line":{"color":"white","width":2}},"textinfo":"label+percent+value","textposition":"inside","texttemplate":"%{label}\u003cbr\u003e%{percent}\u003cbr\u003e(%{value})"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"legend":{"tracegroupgap":0,"orientation":"v","yanchor":"middle","y":0.5,"xanchor":"left","x":1.05},"title":{"text":"Distribution of Unique Datasets per Tissue Type","x":0.5},"piecolorway":["rgb(141,211,199)","rgb(255,255,179)","rgb(190,186,218)","rgb(251,128,114)","rgb(128,177,211)","rgb(253,180,98)","rgb(179,222,105)","rgb(252,205,229)","rgb(217,217,217)","rgb(188,128,189)","rgb(204,235,197)","rgb(255,237,111)"],"font":{"size":12},"showlegend":true,"width":800,"height":600,"annotations":[{"font":{"color":"black","size":16},"showarrow":false,"text":"Total\u003cbr\u003e399\u003cbr\u003eDatasets","x":0.5,"y":0.5}]},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('0840657e-218c-4a96-a37a-5658957b2ba1');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -16648,8 +16649,8 @@ if (outputEl) {{
     skin-celldive-ge: 10
     spleen-codex-ufl: 6
     lymphnode-codex-yale: 5
-    skin-confocal-sorgerlab: 2
     lung-codex-urmc: 2
+    skin-confocal-sorgerlab: 2
     esophagus-codex-stanford: 1
     tonsil-codex-stanford: 1
 
@@ -16727,9 +16728,9 @@ def create_donut_chart_cells_per_tissue(df):
 create_donut_chart_cells_per_tissue(df_all_data)
 ```
 
-<div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>                <div id="9cbac893-ada5-40e1-8cd9-03ad27b65c18" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("9cbac893-ada5-40e1-8cd9-03ad27b65c18")) {                    Plotly.newPlot(                        "9cbac893-ada5-40e1-8cd9-03ad27b65c18",                        [{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"hole":0.4,"hovertemplate":"label=%{label}\u003cbr\u003evalue=%{value}\u003cextra\u003e\u003c\u002fextra\u003e","labels":["pancreas-geomx-ufl","colon-cycif-sorgerlab","lymphnode-codex-yale","colon-xenium-stanford","intestine-codex-stanford","mouth-codex-czi","bonemarrow-codex-chop","lung-codex-urmc","spleen-codex-ufl","maternalfetalinterface-mibitof-stanford","tonsil-codex-stanford","skin-confocal-sorgerlab","skin-celldive-ge","esophagus-codex-stanford"],"legendgroup":"","name":"","showlegend":true,"values":{"dtype":"i4","bdata":"YzvjAH2swgA9F4gAb0UoADlVJgBdjBUAiIYSAN1zEgCOJA8AM0oHAJCnAgDX1wAAw7wAAIazAAA="},"type":"pie","textfont":{"size":9},"marker":{"line":{"color":"white","width":2}},"textinfo":"label+percent+value","textposition":"inside","texttemplate":"%{label}\u003cbr\u003e%{percent}\u003cbr\u003e(%{value:,})"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"legend":{"tracegroupgap":0,"orientation":"v","yanchor":"middle","y":0.5,"xanchor":"left","x":1.05},"title":{"text":"Distribution of Total Cells per Tissue Type","x":0.5},"piecolorway":["rgb(141,211,199)","rgb(255,255,179)","rgb(190,186,218)","rgb(251,128,114)","rgb(128,177,211)","rgb(253,180,98)","rgb(179,222,105)","rgb(252,205,229)","rgb(217,217,217)","rgb(188,128,189)","rgb(204,235,197)","rgb(255,237,111)"],"font":{"size":12},"showlegend":true,"width":800,"height":600,"annotations":[{"font":{"color":"black","size":16},"showarrow":false,"text":"Total\u003cbr\u003e47,349,496\u003cbr\u003eCells","x":0.5,"y":0.5}]},                        {"responsive": true}                    ).then(function(){
-                            &#10;var gd = document.getElementById('9cbac893-ada5-40e1-8cd9-03ad27b65c18');
+<div style="height:600px; width:800px;">            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script><script>if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="6daca24c-f818-4e96-ab97-8dba79ff4a3a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("6daca24c-f818-4e96-ab97-8dba79ff4a3a")) {                    Plotly.newPlot(                        "6daca24c-f818-4e96-ab97-8dba79ff4a3a",                        [{"domain":{"x":[0.0,1.0],"y":[0.0,1.0]},"hole":0.4,"hovertemplate":"label=%{label}\u003cbr\u003evalue=%{value}\u003cextra\u003e\u003c\u002fextra\u003e","labels":["pancreas-geomx-ufl","colon-cycif-sorgerlab","lymphnode-codex-yale","colon-xenium-stanford","intestine-codex-stanford","mouth-codex-czi","bonemarrow-codex-chop","lung-codex-urmc","spleen-codex-ufl","maternalfetalinterface-mibitof-stanford","tonsil-codex-stanford","skin-confocal-sorgerlab","skin-celldive-ge","esophagus-codex-stanford"],"legendgroup":"","name":"","showlegend":true,"values":{"dtype":"i4","bdata":"YzvjAH2swgA9F4gAb0UoADlVJgBdjBUAiIYSAN1zEgCOJA8AM0oHAJCnAgDX1wAAw7wAAIazAAA="},"type":"pie","textfont":{"size":9},"marker":{"line":{"color":"white","width":2}},"textinfo":"label+percent+value","textposition":"inside","texttemplate":"%{label}\u003cbr\u003e%{percent}\u003cbr\u003e(%{value:,})"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"legend":{"tracegroupgap":0,"orientation":"v","yanchor":"middle","y":0.5,"xanchor":"left","x":1.05},"title":{"text":"Distribution of Total Cells per Tissue Type","x":0.5},"piecolorway":["rgb(141,211,199)","rgb(255,255,179)","rgb(190,186,218)","rgb(251,128,114)","rgb(128,177,211)","rgb(253,180,98)","rgb(179,222,105)","rgb(252,205,229)","rgb(217,217,217)","rgb(188,128,189)","rgb(204,235,197)","rgb(255,237,111)"],"font":{"size":12},"showlegend":true,"width":800,"height":600,"annotations":[{"font":{"color":"black","size":16},"showarrow":false,"text":"Total\u003cbr\u003e47,349,496\u003cbr\u003eCells","x":0.5,"y":0.5}]},                        {"responsive": true}                    ).then(function(){
+                            &#10;var gd = document.getElementById('6daca24c-f818-4e96-ab97-8dba79ff4a3a');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{

@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "lung-codex-urmc"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -96,6 +96,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -289,6 +292,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -547,8 +551,11 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Normal' 'Disease']
+    <StringArray>
+    ['Normal', 'Disease']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
@@ -594,72 +601,72 @@ df_all_edges.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>9600</td>
-<td>54.891304</td>
-<td>14218.369565</td>
+<td>2</td>
+<td>2016.044444</td>
+<td>4917.207407</td>
 <td>0</td>
-<td>164.375000</td>
-<td>14329.000000</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>155.646306</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>180.626334</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>9604</td>
-<td>148.519685</td>
-<td>14344.433071</td>
+<td>3</td>
+<td>2017.619403</td>
+<td>4982.335821</td>
 <td>0</td>
-<td>164.375000</td>
-<td>14329.000000</td>
+<td>2145.277955</td>
+<td>5076.073482</td>
 <td>0</td>
-<td>22.126244</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>158.377572</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>9603</td>
-<td>145.042553</td>
-<td>13454.680851</td>
+<td>4</td>
+<td>2023.324895</td>
+<td>4905.232068</td>
 <td>0</td>
-<td>150.838235</td>
-<td>13477.191176</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>23.244455</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>169.062736</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>9605</td>
-<td>151.107143</td>
-<td>13463.553571</td>
+<td>5</td>
+<td>2071.555556</td>
+<td>4879.351852</td>
 <td>0</td>
-<td>150.838235</td>
-<td>13477.191176</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>13.640256</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>114.664452</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>9607</td>
-<td>160.127168</td>
-<td>13502.421965</td>
+<td>6</td>
+<td>2082.173333</td>
+<td>4847.546667</td>
 <td>0</td>
-<td>150.838235</td>
-<td>13477.191176</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>26.886371</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>97.153151</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
 </tr>
 </tbody>
@@ -699,28 +706,28 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 </tbody>
 </table>
@@ -742,13 +749,16 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Normal' 'Disease']
+    <StringArray>
+    ['Disease', 'Normal']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
-    Normal: 1
     Disease: 1
+    Normal: 1
 
 ``` python
 df_all_edges_with_cell_types['Unique Region'] = df_all_edges_with_cell_types['Dataset'].map(region_map)
@@ -781,28 +791,28 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>D265-LLL-7A7-12</td>
-<td>Normal</td>
+<td>D115-RLL-10A3-40</td>
+<td>Disease</td>
 </tr>
 </tbody>
 </table>
@@ -913,18 +923,18 @@ df_all_edges.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>9600</td>
-<td>54.891304</td>
-<td>14218.369565</td>
+<td>2</td>
+<td>2016.044444</td>
+<td>4917.207407</td>
 <td>0</td>
-<td>164.375</td>
-<td>14329.0</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>155.646306</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>180.626334</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
-<td>Normal</td>
+<td>Disease</td>
 </tr>
 </tbody>
 </table>
@@ -972,21 +982,21 @@ df_all_edges_with_cell_types.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>9600</td>
-<td>54.891304</td>
-<td>14218.369565</td>
+<td>2</td>
+<td>2016.044444</td>
+<td>4917.207407</td>
 <td>0</td>
-<td>164.375</td>
-<td>14329.0</td>
+<td>2178.969388</td>
+<td>4839.22449</td>
 <td>0</td>
-<td>155.646306</td>
-<td>D265-LLL-7A7-12</td>
-<td>endothelial cell</td>
+<td>180.626334</td>
+<td>D115-RLL-10A3-40</td>
+<td>endothelial cell of capillary</td>
 <td>Level Three Cell Type</td>
-<td>t cell:cd8+</td>
-<td>t cell</td>
+<td>macrophage</td>
+<td>macrophage</td>
 <td>immune cell</td>
-<td>Normal</td>
+<td>Disease</td>
 </tr>
 </tbody>
 </table>
@@ -1343,21 +1353,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Normal:
-                Level One Cell Type  mean_distance
-    3              mesenchymal cell      49.582849
-    2                   immune cell      39.351442
-    4                  unknown cell      37.909030
-    0               epithelial cell      35.403572
-    1  hematopoietic precursor cell      34.836844
-
-    Bottom 5 cell types in Normal:
-                Level One Cell Type  mean_distance
-    3              mesenchymal cell      49.582849
-    2                   immune cell      39.351442
-    4                  unknown cell      37.909030
-    0               epithelial cell      35.403572
-    1  hematopoietic precursor cell      34.836844
 
     Top 5 cell types in Disease:
                            Level One Cell Type  mean_distance
@@ -1374,6 +1369,22 @@ for region in unique_regions:
     0                          epithelial cell      32.455094
     3  mixed immune/epithelial cell population      29.528454
     4                             unknown cell      21.070750
+
+    Top 5 cell types in Normal:
+                Level One Cell Type  mean_distance
+    3              mesenchymal cell      49.582849
+    2                   immune cell      39.351442
+    4                  unknown cell      37.909030
+    0               epithelial cell      35.403572
+    1  hematopoietic precursor cell      34.836844
+
+    Bottom 5 cell types in Normal:
+                Level One Cell Type  mean_distance
+    3              mesenchymal cell      49.582849
+    2                   immune cell      39.351442
+    4                  unknown cell      37.909030
+    0               epithelial cell      35.403572
+    1  hematopoietic precursor cell      34.836844
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1403,21 +1414,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Normal:
-                Level One Cell Type  median_distance
-    3              mesenchymal cell        43.837154
-    2                   immune cell        31.840836
-    4                  unknown cell        30.412302
-    0               epithelial cell        28.856798
-    1  hematopoietic precursor cell        27.595297
-
-    Bottom 5 cell types in Normal:
-                Level One Cell Type  median_distance
-    3              mesenchymal cell        43.837154
-    2                   immune cell        31.840836
-    4                  unknown cell        30.412302
-    0               epithelial cell        28.856798
-    1  hematopoietic precursor cell        27.595297
 
     Top 5 cell types in Disease:
                            Level One Cell Type  median_distance
@@ -1434,6 +1430,22 @@ for region in unique_regions:
     0                          epithelial cell        25.588249
     3  mixed immune/epithelial cell population        23.648768
     4                             unknown cell        15.768757
+
+    Top 5 cell types in Normal:
+                Level One Cell Type  median_distance
+    3              mesenchymal cell        43.837154
+    2                   immune cell        31.840836
+    4                  unknown cell        30.412302
+    0               epithelial cell        28.856798
+    1  hematopoietic precursor cell        27.595297
+
+    Bottom 5 cell types in Normal:
+                Level One Cell Type  median_distance
+    3              mesenchymal cell        43.837154
+    2                   immune cell        31.840836
+    4                  unknown cell        30.412302
+    0               epithelial cell        28.856798
+    1  hematopoietic precursor cell        27.595297
 
 ``` python
 # Calculate regional variability
@@ -1468,6 +1480,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1955,21 +1968,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Normal:
-                        Level Two Cell Type  mean_distance
-    1  endothelial cell of lymphatic vessel      90.450213
-    6                           muscle cell      74.768813
-    4                             mast cell      56.037289
-    8                                t cell      52.112910
-    3                            macrophage      43.693437
-
-    Bottom 5 cell types in Normal:
-      Level Two Cell Type  mean_distance
-    0              b cell      36.288294
-    9   type 1 pneumocyte      36.197262
-    5       megakaryocyte      35.709374
-    2           leukocyte      35.224795
-    7          neutrophil      34.791835
 
     Top 5 cell types in Disease:
       Level Two Cell Type  mean_distance
@@ -1987,6 +1985,22 @@ for region in unique_regions:
     1            endothelial cell of capillary      28.936591
     9                             unknown cell      27.554498
 
+    Top 5 cell types in Normal:
+                        Level Two Cell Type  mean_distance
+    1  endothelial cell of lymphatic vessel      90.450213
+    6                           muscle cell      74.768813
+    4                             mast cell      56.037289
+    8                                t cell      52.112910
+    3                            macrophage      43.693437
+
+    Bottom 5 cell types in Normal:
+      Level Two Cell Type  mean_distance
+    0              b cell      36.288294
+    9   type 1 pneumocyte      36.197262
+    5       megakaryocyte      35.709374
+    2           leukocyte      35.224795
+    7          neutrophil      34.791835
+
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -1998,21 +2012,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Normal:
-                        Level Two Cell Type  median_distance
-    1  endothelial cell of lymphatic vessel        82.516556
-    6                           muscle cell        67.226262
-    4                             mast cell        45.889204
-    8                                t cell        41.077107
-    3                            macrophage        35.902059
-
-    Bottom 5 cell types in Normal:
-      Level Two Cell Type  median_distance
-    5       megakaryocyte        28.120303
-    2           leukocyte        27.520283
-    7          neutrophil        27.134180
-    0              b cell        26.858117
-    9   type 1 pneumocyte        26.538157
 
     Top 5 cell types in Disease:
       Level Two Cell Type  median_distance
@@ -2030,9 +2029,26 @@ for region in unique_regions:
     1            endothelial cell of capillary        22.843498
     9                             unknown cell        20.212155
 
+    Top 5 cell types in Normal:
+                        Level Two Cell Type  median_distance
+    1  endothelial cell of lymphatic vessel        82.516556
+    6                           muscle cell        67.226262
+    4                             mast cell        45.889204
+    8                                t cell        41.077107
+    3                            macrophage        35.902059
+
+    Bottom 5 cell types in Normal:
+      Level Two Cell Type  median_distance
+    5       megakaryocyte        28.120303
+    2           leukocyte        27.520283
+    7          neutrophil        27.134180
+    0              b cell        26.858117
+    9   type 1 pneumocyte        26.538157
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2385,6 +2401,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Normal:
                        Level Three Cell Type  mean_distance
     1   endothelial cell of lymphatic vessel      90.450213
@@ -2428,6 +2445,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in Normal:
                        Level Three Cell Type  median_distance
     1   endothelial cell of lymphatic vessel        82.516556
@@ -2464,6 +2482,7 @@ for region in unique_regions:
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
 
+
     Regional Variability Analysis:
     Mean: Average distance in each region
     Std: Standard deviation of distances
@@ -2485,8 +2504,8 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     megakaryocyte                             35.71  25.36    71.0
     macrophage                                55.67  39.15    70.3
     macrophage:interstitial                   47.58  32.59    68.5
-    t cell:cd8+                               62.80  42.56    67.8
     pneumocyte:type 2                         37.89  25.70    67.8
+    t cell:cd8+                               62.80  42.56    67.8
     mixed t cell/epithelial cell population   35.46  23.98    67.6
     endothelial cell of capillary             28.94  19.51    67.4
     muscle cell:smooth                        61.52  41.15    66.9

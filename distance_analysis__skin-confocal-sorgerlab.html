@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,16 +10,10 @@
 
 <title>Distance Analysis: skin-confocal-sorgerlab – HRA: Cell Distance Analysis</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -28,9 +22,8 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -65,23 +58,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-66a38d7287321bc50e069add96f8c30e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6685f57f7611d95a701d58b4cc6878c0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -109,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -129,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -321,8 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
-<div id="66efb270" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div id="f247e68a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -340,27 +332,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># suppress warnings</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="edf27474" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>basepath <span class="op">=</span> <span class="st">"/u/yashjain/hra-cell-distance-analysis/data"</span></span>
+<div id="578e6130" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>basepath <span class="op">=</span> <span class="st">"../data"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dataset_dir <span class="op">=</span> <span class="st">"skin-confocal-sorgerlab"</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data_filedir <span class="op">=</span> os.path.join(<span class="st">"data-processed-nodes-with-harmonized-cell-types"</span>, dataset_dir)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>output_edge_dir <span class="op">=</span> os.path.join(<span class="st">"data-processed-edges"</span>, dataset_dir)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>figures_output_dir <span class="op">=</span> <span class="st">"generated-figures"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>figures_output_dir <span class="op">=</span> <span class="st">"generated-figures"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d4464a56" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to load your data</span></span>
+<div id="fba81070" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to load your data</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_data(path, edges<span class="op">=</span><span class="va">False</span>):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> edges:</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        column_names <span class="op">=</span> [<span class="st">'cell_id'</span>, <span class="st">'x1'</span>, <span class="st">'y1'</span>, <span class="st">'z1'</span>, <span class="st">'x2'</span>, <span class="st">'y2'</span>, <span class="st">'z2'</span>]</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> pd.read_csv(path, header<span class="op">=</span><span class="va">None</span>, names<span class="op">=</span>column_names)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> pd.read_csv(path)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7e284761" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to read all files ending with "-nodes.csv" in the `data_filedir` directory into a single DataFrame. </span></span>
+<div id="00f1f07e" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to read all files ending with "-nodes.csv" in the `data_filedir` directory into a single DataFrame. </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Another additional column `Dataset` is added to identify the dataset name which comes from the filename before the `-nodes.csv` suffix.</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Additionally, function reads all files ending with "-edges.csv" in the `output_edge_dir` directory into a single DataFrame. </span></span>
@@ -410,29 +402,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    merged_edges <span class="op">=</span> pd.concat(all_edges_files, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>    merged_nodes <span class="op">=</span> pd.concat(all_nodes_files, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    merged_nodes_for_all_edges <span class="op">=</span> pd.concat(all_nodes_edges_files, ignore_index<span class="op">=</span><span class="va">True</span>) </span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged_nodes, merged_edges, merged_nodes_for_all_edges</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    merged_edges[<span class="st">"Distance"</span>] <span class="op">=</span> merged_edges[<span class="st">"Distance"</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    merged_nodes_for_all_edges[<span class="st">"Distance"</span>] <span class="op">=</span> merged_nodes_for_all_edges[<span class="st">"Distance"</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged_nodes, merged_edges, merged_nodes_for_all_edges</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="01f76594" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_directory(directory):</span>
+<div id="b985cef0" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_directory(directory):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(directory):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        os.makedirs(directory)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Directory '</span><span class="sc">{</span>directory<span class="sc">}</span><span class="ss">' created successfully."</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Directory '</span><span class="sc">{</span>directory<span class="sc">}</span><span class="ss">' already exists."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Directory '</span><span class="sc">{</span>directory<span class="sc">}</span><span class="ss">' already exists."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="get-initial-statistics-and-identify-endothelial-cell-categories-for-dataset." class="level2">
 <h2 class="anchored" data-anchor-id="get-initial-statistics-and-identify-endothelial-cell-categories-for-dataset.">Get initial statistics and identify endothelial cell categories for dataset.</h2>
-<div id="66ee20a4" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes, df_all_edges, df_all_edges_with_cell_types <span class="op">=</span> read_all_edge_datasets(basepath, data_filedir, output_edge_dir)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="596ef7d7" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes, df_all_edges, df_all_edges_with_cell_types <span class="op">=</span> read_all_edge_datasets(basepath, data_filedir, output_edge_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1ac2711a" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="0cb19371" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -457,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>732.21</td>
 <td>18.569</td>
 <td>0.87001</td>
@@ -477,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>733.07</td>
 <td>22.936</td>
 <td>4.77910</td>
@@ -497,7 +492,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>736.84</td>
 <td>29.739</td>
 <td>4.43490</td>
@@ -517,7 +512,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>732.12</td>
 <td>143.700</td>
 <td>15.22900</td>
@@ -537,7 +532,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>714.57</td>
 <td>544.400</td>
 <td>1.40060</td>
@@ -562,8 +557,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="6d5b4ad1" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the total number of unique cell types per dataset. Compute separately for each cell type column (Level One Cell Type, Level Two Cell Type, Level Three Cell Type, Original Cell Type).</span></span>
+<div id="ffb22680" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the total number of unique cell types per dataset. Compute separately for each cell type column (Level One Cell Type, Level Two Cell Type, Level Three Cell Type, Original Cell Type).</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total number of unique cell types per cell type annnotation level:"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>unique_cell_types <span class="op">=</span> {</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Original Cell Type'</span>: df_all_nodes[<span class="st">'Original Cell Type'</span>].nunique(),</span>
@@ -572,7 +567,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Level One Cell Type'</span>: df_all_nodes[<span class="st">'Level One Cell Type'</span>].nunique()</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> cell_type, count <span class="kw">in</span> unique_cell_types.items():</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>cell_type<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>cell_type<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Total number of unique cell types per cell type annnotation level:
 Original Cell Type: 15
@@ -581,8 +576,8 @@ Level Two Cell Type: 11
 Level One Cell Type: 4</code></pre>
 </div>
 </div>
-<div id="a08a4d3a" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the unique cell types containing "endothelial" in name per cell type column (Level One Cell Type, Level Two Cell Type, Level Three Cell Type, Original Cell Type) to a dictionary where the key is the level and the value is a list of unique cell types.</span></span>
+<div id="a8ce8b91" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the unique cell types containing "endothelial" in name per cell type column (Level One Cell Type, Level Two Cell Type, Level Three Cell Type, Original Cell Type) to a dictionary where the key is the level and the value is a list of unique cell types.</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>endothelial_cell_types <span class="op">=</span> {</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Original Cell Type'</span>: df_all_nodes[df_all_nodes[<span class="st">'Original Cell Type'</span>].<span class="bu">str</span>.contains(<span class="st">"endothelial"</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)][<span class="st">'Original Cell Type'</span>].unique().tolist(),</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Level Three Cell Type'</span>: df_all_nodes[df_all_nodes[<span class="st">'Level Three Cell Type'</span>].<span class="bu">str</span>.contains(<span class="st">"endothelial"</span>, case<span class="op">=</span><span class="va">False</span>, na<span class="op">=</span><span class="va">False</span>)][<span class="st">'Level Three Cell Type'</span>].unique().tolist(),</span>
@@ -594,7 +589,7 @@ Level One Cell Type: 4</code></pre>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> level, cell_types <span class="kw">in</span> endothelial_cell_types.items():</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="sc">{</span>level<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cell <span class="kw">in</span> cell_types:</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  - </span><span class="sc">{</span>cell<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  - </span><span class="sc">{</span>cell<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Endothelial cell types per cell type annotation level:
@@ -612,35 +607,35 @@ Level One Cell Type:
   - endothelial cell</code></pre>
 </div>
 </div>
-<div id="edf1b8d6" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>type_field_list <span class="op">=</span> [<span class="st">"Level Three Cell Type"</span>, <span class="st">"Level Two Cell Type"</span>, <span class="st">"Level One Cell Type"</span>] <span class="co"># Skipping Original Cell Type as it is not a hierarchical level.</span></span>
+<div id="20808579" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>type_field_list <span class="op">=</span> [<span class="st">"Level Three Cell Type"</span>, <span class="st">"Level Two Cell Type"</span>, <span class="st">"Level One Cell Type"</span>] <span class="co"># Skipping Original Cell Type as it is not a hierarchical level.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the anchor cell type (type of endothelial cell) for each level in type_field_list based on available categories in the previous cell. The distance analysis at all three levels will be limited to the specified anchor cell type.</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>anchor_cell_type_dict <span class="op">=</span> {</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Level Three Cell Type'</span>: <span class="st">'endothelial cell'</span>,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Level Two Cell Type'</span>: <span class="st">'endothelial cell'</span>,</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Level One Cell Type'</span>: <span class="st">'endothelial cell'</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="process-datasets-to-add-region-information-to-nodes-files." class="level2">
 <h2 class="anchored" data-anchor-id="process-datasets-to-add-region-information-to-nodes-files.">Process datasets to add region information to Nodes files.</h2>
-<div id="8b4fe57f" class="cell" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary to map skin regions to correct condition.</span></span>
+<div id="8e3b7ccd" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary to map skin regions to correct condition.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>region_map <span class="op">=</span> {<span class="st">'phenotypes_invasive_margin'</span>:<span class="st">'Invasive Margin'</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a> <span class="st">'phenotypes_melanoma_in_situ'</span>:<span class="st">'Melanoma In Situ'</span>, </span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the standard region sequence for plots</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> [<span class="st">'Invasive Margin'</span>, <span class="st">'Melanoma In Situ'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> [<span class="st">'Invasive Margin'</span>, <span class="st">'Melanoma In Situ'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="338a5625" class="cell" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="be8eff53" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -665,7 +660,7 @@ Level One Cell Type:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>732.21</td>
 <td>18.569</td>
 <td>0.87001</td>
@@ -685,7 +680,7 @@ Level One Cell Type:
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>733.07</td>
 <td>22.936</td>
 <td>4.77910</td>
@@ -705,7 +700,7 @@ Level One Cell Type:
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>736.84</td>
 <td>29.739</td>
 <td>4.43490</td>
@@ -725,7 +720,7 @@ Level One Cell Type:
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>732.12</td>
 <td>143.700</td>
 <td>15.22900</td>
@@ -745,7 +740,7 @@ Level One Cell Type:
 <td>phenotypes_invasive_margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>714.57</td>
 <td>544.400</td>
 <td>1.40060</td>
@@ -770,19 +765,19 @@ Level One Cell Type:
 </div>
 </div>
 </div>
-<div id="df5094ff" class="cell" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through the df_all_data dataframe to create new column "Unique Region" based on the "Dataset" column.</span></span>
+<div id="ef23690e" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate through the df_all_data dataframe to create new column "Unique Region" based on the "Dataset" column.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The "Unique Region" column is created by mapping the region names based on the full dataset name.</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df_all_nodes[<span class="st">'Unique Region'</span>] <span class="op">=</span> df_all_nodes[<span class="st">'Dataset'</span>].<span class="bu">map</span>(region_map)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># df_all_nodes['Unique Region'] = df_all_nodes['Dataset'].str.split('-').str[1].map(region_map)</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the new columns are created correctly.</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>df_all_nodes[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>df_all_nodes[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -792,27 +787,27 @@ Level One Cell Type:
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
@@ -822,8 +817,8 @@ Level One Cell Type:
 </div>
 </div>
 </div>
-<div id="5ac8e799" class="cell" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all unique regions in the data.</span></span>
+<div id="209b2a64" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all unique regions in the data.</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Unique Regions in the data:"</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_all_nodes[<span class="st">'Unique Region'</span>].unique())</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -834,11 +829,13 @@ Level One Cell Type:
 <span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Number of unique datasets per unique region:"</span>)</span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> df_all_nodes[<span class="st">'Unique Region'</span>].unique():</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    num_datasets <span class="op">=</span> df_all_nodes[df_all_nodes[<span class="st">'Unique Region'</span>] <span class="op">==</span> region][<span class="st">'Dataset'</span>].nunique()</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>num_datasets<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>num_datasets<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Unique Regions in the data:
-['Invasive Margin' 'Melanoma In Situ']
+&lt;StringArray&gt;
+['Invasive Margin', 'Melanoma In Situ']
+Length: 2, dtype: str
 Total number of unique regions: 2
 
 Number of unique datasets per unique region:
@@ -849,13 +846,13 @@ Melanoma In Situ: 1</code></pre>
 </section>
 <section id="process-datasets-to-add-region-information-to-edges-files." class="level2">
 <h2 class="anchored" data-anchor-id="process-datasets-to-add-region-information-to-edges-files.">Process datasets to add region information to Edges files.</h2>
-<div id="71856272" class="cell" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_all_edges.head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div id="5b8f4480" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_all_edges.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -874,7 +871,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
 <td>732.21</td>
 <td>18.569</td>
@@ -885,10 +882,10 @@ Melanoma In Situ: 1</code></pre>
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>1</td>
 <td>733.07</td>
 <td>22.936</td>
@@ -899,10 +896,10 @@ Melanoma In Situ: 1</code></pre>
 <td>120.685607</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>2</td>
 <td>736.84</td>
 <td>29.739</td>
@@ -913,10 +910,10 @@ Melanoma In Situ: 1</code></pre>
 <td>117.835963</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>3</td>
 <td>732.12</td>
 <td>143.700</td>
@@ -927,10 +924,10 @@ Melanoma In Situ: 1</code></pre>
 <td>64.583832</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>5</td>
 <td>748.79</td>
 <td>80.906</td>
@@ -941,7 +938,7 @@ Melanoma In Situ: 1</code></pre>
 <td>95.412064</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -949,17 +946,17 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="1f47dbf5" class="cell" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Process the edge data to create new columns "Unique Region" based on the "Dataset" column, similar to how it was done for the node data.</span></span>
+<div id="517f51cb" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Process the edge data to create new columns "Unique Region" based on the "Dataset" column, similar to how it was done for the node data.</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_all_edges[<span class="st">'Unique Region'</span>] <span class="op">=</span> df_all_edges[<span class="st">'Dataset'</span>].<span class="bu">map</span>(region_map)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the new columns are created correctly.</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df_all_edges[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>df_all_edges[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -969,27 +966,27 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
@@ -999,8 +996,8 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="d2746b3e" class="cell" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all unique regions in the data.</span></span>
+<div id="a2adcf2a" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print all unique regions in the data.</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Unique Regions in the data:"</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_all_edges[<span class="st">'Unique Region'</span>].unique())</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1011,11 +1008,13 @@ Melanoma In Situ: 1</code></pre>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Number of unique datasets per unique region:"</span>)</span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> df_all_edges[<span class="st">'Unique Region'</span>].unique():</span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    num_datasets <span class="op">=</span> df_all_edges[df_all_edges[<span class="st">'Unique Region'</span>] <span class="op">==</span> region][<span class="st">'Dataset'</span>].nunique()</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>num_datasets<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>num_datasets<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Unique Regions in the data:
-['Invasive Margin' 'Melanoma In Situ']
+&lt;StringArray&gt;
+['Invasive Margin', 'Melanoma In Situ']
+Length: 2, dtype: str
 Total number of unique regions: 2
 
 Number of unique datasets per unique region:
@@ -1023,16 +1022,16 @@ Invasive Margin: 1
 Melanoma In Situ: 1</code></pre>
 </div>
 </div>
-<div id="84aa08b9" class="cell" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types[<span class="st">'Unique Region'</span>] <span class="op">=</span> df_all_edges_with_cell_types[<span class="st">'Dataset'</span>].<span class="bu">map</span>(region_map)</span>
+<div id="f0b0d314" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types[<span class="st">'Unique Region'</span>] <span class="op">=</span> df_all_edges_with_cell_types[<span class="st">'Dataset'</span>].<span class="bu">map</span>(region_map)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the new columns are created correctly.</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types[[<span class="st">'Dataset'</span>, <span class="st">'Unique Region'</span>]].head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1042,27 +1041,27 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>phenotypes_invasive_margin</td>
 <td>Invasive Margin</td>
 </tr>
@@ -1072,13 +1071,13 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="0b75e436" class="cell" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div id="54e16a50" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_all_nodes.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1104,7 +1103,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>732.21</td>
 <td>18.569</td>
 <td>0.87001</td>
@@ -1130,13 +1129,13 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="8b81e535" class="cell" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_all_edges.head(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div id="c69326c5" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_all_edges.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1156,7 +1155,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
 <td>732.21</td>
 <td>18.569</td>
@@ -1167,7 +1166,7 @@ Melanoma In Situ: 1</code></pre>
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 <td>Invasive Margin</td>
 </tr>
 </tbody>
@@ -1176,13 +1175,13 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="bc270a73" class="cell" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types.head(<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
+<div id="a09c5be2" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_types.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1205,7 +1204,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
 <td>732.21</td>
 <td>18.569</td>
@@ -1216,7 +1215,7 @@ Melanoma In Situ: 1</code></pre>
 <td>124.458726</td>
 <td>phenotypes_invasive_margin</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level Two Cell Type</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
@@ -1231,8 +1230,8 @@ Melanoma In Situ: 1</code></pre>
 </section>
 <section id="node-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="node-analysis">Node Analysis</h2>
-<div id="369666fb" class="cell" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot number of cells per cell type in the same plot. Color by cell type and unique region. Output figure saved in existing `figures_output_dir`.</span></span>
+<div id="d40cdc3a" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot number of cells per cell type in the same plot. Color by cell type and unique region. Output figure saved in existing `figures_output_dir`.</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_cells_per_celltype(df, type_field, output_dir):</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">8</span>))</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">"svg.fonttype"</span>] <span class="op">=</span> <span class="st">'none'</span>  <span class="co"># to store text as text, not as path</span></span>
@@ -1259,7 +1258,7 @@ Melanoma In Situ: 1</code></pre>
 <span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    plt.close()</span>
 <span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> type_field <span class="kw">in</span> type_field_list:</span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    plot_cells_per_celltype(df_all_nodes, type_field, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>    plot_cells_per_celltype(df_all_nodes, type_field, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1285,8 +1284,8 @@ Melanoma In Situ: 1</code></pre>
 </section>
 <section id="distance-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="distance-analysis">Distance Analysis</h2>
-<div id="a7d80b43" class="cell" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per unique region per anchor cell type.</span></span>
+<div id="8e59e910" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per unique region per anchor cell type.</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df_distance_stats <span class="op">=</span> df_all_edges_with_cell_types.groupby([<span class="st">'Unique Region'</span>, <span class="st">'Anchor Cell Type'</span>, <span class="st">'Anchor Cell Type Level'</span>]).agg(</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    mean_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'mean'</span>),</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    median_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'median'</span>),</span>
@@ -1294,12 +1293,12 @@ Melanoma In Situ: 1</code></pre>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    max_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'max'</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first few rows of the distance statistics DataFrame.</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>df_distance_stats</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>df_distance_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1314,7 +1313,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>Invasive Margin</td>
 <td>endothelial cell</td>
 <td>Level One Cell Type</td>
@@ -1324,7 +1323,7 @@ Melanoma In Situ: 1</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>Invasive Margin</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
@@ -1334,7 +1333,7 @@ Melanoma In Situ: 1</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>Invasive Margin</td>
 <td>endothelial cell</td>
 <td>Level Two Cell Type</td>
@@ -1344,7 +1343,7 @@ Melanoma In Situ: 1</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>Melanoma In Situ</td>
 <td>endothelial cell</td>
 <td>Level One Cell Type</td>
@@ -1354,7 +1353,7 @@ Melanoma In Situ: 1</code></pre>
 <td>132.248984</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>Melanoma In Situ</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
@@ -1364,7 +1363,7 @@ Melanoma In Situ: 1</code></pre>
 <td>132.248984</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>Melanoma In Situ</td>
 <td>endothelial cell</td>
 <td>Level Two Cell Type</td>
@@ -1381,8 +1380,8 @@ Melanoma In Situ: 1</code></pre>
 </div>
 <section id="level-one-cell-type-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="level-one-cell-type-analysis">Level One Cell Type Analysis</h3>
-<div id="bc1fad4f" class="cell" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
+<div id="6038e1b1" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>cell_type_level <span class="op">=</span> <span class="st">'Level One Cell Type'</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_type_level <span class="op">=</span> df_all_edges_with_cell_types[(df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type Level'</span>] <span class="op">==</span> cell_type_level) <span class="op">&amp;</span> (df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type'</span>] <span class="op">==</span> anchor_cell_type_dict[cell_type_level])]</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1392,12 +1391,12 @@ Melanoma In Situ: 1</code></pre>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    min_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'min'</span>),</span>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    max_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'max'</span>)</span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1411,7 +1410,7 @@ Melanoma In Situ: 1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>epithelial cell</td>
 <td>Invasive Margin</td>
 <td>12.513268</td>
@@ -1420,7 +1419,7 @@ Melanoma In Situ: 1</code></pre>
 <td>47.494145</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>epithelial cell</td>
 <td>Melanoma In Situ</td>
 <td>39.799206</td>
@@ -1429,7 +1428,7 @@ Melanoma In Situ: 1</code></pre>
 <td>101.840063</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>immune cell</td>
 <td>Invasive Margin</td>
 <td>16.909552</td>
@@ -1438,7 +1437,7 @@ Melanoma In Situ: 1</code></pre>
 <td>157.657774</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>immune cell</td>
 <td>Melanoma In Situ</td>
 <td>19.275017</td>
@@ -1447,7 +1446,7 @@ Melanoma In Situ: 1</code></pre>
 <td>123.084108</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>unknown cell</td>
 <td>Invasive Margin</td>
 <td>49.094668</td>
@@ -1456,7 +1455,7 @@ Melanoma In Situ: 1</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>unknown cell</td>
 <td>Melanoma In Situ</td>
 <td>30.822976</td>
@@ -1470,8 +1469,8 @@ Melanoma In Situ: 1</code></pre>
 </div>
 </div>
 </div>
-<div id="d7c14a0b" class="cell" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top five and bottom five cell types with respect to mean distance in each unique region separately.</span></span>
+<div id="b16640f5" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top five and bottom five cell types with respect to mean distance in each unique region separately.</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_top_bottom_cell_types_by_mean(df, cell_type_level, unique_region, top_n<span class="op">=</span><span class="dv">5</span>):</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter the DataFrame for the specified unique region and cell type level</span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    df_filtered <span class="op">=</span> df[df[<span class="st">'Unique Region'</span>] <span class="op">==</span> unique_region]</span>
@@ -1495,7 +1494,7 @@ Melanoma In Situ: 1</code></pre>
 <span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -1523,8 +1522,8 @@ Bottom 5 cell types in Melanoma In Situ:
 1         immune cell      19.275017</code></pre>
 </div>
 </div>
-<div id="62e95421" class="cell" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top five and bottom five cell types with respect to median distance in each unique region separately.</span></span>
+<div id="ae543595" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top five and bottom five cell types with respect to median distance in each unique region separately.</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_top_bottom_cell_types_by_median(df, cell_type_level, unique_region, top_n<span class="op">=</span><span class="dv">5</span>):</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Filter the DataFrame for the specified unique region and cell type level</span></span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    df_filtered <span class="op">=</span> df[df[<span class="st">'Unique Region'</span>] <span class="op">==</span> unique_region]</span>
@@ -1548,7 +1547,7 @@ Bottom 5 cell types in Melanoma In Situ:
 <span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -1576,8 +1575,8 @@ Bottom 5 cell types in Melanoma In Situ:
 1         immune cell        14.685411</code></pre>
 </div>
 </div>
-<div id="57522b54" class="cell" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate regional variability</span></span>
+<div id="35bf6648" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate regional variability</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level):</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""    Calculate regional variability for distances in the given DataFrame.</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
@@ -1607,7 +1606,7 @@ Bottom 5 cell types in Melanoma In Situ:
 <span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Cell Type Variability Analysis (sorted by CV):"</span>)</span>
 <span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(cell_type_variability.sort_values(<span class="st">'CV (%)'</span>, ascending<span class="op">=</span><span class="va">False</span>))</span>
 <span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Regional Variability Analysis:
@@ -1627,8 +1626,8 @@ unknown cell         46.02  31.84    69.2
 epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
-<div id="cfcb1bcc" class="cell" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Violin Plot</span></span>
+<div id="63bdb07f" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Violin Plot</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, output_dir, density_norm<span class="op">=</span><span class="st">'area'</span>):</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    sns.set_style(<span class="st">"whitegrid"</span>)</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    sns.set_context(<span class="st">"notebook"</span>, rc<span class="op">=</span>{<span class="st">"grid.linewidth"</span>: <span class="dv">2</span>})</span>
@@ -1664,7 +1663,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>                pad_inches<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1673,8 +1672,8 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="af80818f" class="cell" data-execution_count="29">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots of distribution of distances by cell type and region.</span></span>
+<div id="998e8afa" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots of distribution of distances by cell type and region.</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, output_dir):</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">16</span>, <span class="dv">8</span>))</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    plt.rcParams[<span class="st">"svg.fonttype"</span>] <span class="op">=</span> <span class="st">'none'</span>  <span class="co"># to store text as text, not as path</span></span>
@@ -1705,7 +1704,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>                    pad_inches<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1714,8 +1713,8 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="fe82fa5f" class="cell" data-execution_count="30">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots of distribution of distances by cell type and region.</span></span>
+<div id="f35508db" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplots of distribution of distances by cell type and region.</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, output_dir):</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    pivot_data <span class="op">=</span> df_all_edges_with_cell_type_level.pivot_table(</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">'Distance'</span>,</span>
@@ -1746,7 +1745,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>                    pad_inches<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1755,8 +1754,8 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="42ecec49" class="cell" data-execution_count="31">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Violin Plot per unique region in both small intestine and large intestine. Create for all 8 regions as 8 subplots.</span></span>
+<div id="3619fffc" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Violin Plot per unique region in both small intestine and large intestine. Create for all 8 regions as 8 subplots.</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, output_dir, density_norm<span class="op">=</span><span class="st">"area"</span>):</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    sns.set_style(<span class="st">"whitegrid"</span>)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    sns.set_context(<span class="st">"notebook"</span>, rc<span class="op">=</span>{<span class="st">"grid.linewidth"</span>: <span class="dv">1</span>})</span>
@@ -1803,7 +1802,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1812,8 +1811,8 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="0f2e181c" class="cell" data-execution_count="32">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Split Violin Plot</span></span>
+<div id="fd735ead" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate Split Violin Plot</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, output_dir, density_norm<span class="op">=</span><span class="st">"area"</span>):</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    sns.set_style(<span class="st">"whitegrid"</span>)</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    sns.set_context(<span class="st">"notebook"</span>, rc<span class="op">=</span>{<span class="st">"grid.linewidth"</span>: <span class="dv">2</span>})</span>
@@ -1849,7 +1848,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a>                pad_inches<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
 <span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1861,8 +1860,8 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </section>
 <section id="level-two-cell-type-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="level-two-cell-type-analysis">Level Two Cell Type Analysis</h3>
-<div id="724e0e6d" class="cell" data-execution_count="33">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
+<div id="392da93c" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>cell_type_level <span class="op">=</span> <span class="st">'Level Two Cell Type'</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_type_level <span class="op">=</span> df_all_edges_with_cell_types[(df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type Level'</span>] <span class="op">==</span> cell_type_level) <span class="op">&amp;</span> (df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type'</span>] <span class="op">==</span> anchor_cell_type_dict[cell_type_level])]</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1872,12 +1871,12 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    min_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'min'</span>),</span>
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    max_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'max'</span>)</span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1891,7 +1890,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>abnormal cell</td>
 <td>Invasive Margin</td>
 <td>53.754723</td>
@@ -1900,7 +1899,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>abnormal cell</td>
 <td>Melanoma In Situ</td>
 <td>24.330461</td>
@@ -1909,7 +1908,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>96.398198</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>b cell</td>
 <td>Invasive Margin</td>
 <td>16.133313</td>
@@ -1918,7 +1917,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>60.873911</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>b cell</td>
 <td>Melanoma In Situ</td>
 <td>13.188554</td>
@@ -1927,7 +1926,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>54.089116</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>dendritic cell</td>
 <td>Invasive Margin</td>
 <td>18.041947</td>
@@ -1936,7 +1935,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>157.657774</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>dendritic cell</td>
 <td>Melanoma In Situ</td>
 <td>21.917961</td>
@@ -1945,7 +1944,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>123.084108</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>keratinocyte</td>
 <td>Invasive Margin</td>
 <td>12.513268</td>
@@ -1954,7 +1953,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>47.494145</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>keratinocyte</td>
 <td>Melanoma In Situ</td>
 <td>39.799206</td>
@@ -1963,7 +1962,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>101.840063</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>langerhans cell</td>
 <td>Melanoma In Situ</td>
 <td>19.308598</td>
@@ -1972,7 +1971,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>32.988076</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>leukocyte</td>
 <td>Invasive Margin</td>
 <td>14.150628</td>
@@ -1981,7 +1980,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>122.610377</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>macrophage</td>
 <td>Invasive Margin</td>
 <td>12.816781</td>
@@ -1990,7 +1989,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>140.116350</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>macrophage</td>
 <td>Melanoma In Situ</td>
 <td>19.304383</td>
@@ -1999,7 +1998,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>105.486349</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>myeloid cell</td>
 <td>Invasive Margin</td>
 <td>36.488780</td>
@@ -2008,7 +2007,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>56.290766</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">13</th>
+<td data-quarto-table-cell-role="th">13</td>
 <td>t cell</td>
 <td>Invasive Margin</td>
 <td>16.649191</td>
@@ -2017,7 +2016,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>156.967478</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">14</th>
+<td data-quarto-table-cell-role="th">14</td>
 <td>t cell</td>
 <td>Melanoma In Situ</td>
 <td>16.647669</td>
@@ -2026,7 +2025,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>94.944415</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15</th>
+<td data-quarto-table-cell-role="th">15</td>
 <td>unknown cell</td>
 <td>Invasive Margin</td>
 <td>19.548098</td>
@@ -2035,7 +2034,7 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 <td>157.564532</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16</th>
+<td data-quarto-table-cell-role="th">16</td>
 <td>unknown cell</td>
 <td>Melanoma In Situ</td>
 <td>32.603833</td>
@@ -2049,15 +2048,15 @@ epithelial cell      38.94  16.67    42.8</code></pre>
 </div>
 </div>
 </div>
-<div id="7c5b84b0" class="cell" data-execution_count="34">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
+<div id="24145691" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>unique_regions <span class="op">=</span> df_all_edges_with_cell_type_level[<span class="st">'Unique Region'</span>].unique()</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> unique_regions:</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    top_bottom <span class="op">=</span> get_top_bottom_cell_types_by_mean(df_all_edges_with_cell_type_level, cell_type_level, region)</span>
 <span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -2093,15 +2092,15 @@ Bottom 5 cell types in Melanoma In Situ:
 1              b cell      13.188554</code></pre>
 </div>
 </div>
-<div id="272345c9" class="cell" data-execution_count="35">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
+<div id="40471509" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>unique_regions <span class="op">=</span> df_all_edges_with_cell_type_level[<span class="st">'Unique Region'</span>].unique()</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> unique_regions:</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    top_bottom <span class="op">=</span> get_top_bottom_cell_types_by_median(df_all_edges_with_cell_type_level, cell_type_level, region)</span>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -2137,8 +2136,8 @@ Bottom 5 cell types in Melanoma In Situ:
 1              b cell         9.952653</code></pre>
 </div>
 </div>
-<div id="06e912af" class="cell" data-execution_count="36">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ea90298d" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Regional Variability Analysis:
@@ -2165,8 +2164,8 @@ keratinocyte         38.94  16.67    42.8
 langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
-<div id="66131385" class="cell" data-execution_count="37">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="0ca7087d" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2175,8 +2174,8 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="f1f84eea" class="cell" data-execution_count="38">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="6df661ac" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2185,8 +2184,8 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="3e186d56" class="cell" data-execution_count="39">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c244e098" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2195,8 +2194,8 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="e72b1042" class="cell" data-execution_count="40">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># Or, density_norm="count" or "area" based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="9b1425f9" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># Or, density_norm="count" or "area" based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2205,8 +2204,8 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="6e3ae1bf" class="cell" data-execution_count="41">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="c99bd3ce" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2218,8 +2217,8 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </section>
 <section id="level-three-cell-type-analysis" class="level3">
 <h3 class="anchored" data-anchor-id="level-three-cell-type-analysis">Level Three Cell Type Analysis</h3>
-<div id="d39f4dfa" class="cell" data-execution_count="42">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
+<div id="70d7e292" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mean, median, minimum, maximum distance per cell type in all unique regions.</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>cell_type_level <span class="op">=</span> <span class="st">'Level Three Cell Type'</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>df_all_edges_with_cell_type_level <span class="op">=</span> df_all_edges_with_cell_types[(df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type Level'</span>] <span class="op">==</span> cell_type_level) <span class="op">&amp;</span> (df_all_edges_with_cell_types[<span class="st">'Anchor Cell Type'</span>] <span class="op">==</span> anchor_cell_type_dict[cell_type_level])]</span>
 <span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -2229,12 +2228,12 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    min_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'min'</span>),</span>
 <span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    max_distance<span class="op">=</span>(<span class="st">'Distance'</span>, <span class="st">'max'</span>)</span>
 <span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>df_distance_stats_cell_type_level</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2248,7 +2247,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">0</th>
+<td data-quarto-table-cell-role="th">0</td>
 <td>b cell</td>
 <td>Invasive Margin</td>
 <td>16.133313</td>
@@ -2257,7 +2256,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>60.873911</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">1</th>
+<td data-quarto-table-cell-role="th">1</td>
 <td>b cell</td>
 <td>Melanoma In Situ</td>
 <td>13.188554</td>
@@ -2266,7 +2265,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>54.089116</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">2</th>
+<td data-quarto-table-cell-role="th">2</td>
 <td>dendritic cell</td>
 <td>Invasive Margin</td>
 <td>18.041947</td>
@@ -2275,7 +2274,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>157.657774</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">3</th>
+<td data-quarto-table-cell-role="th">3</td>
 <td>dendritic cell</td>
 <td>Melanoma In Situ</td>
 <td>16.444097</td>
@@ -2284,7 +2283,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>113.986184</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">4</th>
+<td data-quarto-table-cell-role="th">4</td>
 <td>dendritic cell:cd11b+</td>
 <td>Melanoma In Situ</td>
 <td>27.756263</td>
@@ -2293,7 +2292,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>123.084108</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">5</th>
+<td data-quarto-table-cell-role="th">5</td>
 <td>keratinocyte</td>
 <td>Invasive Margin</td>
 <td>12.513268</td>
@@ -2302,7 +2301,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>47.494145</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">6</th>
+<td data-quarto-table-cell-role="th">6</td>
 <td>keratinocyte</td>
 <td>Melanoma In Situ</td>
 <td>39.799206</td>
@@ -2311,7 +2310,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>101.840063</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">7</th>
+<td data-quarto-table-cell-role="th">7</td>
 <td>langerhans cell</td>
 <td>Melanoma In Situ</td>
 <td>19.308598</td>
@@ -2320,7 +2319,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>32.988076</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">8</th>
+<td data-quarto-table-cell-role="th">8</td>
 <td>leukocyte</td>
 <td>Invasive Margin</td>
 <td>14.150628</td>
@@ -2329,7 +2328,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>122.610377</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">9</th>
+<td data-quarto-table-cell-role="th">9</td>
 <td>macrophage</td>
 <td>Invasive Margin</td>
 <td>12.816781</td>
@@ -2338,7 +2337,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>140.116350</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">10</th>
+<td data-quarto-table-cell-role="th">10</td>
 <td>macrophage</td>
 <td>Melanoma In Situ</td>
 <td>19.304383</td>
@@ -2347,7 +2346,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>105.486349</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">11</th>
+<td data-quarto-table-cell-role="th">11</td>
 <td>myeloid cell</td>
 <td>Invasive Margin</td>
 <td>36.488780</td>
@@ -2356,7 +2355,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>56.290766</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">12</th>
+<td data-quarto-table-cell-role="th">12</td>
 <td>t cell</td>
 <td>Invasive Margin</td>
 <td>18.817402</td>
@@ -2365,7 +2364,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>94.281492</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">13</th>
+<td data-quarto-table-cell-role="th">13</td>
 <td>t cell</td>
 <td>Melanoma In Situ</td>
 <td>14.458865</td>
@@ -2374,7 +2373,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>94.944415</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">14</th>
+<td data-quarto-table-cell-role="th">14</td>
 <td>t cell:cd4+</td>
 <td>Invasive Margin</td>
 <td>16.783732</td>
@@ -2383,7 +2382,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>156.967478</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">15</th>
+<td data-quarto-table-cell-role="th">15</td>
 <td>t cell:cd4+</td>
 <td>Melanoma In Situ</td>
 <td>15.262424</td>
@@ -2392,7 +2391,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>81.476293</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">16</th>
+<td data-quarto-table-cell-role="th">16</td>
 <td>t cell:memory</td>
 <td>Invasive Margin</td>
 <td>18.882762</td>
@@ -2401,7 +2400,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>146.884635</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">17</th>
+<td data-quarto-table-cell-role="th">17</td>
 <td>t cell:memory</td>
 <td>Melanoma In Situ</td>
 <td>19.229108</td>
@@ -2410,7 +2409,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>69.390221</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">18</th>
+<td data-quarto-table-cell-role="th">18</td>
 <td>t cell:regulatory</td>
 <td>Invasive Margin</td>
 <td>13.805652</td>
@@ -2419,7 +2418,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>108.511577</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">19</th>
+<td data-quarto-table-cell-role="th">19</td>
 <td>t cell:regulatory</td>
 <td>Melanoma In Situ</td>
 <td>15.844224</td>
@@ -2428,7 +2427,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>56.987161</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">20</th>
+<td data-quarto-table-cell-role="th">20</td>
 <td>tumor cell</td>
 <td>Invasive Margin</td>
 <td>53.754723</td>
@@ -2437,7 +2436,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>164.060518</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">21</th>
+<td data-quarto-table-cell-role="th">21</td>
 <td>tumor cell</td>
 <td>Melanoma In Situ</td>
 <td>24.330461</td>
@@ -2446,7 +2445,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>96.398198</td>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th">22</th>
+<td data-quarto-table-cell-role="th">22</td>
 <td>unknown cell</td>
 <td>Invasive Margin</td>
 <td>19.548098</td>
@@ -2455,7 +2454,7 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 <td>157.564532</td>
 </tr>
 <tr class="even">
-<th data-quarto-table-cell-role="th">23</th>
+<td data-quarto-table-cell-role="th">23</td>
 <td>unknown cell</td>
 <td>Melanoma In Situ</td>
 <td>32.603833</td>
@@ -2469,15 +2468,15 @@ langerhans cell      19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="5b52d799" class="cell" data-execution_count="43">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
+<div id="fd8fbac0" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>unique_regions <span class="op">=</span> df_all_edges_with_cell_type_level[<span class="st">'Unique Region'</span>].unique()</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> unique_regions:</span>
 <span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    top_bottom <span class="op">=</span> get_top_bottom_cell_types_by_mean(df_all_edges_with_cell_type_level, cell_type_level, region)</span>
 <span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -2513,15 +2512,15 @@ Bottom 5 cell types in Melanoma In Situ:
 0                b cell      13.188554</code></pre>
 </div>
 </div>
-<div id="9234d211" class="cell" data-execution_count="44">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
+<div id="4dddd64f" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get top and bottom cell types for each unique region in the dataset.</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>unique_regions <span class="op">=</span> df_all_edges_with_cell_type_level[<span class="st">'Unique Region'</span>].unique()</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> unique_regions:</span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    top_bottom <span class="op">=</span> get_top_bottom_cell_types_by_median(df_all_edges_with_cell_type_level, cell_type_level, region)</span>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Top 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
 <span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">0</span>])</span>
 <span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Bottom 5 cell types in </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss">:"</span>)</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(top_bottom[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Top 5 cell types in Invasive Margin:
@@ -2557,8 +2556,8 @@ Bottom 5 cell types in Melanoma In Situ:
 0                b cell         9.952653</code></pre>
 </div>
 </div>
-<div id="5fa04825" class="cell" data-execution_count="45">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="ae945977" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Regional Variability Analysis:
@@ -2589,8 +2588,8 @@ keratinocyte           38.94  16.67    42.8
 langerhans cell        19.31   6.59    34.1</code></pre>
 </div>
 </div>
-<div id="5ea65653" class="cell" data-execution_count="46">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="17397fc5" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">'area'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2599,8 +2598,8 @@ langerhans cell        19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="8ace65b8" class="cell" data-execution_count="47">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="de678695" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_boxplots_by_region(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2609,8 +2608,8 @@ langerhans cell        19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="e9031d39" class="cell" data-execution_count="48">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="864ba762" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>plot_distance_distribution_heatmap(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2619,8 +2618,8 @@ langerhans cell        19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="4b2e56e0" class="cell" data-execution_count="49">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># Or, density_norm="count" or "area" based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="afc9439a" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plot_violin_plots_all_regions(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># Or, density_norm="count" or "area" based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2629,8 +2628,8 @@ langerhans cell        19.31   6.59    34.1</code></pre>
 </div>
 </div>
 </div>
-<div id="af5392db" class="cell" data-execution_count="50">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="225c05f8" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plot_violin_cells_per_celltype_split_by_condition(df_all_edges_with_cell_type_level, cell_type_level, os.path.join(basepath, figures_output_dir), density_norm<span class="op">=</span><span class="st">"count"</span>) <span class="co"># density_norm="count" or "area" can be used based on preference.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -2646,243 +2645,236 @@ langerhans cell        19.31   6.59    34.1</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
-        }
-      }
-      return false;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
     }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
     }
-    const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/cns-iu\.github\.io\/hra-cell-distance-analysis");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/cns-iu\.github\.io\/hra-cell-distance-analysis");
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2890,161 +2882,185 @@ langerhans cell        19.31   6.59    34.1</code></pre>
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
 </div> <!-- /content -->
 
 

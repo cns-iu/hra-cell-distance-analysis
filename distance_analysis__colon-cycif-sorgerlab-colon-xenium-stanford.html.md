@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "colon-cycif-sorgerlab-xenium-stanford" # This variable is used only for figures. 
 dataset_dir_1 = "colon-xenium-stanford" # This variable is used for data loading dataset 1.
 dataset_dir_2 = "colon-cycif-sorgerlab" # This variable is used for data loading dataset 2.
@@ -99,6 +99,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -180,92 +183,52 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1077.96</td>
-<td>2556.82</td>
-<td>Immature Goblet</td>
-<td>goblet cell:immature</td>
-<td>goblet cell:immature</td>
-<td>CL:0000160</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
+<td>Cancer Associated Fibroblasts</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast:cancer associated</td>
+<td>CL:0000057</td>
 <td>skos:narrowMatch</td>
-<td>goblet cell</td>
-<td>goblet cell</td>
-<td>CL:0000160</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
 <td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1079.01</td>
-<td>2534.23</td>
-<td>Tuft</td>
-<td>tuft cell:intestinal</td>
-<td>intestinal tuft cell</td>
-<td>CL:0019032</td>
+<td>1208.482473</td>
+<td>2027.317946</td>
+<td>Adipocytes</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
 <td>skos:exactMatch</td>
-<td>tuft cell</td>
-<td>brush cell</td>
-<td>CL:0002204</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
 <td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>1082.65</td>
-<td>2554.09</td>
-<td>TA1</td>
-<td>transit amplifying cell</td>
-<td>transit amplifying cell</td>
-<td>CL:0009010</td>
-<td>skos:exactMatch</td>
-<td>enterocyte</td>
-<td>enterocyte</td>
-<td>CL:0000584</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>layer_3</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>1091.89</td>
-<td>2547.38</td>
-<td>Immature Goblet</td>
-<td>goblet cell:immature</td>
-<td>goblet cell:immature</td>
-<td>CL:0000160</td>
-<td>skos:narrowMatch</td>
-<td>goblet cell</td>
-<td>goblet cell</td>
-<td>CL:0000160</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>layer_3</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>1253.46</td>
-<td>2554.64</td>
-<td>CD4+</td>
-<td>t cell:cd4+ alpha-beta</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
+<td>1212.620290</td>
+<td>2028.663096</td>
+<td>CD8+</td>
+<td>t cell:cd8+ alpha-beta effector memory</td>
+<td>effector memory CD8-positive, alpha-beta T cell</td>
+<td>CL:0000913</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -275,7 +238,47 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>1217.565574</td>
+<td>2027.562171</td>
+<td>Cancer Associated Fibroblasts</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast:cancer associated</td>
+<td>CL:0000057</td>
+<td>skos:narrowMatch</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>layer_16</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>1224.003659</td>
+<td>2024.971268</td>
+<td>Adipocytes</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 </tbody>
@@ -317,6 +320,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -401,92 +405,52 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1077.96</td>
-<td>2556.82</td>
-<td>Immature Goblet</td>
-<td>goblet cell:immature</td>
-<td>goblet cell:immature</td>
-<td>CL:0000160</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
+<td>Cancer Associated Fibroblasts</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast:cancer associated</td>
+<td>CL:0000057</td>
 <td>skos:narrowMatch</td>
-<td>goblet cell</td>
-<td>goblet cell</td>
-<td>CL:0000160</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
 <td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1079.01</td>
-<td>2534.23</td>
-<td>Tuft</td>
-<td>tuft cell:intestinal</td>
-<td>intestinal tuft cell</td>
-<td>CL:0019032</td>
+<td>1208.482473</td>
+<td>2027.317946</td>
+<td>Adipocytes</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
 <td>skos:exactMatch</td>
-<td>tuft cell</td>
-<td>brush cell</td>
-<td>CL:0002204</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
 <td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>1082.65</td>
-<td>2554.09</td>
-<td>TA1</td>
-<td>transit amplifying cell</td>
-<td>transit amplifying cell</td>
-<td>CL:0009010</td>
-<td>skos:exactMatch</td>
-<td>enterocyte</td>
-<td>enterocyte</td>
-<td>CL:0000584</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>layer_3</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>1091.89</td>
-<td>2547.38</td>
-<td>Immature Goblet</td>
-<td>goblet cell:immature</td>
-<td>goblet cell:immature</td>
-<td>CL:0000160</td>
-<td>skos:narrowMatch</td>
-<td>goblet cell</td>
-<td>goblet cell</td>
-<td>CL:0000160</td>
-<td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
-<td>skos:exactMatch</td>
-<td>layer_3</td>
-<td>colon-xenium-stanford</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>1253.46</td>
-<td>2554.64</td>
-<td>CD4+</td>
-<td>t cell:cd4+ alpha-beta</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
+<td>1212.620290</td>
+<td>2028.663096</td>
+<td>CD8+</td>
+<td>t cell:cd8+ alpha-beta effector memory</td>
+<td>effector memory CD8-positive, alpha-beta T cell</td>
+<td>CL:0000913</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -496,7 +460,47 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>1217.565574</td>
+<td>2027.562171</td>
+<td>Cancer Associated Fibroblasts</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast:cancer associated</td>
+<td>CL:0000057</td>
+<td>skos:narrowMatch</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>layer_16</td>
+<td>colon-xenium-stanford</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>1224.003659</td>
+<td>2024.971268</td>
+<td>Adipocytes</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>adipocyte</td>
+<td>adipocyte</td>
+<td>CL:0000136</td>
+<td>skos:exactMatch</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
+<td>skos:exactMatch</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 </tr>
 </tbody>
@@ -580,8 +584,11 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['xenium-stanford' 'cycif-sorgerlab']
+    <StringArray>
+    ['xenium-stanford', 'cycif-sorgerlab']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
@@ -629,14 +636,14 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1077.96</td>
-<td>2556.82</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
 <td>0</td>
-<td>1056.03</td>
-<td>2582.37</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>33.670869</td>
-<td>layer_3</td>
+<td>33.303289</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
@@ -644,14 +651,14 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
 <td>1</td>
-<td>1079.01</td>
-<td>2534.23</td>
+<td>1208.482473</td>
+<td>2027.317946</td>
 <td>0</td>
-<td>1126.32</td>
-<td>2518.75</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>49.778173</td>
-<td>layer_3</td>
+<td>14.552627</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
@@ -659,14 +666,14 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
 <td>2</td>
-<td>1082.65</td>
-<td>2554.09</td>
+<td>1212.620290</td>
+<td>2028.663096</td>
 <td>0</td>
-<td>1056.03</td>
-<td>2582.37</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>38.837904</td>
-<td>layer_3</td>
+<td>18.246197</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
@@ -674,29 +681,29 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
 <td>3</td>
-<td>1091.89</td>
-<td>2547.38</td>
+<td>1217.565574</td>
+<td>2027.562171</td>
 <td>0</td>
-<td>1126.32</td>
-<td>2518.75</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>44.778363</td>
-<td>layer_3</td>
+<td>23.308859</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>5</td>
-<td>1104.66</td>
-<td>2546.60</td>
+<td>4</td>
+<td>1224.003659</td>
+<td>2024.971268</td>
 <td>0</td>
-<td>1126.32</td>
-<td>2518.75</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>35.281413</td>
-<td>layer_3</td>
+<td>30.144803</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
@@ -781,8 +788,11 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['xenium-stanford' 'cycif-sorgerlab']
+    <StringArray>
+    ['xenium-stanford', 'cycif-sorgerlab']
+    Length: 2, dtype: str
     Total number of unique regions: 2
 
     Number of unique datasets per unique region:
@@ -892,22 +902,22 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1077.96</td>
-<td>2556.82</td>
-<td>Immature Goblet</td>
-<td>goblet cell:immature</td>
-<td>goblet cell:immature</td>
-<td>CL:0000160</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
+<td>Cancer Associated Fibroblasts</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast:cancer associated</td>
+<td>CL:0000057</td>
 <td>skos:narrowMatch</td>
-<td>goblet cell</td>
-<td>goblet cell</td>
-<td>CL:0000160</td>
+<td>fibroblast</td>
+<td>fibroblast</td>
+<td>CL:0000057</td>
 <td>skos:exactMatch</td>
-<td>epithelial cell</td>
-<td>epithelial cell</td>
-<td>CL:0000066</td>
+<td>mesenchymal cell</td>
+<td>mesenchymal cell</td>
+<td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>layer_3</td>
+<td>layer_16</td>
 <td>colon-xenium-stanford</td>
 <td>xenium-stanford</td>
 </tr>
@@ -956,14 +966,14 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1077.96</td>
-<td>2556.82</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
 <td>0</td>
-<td>1056.03</td>
-<td>2582.37</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>33.670869</td>
-<td>layer_3</td>
+<td>33.303289</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>colon-xenium-stanford</td>
@@ -1017,19 +1027,19 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1077.96</td>
-<td>2556.82</td>
+<td>1222.180907</td>
+<td>2013.109119</td>
 <td>0</td>
-<td>1056.03</td>
-<td>2582.37</td>
+<td>1194.655774</td>
+<td>2031.856816</td>
 <td>0</td>
-<td>33.670869</td>
-<td>layer_3</td>
+<td>33.303289</td>
+<td>layer_16</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
-<td>goblet cell:immature</td>
-<td>goblet cell</td>
-<td>epithelial cell</td>
+<td>fibroblast:cancer associated</td>
+<td>fibroblast</td>
+<td>mesenchymal cell</td>
 <td>colon-xenium-stanford</td>
 <td>xenium-stanford</td>
 </tr>
@@ -1359,6 +1369,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in xenium-stanford:
       Level One Cell Type  mean_distance
     0     epithelial cell      33.029849
@@ -1416,6 +1427,7 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
 
     Top 5 cell types in xenium-stanford:
       Level One Cell Type  median_distance
@@ -1480,6 +1492,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1993,6 +2006,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in xenium-stanford:
             Level Two Cell Type  mean_distance
     5                enterocyte      35.016424
@@ -2036,6 +2050,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in xenium-stanford:
             Level Two Cell Type  median_distance
     5                enterocyte        30.665961
@@ -2071,6 +2086,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2706,6 +2722,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in xenium-stanford:
         Level Three Cell Type  mean_distance
     5              enterocyte      50.881839
@@ -2749,6 +2766,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in xenium-stanford:
         Level Three Cell Type  median_distance
     5              enterocyte        44.856792
@@ -2785,6 +2803,7 @@ for region in unique_regions:
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
 
+
     Regional Variability Analysis:
     Mean: Average distance in each region
     Std: Standard deviation of distances
@@ -2812,14 +2831,14 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     fibroblast:crypt 1                         20.94  15.58    74.4
     t cell:cd8+                                47.83  35.45    74.1
     glial cell                                 22.06  16.31    73.9
-    fibroblast:wnt5b+ villus                   22.92  16.86    73.6
     t cell:cd8+ pdl1+                          36.84  27.12    73.6
+    fibroblast:wnt5b+ villus                   22.92  16.86    73.6
     myofibroblast cell:smooth muscle 2         23.50  17.24    73.4
     t cell:regulatory                          33.78  24.67    73.0
     adipocyte                                  19.31  14.10    73.0
     plasma cell                                17.20  12.53    72.8
-    myofibroblast cell:smooth muscle 1         23.47  16.78    71.5
     myofibroblast                              48.55  34.69    71.5
+    myofibroblast cell:smooth muscle 1         23.47  16.78    71.5
     macrophage                                 17.96  12.78    71.2
     fibroblast:crypt 4                         19.26  13.53    70.2
     fibroblast:cancer associated               18.84  13.19    70.0
@@ -2842,8 +2861,8 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     neoplastic cell                            59.78  36.97    61.8
     enterocyte:immature                        40.56  24.94    61.5
     enteroendocrine cell                       28.99  17.56    60.6
-    transit amplifying cell                    31.65  19.06    60.2
     b cell:naive                               24.73  14.89    60.2
+    transit amplifying cell                    31.65  19.06    60.2
     epithelial cell:ki67+ proliferating tumor  54.52  32.27    59.2
     enteroycte:best4+                          37.29  21.83    58.5
     enterocyte:progenitor                      33.81  19.47    57.6

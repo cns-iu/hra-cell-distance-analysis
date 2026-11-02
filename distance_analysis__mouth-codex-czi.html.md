@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "mouth-codex-czi"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -156,88 +159,31 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>2466.85</td>
-<td>580.95</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
+<td>784.454792</td>
+<td>2353.631921</td>
+<td>Suprabasal Keratinocytes</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>2421.30</td>
-<td>629.05</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">2</td>
-<td>2459.00</td>
-<td>681.80</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>2418.20</td>
-<td>700.00</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>2444.70</td>
-<td>768.30</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
+<td>843.758791</td>
+<td>2356.078543</td>
+<td>CD8 T Cells</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -247,7 +193,64 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">2</td>
+<td>905.854375</td>
+<td>2318.589743</td>
+<td>Acinar Cells</td>
+<td>acinar cell of salivary gland</td>
+<td>acinar cell of salivary gland</td>
+<td>CL:0002623</td>
+<td>skos:exactMatch</td>
+<td>gland epithelium cell</td>
+<td>glandular secretory epithelial cell</td>
+<td>CL:0000150</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>892.738772</td>
+<td>2332.265856</td>
+<td>Others</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>262.828999</td>
+<td>2436.285460</td>
+<td>Plasma Cells</td>
+<td>plasma cell</td>
+<td>plasma cell</td>
+<td>CL:0000786</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
 </tr>
 </tbody>
 </table>
@@ -288,6 +291,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -379,88 +383,31 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>2466.85</td>
-<td>580.95</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
+<td>784.454792</td>
+<td>2353.631921</td>
+<td>Suprabasal Keratinocytes</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>2421.30</td>
-<td>629.05</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">2</td>
-<td>2459.00</td>
-<td>681.80</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>2418.20</td>
-<td>700.00</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">4</td>
-<td>2444.70</td>
-<td>768.30</td>
-<td>Treg</td>
-<td>t cell:regulatory</td>
-<td>regulatory T cell</td>
-<td>CL:0000815</td>
+<td>843.758791</td>
+<td>2356.078543</td>
+<td>CD8 T Cells</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -470,7 +417,64 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">2</td>
+<td>905.854375</td>
+<td>2318.589743</td>
+<td>Acinar Cells</td>
+<td>acinar cell of salivary gland</td>
+<td>acinar cell of salivary gland</td>
+<td>CL:0002623</td>
+<td>skos:exactMatch</td>
+<td>gland epithelium cell</td>
+<td>glandular secretory epithelial cell</td>
+<td>CL:0000150</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>892.738772</td>
+<td>2332.265856</td>
+<td>Others</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>Parotid_3</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">4</td>
+<td>262.828999</td>
+<td>2436.285460</td>
+<td>Plasma Cells</td>
+<td>plasma cell</td>
+<td>plasma cell</td>
+<td>CL:0000786</td>
+<td>skos:exactMatch</td>
+<td>b cell</td>
+<td>B cell</td>
+<td>CL:0000236</td>
+<td>skos:exactMatch</td>
+<td>immune cell</td>
+<td>leukocyte</td>
+<td>CL:0000738</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
 </tr>
 </tbody>
 </table>
@@ -511,28 +515,28 @@ df_all_nodes[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -554,17 +558,23 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Buccal Mucosa And Minor Salivary Glands' 'Gingiva' 'Parotid'
-     'Submandibular' 'Tongue']
+    <StringArray>
+    [                                'Parotid',
+                               'Submandibular',
+                                      'Tongue',
+     'Buccal Mucosa And Minor Salivary Glands',
+                                     'Gingiva']
+    Length: 5, dtype: str
     Total number of unique regions: 5
 
     Number of unique datasets per unique region:
-    Buccal Mucosa And Minor Salivary Glands: 2
-    Gingiva: 2
     Parotid: 4
     Submandibular: 2
     Tongue: 3
+    Buccal Mucosa And Minor Salivary Glands: 2
+    Gingiva: 2
 
 ## Process datasets to add region information to Edges files.
 
@@ -606,72 +616,72 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>2466.85</td>
-<td>580.950</td>
+<td>784.454792</td>
+<td>2353.631921</td>
 <td>0</td>
-<td>2600.55</td>
-<td>598.700</td>
+<td>825.610749</td>
+<td>2440.336116</td>
 <td>0</td>
-<td>134.873098</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
+<td>95.976196</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>759</td>
-<td>2595.45</td>
-<td>407.850</td>
+<td>66</td>
+<td>792.559905</td>
+<td>2442.900688</td>
 <td>0</td>
-<td>2689.10</td>
-<td>404.285</td>
+<td>825.610749</td>
+<td>2440.336116</td>
 <td>0</td>
-<td>93.717830</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
+<td>33.150193</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>782</td>
-<td>2599.45</td>
-<td>413.290</td>
+<td>429</td>
+<td>620.220791</td>
+<td>2553.113284</td>
 <td>0</td>
-<td>2689.10</td>
-<td>404.285</td>
+<td>670.795326</td>
+<td>2588.414575</td>
 <td>0</td>
-<td>90.101124</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
+<td>61.676290</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>840</td>
-<td>2588.60</td>
-<td>414.555</td>
+<td>430</td>
+<td>610.158503</td>
+<td>2555.369388</td>
 <td>0</td>
-<td>2689.10</td>
-<td>404.285</td>
+<td>670.795326</td>
+<td>2588.414575</td>
 <td>0</td>
-<td>101.023378</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
+<td>69.056562</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>869</td>
-<td>2583.50</td>
-<td>419.190</td>
+<td>431</td>
+<td>613.833074</td>
+<td>2555.472489</td>
 <td>0</td>
-<td>2689.10</td>
-<td>404.285</td>
+<td>670.795326</td>
+<td>2588.414575</td>
 <td>0</td>
-<td>106.646702</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
+<td>65.801818</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -710,28 +720,28 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -753,17 +763,23 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['Buccal Mucosa And Minor Salivary Glands' 'Gingiva' 'Parotid'
-     'Submandibular' 'Tongue']
+    <StringArray>
+    [                                'Parotid',
+                               'Submandibular',
+                                      'Tongue',
+     'Buccal Mucosa And Minor Salivary Glands',
+                                     'Gingiva']
+    Length: 5, dtype: str
     Total number of unique regions: 5
 
     Number of unique datasets per unique region:
-    Buccal Mucosa And Minor Salivary Glands: 2
-    Gingiva: 2
     Parotid: 4
     Submandibular: 2
     Tongue: 3
+    Buccal Mucosa And Minor Salivary Glands: 2
+    Gingiva: 2
 
 ``` python
 df_all_edges_with_cell_types['Unique Region'] = df_all_edges_with_cell_types['Dataset'].map(region_map)
@@ -796,28 +812,28 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -867,23 +883,23 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>2466.85</td>
-<td>580.95</td>
-<td>Others</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>784.454792</td>
+<td>2353.631921</td>
+<td>Suprabasal Keratinocytes</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>CL:0000312</td>
+<td>skos:exactMatch</td>
+<td>epithelial cell</td>
+<td>epithelial cell</td>
+<td>CL:0000066</td>
+<td>skos:exactMatch</td>
+<td>Parotid_3</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -929,17 +945,17 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>2466.85</td>
-<td>580.95</td>
+<td>784.454792</td>
+<td>2353.631921</td>
 <td>0</td>
-<td>2600.55</td>
-<td>598.7</td>
+<td>825.610749</td>
+<td>2440.336116</td>
 <td>0</td>
-<td>134.873098</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>95.976196</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -988,20 +1004,20 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>2466.85</td>
-<td>580.95</td>
+<td>784.454792</td>
+<td>2353.631921</td>
 <td>0</td>
-<td>2600.55</td>
-<td>598.7</td>
+<td>825.610749</td>
+<td>2440.336116</td>
 <td>0</td>
-<td>134.873098</td>
-<td>Buccal_Mucosa_And_Minor_Salivary_Glands_1</td>
-<td>endothelial cell of vascular tree</td>
-<td>Level Three Cell Type</td>
-<td>unknown cell</td>
-<td>unknown cell</td>
-<td>unknown cell</td>
-<td>Buccal Mucosa And Minor Salivary Glands</td>
+<td>95.976196</td>
+<td>Parotid_3</td>
+<td>endothelial cell</td>
+<td>Level One Cell Type</td>
+<td>keratinocyte</td>
+<td>keratinocyte</td>
+<td>epithelial cell</td>
+<td>Parotid</td>
 </tr>
 </tbody>
 </table>
@@ -1607,33 +1623,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      47.227324
-    3        unknown cell      37.841632
-    2    mesenchymal cell      25.865052
-    1         immune cell      24.581746
-
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      47.227324
-    3        unknown cell      37.841632
-    2    mesenchymal cell      25.865052
-    1         immune cell      24.581746
-
-    Top 5 cell types in Gingiva:
-      Level One Cell Type  mean_distance
-    1         immune cell      52.854768
-    3        unknown cell      46.744610
-    0     epithelial cell      44.140615
-    2    mesenchymal cell      41.454674
-
-    Bottom 5 cell types in Gingiva:
-      Level One Cell Type  mean_distance
-    1         immune cell      52.854768
-    3        unknown cell      46.744610
-    0     epithelial cell      44.140615
-    2    mesenchymal cell      41.454674
 
     Top 5 cell types in Parotid:
       Level One Cell Type  mean_distance
@@ -1651,19 +1640,19 @@ for region in unique_regions:
     2    mesenchymal cell      24.717051
     3         neural cell      24.032759
 
-    Top 5 cell types in Submandibular:
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
       Level One Cell Type  mean_distance
-    2    mesenchymal cell      42.638145
-    3        unknown cell      31.722377
-    1         immune cell      27.443867
-    0     epithelial cell      23.907224
+    0     epithelial cell      47.227324
+    3        unknown cell      37.841632
+    2    mesenchymal cell      25.865052
+    1         immune cell      24.581746
 
-    Bottom 5 cell types in Submandibular:
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
       Level One Cell Type  mean_distance
-    2    mesenchymal cell      42.638145
-    3        unknown cell      31.722377
-    1         immune cell      27.443867
-    0     epithelial cell      23.907224
+    0     epithelial cell      47.227324
+    3        unknown cell      37.841632
+    2    mesenchymal cell      25.865052
+    1         immune cell      24.581746
 
     Top 5 cell types in Tongue:
       Level One Cell Type  mean_distance
@@ -1678,6 +1667,34 @@ for region in unique_regions:
     2    mesenchymal cell      35.806762
     3        unknown cell      27.503129
     1         immune cell      26.795128
+
+    Top 5 cell types in Submandibular:
+      Level One Cell Type  mean_distance
+    2    mesenchymal cell      42.638145
+    3        unknown cell      31.722377
+    1         immune cell      27.443867
+    0     epithelial cell      23.907224
+
+    Bottom 5 cell types in Submandibular:
+      Level One Cell Type  mean_distance
+    2    mesenchymal cell      42.638145
+    3        unknown cell      31.722377
+    1         immune cell      27.443867
+    0     epithelial cell      23.907224
+
+    Top 5 cell types in Gingiva:
+      Level One Cell Type  mean_distance
+    1         immune cell      52.854768
+    3        unknown cell      46.744610
+    0     epithelial cell      44.140615
+    2    mesenchymal cell      41.454674
+
+    Bottom 5 cell types in Gingiva:
+      Level One Cell Type  mean_distance
+    1         immune cell      52.854768
+    3        unknown cell      46.744610
+    0     epithelial cell      44.140615
+    2    mesenchymal cell      41.454674
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1707,33 +1724,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-      Level One Cell Type  median_distance
-    0     epithelial cell        39.939347
-    3        unknown cell        25.530619
-    2    mesenchymal cell        18.751667
-    1         immune cell        18.289273
-
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-      Level One Cell Type  median_distance
-    0     epithelial cell        39.939347
-    3        unknown cell        25.530619
-    2    mesenchymal cell        18.751667
-    1         immune cell        18.289273
-
-    Top 5 cell types in Gingiva:
-      Level One Cell Type  median_distance
-    1         immune cell        40.612195
-    3        unknown cell        36.358142
-    0     epithelial cell        34.768144
-    2    mesenchymal cell        34.134295
-
-    Bottom 5 cell types in Gingiva:
-      Level One Cell Type  median_distance
-    1         immune cell        40.612195
-    3        unknown cell        36.358142
-    0     epithelial cell        34.768144
-    2    mesenchymal cell        34.134295
 
     Top 5 cell types in Parotid:
       Level One Cell Type  median_distance
@@ -1751,19 +1741,19 @@ for region in unique_regions:
     3         neural cell        20.332039
     2    mesenchymal cell        20.026233
 
-    Top 5 cell types in Submandibular:
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
       Level One Cell Type  median_distance
-    2    mesenchymal cell        32.175398
-    3        unknown cell        25.000625
-    1         immune cell        22.173182
-    0     epithelial cell        20.577384
+    0     epithelial cell        39.939347
+    3        unknown cell        25.530619
+    2    mesenchymal cell        18.751667
+    1         immune cell        18.289273
 
-    Bottom 5 cell types in Submandibular:
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
       Level One Cell Type  median_distance
-    2    mesenchymal cell        32.175398
-    3        unknown cell        25.000625
-    1         immune cell        22.173182
-    0     epithelial cell        20.577384
+    0     epithelial cell        39.939347
+    3        unknown cell        25.530619
+    2    mesenchymal cell        18.751667
+    1         immune cell        18.289273
 
     Top 5 cell types in Tongue:
       Level One Cell Type  median_distance
@@ -1778,6 +1768,34 @@ for region in unique_regions:
     2    mesenchymal cell        26.742008
     3        unknown cell        20.065954
     1         immune cell        18.708086
+
+    Top 5 cell types in Submandibular:
+      Level One Cell Type  median_distance
+    2    mesenchymal cell        32.175398
+    3        unknown cell        25.000625
+    1         immune cell        22.173182
+    0     epithelial cell        20.577384
+
+    Bottom 5 cell types in Submandibular:
+      Level One Cell Type  median_distance
+    2    mesenchymal cell        32.175398
+    3        unknown cell        25.000625
+    1         immune cell        22.173182
+    0     epithelial cell        20.577384
+
+    Top 5 cell types in Gingiva:
+      Level One Cell Type  median_distance
+    1         immune cell        40.612195
+    3        unknown cell        36.358142
+    0     epithelial cell        34.768144
+    2    mesenchymal cell        34.134295
+
+    Bottom 5 cell types in Gingiva:
+      Level One Cell Type  median_distance
+    1         immune cell        40.612195
+    3        unknown cell        36.358142
+    0     epithelial cell        34.768144
+    2    mesenchymal cell        34.134295
 
 ``` python
 # Calculate regional variability
@@ -1812,6 +1830,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2642,53 +2661,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-       Level Two Cell Type  mean_distance
-    3      epithelial cell      69.005527
-    6  natural killer cell      46.769140
-    9         unknown cell      42.374333
-    8               t cell      38.797999
-    4           fibroblast      35.795373
-
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-                        Level Two Cell Type  mean_distance
-    2  endothelial cell of lymphatic vessel      31.266348
-    7                            neutrophil      30.028958
-    5                            macrophage      25.882874
-    1                        dendritic cell      23.820644
-    0                                b cell      23.196496
-
-    Top 5 cell types in Gingiva:
-                         Level Two Cell Type  mean_distance
-    14                                t cell      61.869930
-    7                           keratinocyte      53.520737
-    2                         dendritic cell      53.327090
-    3   endothelial cell of lymphatic vessel      51.530766
-    4                        epithelial cell      49.671535
-
-    Bottom 5 cell types in Gingiva:
-          Level Two Cell Type  mean_distance
-    0               adipocyte      38.921484
-    1                  b cell      38.913598
-    6   gland epithelium cell      38.872536
-    8         langerhans cell      35.348131
-    11     myoepithelial cell      33.597314
-
-    Top 5 cell types in Parotid:
-        Level Two Cell Type  mean_distance
-    12  natural killer cell      63.315905
-    9             mast cell      55.949381
-    14           neutrophil      44.659693
-    16               t cell      40.798968
-    3       epithelial cell      39.288368
-
-    Bottom 5 cell types in Parotid:
-           Level Two Cell Type  mean_distance
-    13  neuroglial cell/neuron      24.591434
-    0                   b cell      22.649857
-    15       perivascular cell      21.881249
-    7          langerhans cell      21.515277
-    1           dendritic cell      21.289953
 
     Top 5 cell types in Submandibular:
       Level Two Cell Type  mean_distance
@@ -2706,6 +2678,22 @@ for region in unique_regions:
     1  endothelial cell of lymphatic vessel      23.177030
     7                            neutrophil      21.857157
 
+    Top 5 cell types in Parotid:
+        Level Two Cell Type  mean_distance
+    12  natural killer cell      63.315905
+    9             mast cell      55.949381
+    14           neutrophil      44.659693
+    16               t cell      40.798968
+    3       epithelial cell      39.288368
+
+    Bottom 5 cell types in Parotid:
+           Level Two Cell Type  mean_distance
+    13  neuroglial cell/neuron      24.591434
+    0                   b cell      22.649857
+    15       perivascular cell      21.881249
+    7          langerhans cell      21.515277
+    1           dendritic cell      21.289953
+
     Top 5 cell types in Tongue:
        Level Two Cell Type  mean_distance
     3      epithelial cell     116.777509
@@ -2722,6 +2710,38 @@ for region in unique_regions:
     9                          unknown cell      33.290598
     0                                b cell      23.064363
 
+    Top 5 cell types in Gingiva:
+                         Level Two Cell Type  mean_distance
+    14                                t cell      61.869930
+    7                           keratinocyte      53.520737
+    2                         dendritic cell      53.327090
+    3   endothelial cell of lymphatic vessel      51.530766
+    4                        epithelial cell      49.671535
+
+    Bottom 5 cell types in Gingiva:
+          Level Two Cell Type  mean_distance
+    0               adipocyte      38.921484
+    1                  b cell      38.913598
+    6   gland epithelium cell      38.872536
+    8         langerhans cell      35.348131
+    11     myoepithelial cell      33.597314
+
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+       Level Two Cell Type  mean_distance
+    3      epithelial cell      69.005527
+    6  natural killer cell      46.769140
+    9         unknown cell      42.374333
+    8               t cell      38.797999
+    4           fibroblast      35.795373
+
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+                        Level Two Cell Type  mean_distance
+    2  endothelial cell of lymphatic vessel      31.266348
+    7                            neutrophil      30.028958
+    5                            macrophage      25.882874
+    1                        dendritic cell      23.820644
+    0                                b cell      23.196496
+
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -2733,53 +2753,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-       Level Two Cell Type  median_distance
-    3      epithelial cell        63.242607
-    6  natural killer cell        37.025667
-    9         unknown cell        28.831450
-    8               t cell        28.289618
-    4           fibroblast        25.141972
-
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-                        Level Two Cell Type  median_distance
-    2  endothelial cell of lymphatic vessel        23.013311
-    0                                b cell        22.353669
-    7                            neutrophil        21.579446
-    5                            macrophage        20.110103
-    1                        dendritic cell        19.333714
-
-    Top 5 cell types in Gingiva:
-                         Level Two Cell Type  median_distance
-    14                                t cell        49.247660
-    3   endothelial cell of lymphatic vessel        47.521442
-    7                           keratinocyte        42.797847
-    2                         dendritic cell        40.886464
-    4                        epithelial cell        37.195439
-
-    Bottom 5 cell types in Gingiva:
-        Level Two Cell Type  median_distance
-    0             adipocyte        31.576881
-    12  natural killer cell        29.657322
-    1                b cell        29.370338
-    8       langerhans cell        26.245455
-    11   myoepithelial cell        25.924170
-
-    Top 5 cell types in Parotid:
-        Level Two Cell Type  median_distance
-    12  natural killer cell        54.364997
-    9             mast cell        42.159777
-    14           neutrophil        34.148935
-    16               t cell        31.956611
-    3       epithelial cell        29.149386
-
-    Bottom 5 cell types in Parotid:
-                         Level Two Cell Type  median_distance
-    2   endothelial cell of lymphatic vessel        19.534840
-    1                         dendritic cell        19.328978
-    0                                 b cell        19.314031
-    15                     perivascular cell        18.707282
-    7                        langerhans cell        18.679420
 
     Top 5 cell types in Submandibular:
       Level Two Cell Type  median_distance
@@ -2797,6 +2770,22 @@ for region in unique_regions:
     7                            neutrophil        19.521302
     1  endothelial cell of lymphatic vessel        17.112130
 
+    Top 5 cell types in Parotid:
+        Level Two Cell Type  median_distance
+    12  natural killer cell        54.364997
+    9             mast cell        42.159777
+    14           neutrophil        34.148935
+    16               t cell        31.956611
+    3       epithelial cell        29.149386
+
+    Bottom 5 cell types in Parotid:
+                         Level Two Cell Type  median_distance
+    2   endothelial cell of lymphatic vessel        19.534840
+    1                         dendritic cell        19.328978
+    0                                 b cell        19.314031
+    15                     perivascular cell        18.707282
+    7                        langerhans cell        18.679420
+
     Top 5 cell types in Tongue:
                         Level Two Cell Type  median_distance
     3                       epithelial cell       126.256991
@@ -2813,9 +2802,42 @@ for region in unique_regions:
     5          macrophage        22.358667
     0              b cell        15.471976
 
+    Top 5 cell types in Gingiva:
+                         Level Two Cell Type  median_distance
+    14                                t cell        49.247660
+    3   endothelial cell of lymphatic vessel        47.521442
+    7                           keratinocyte        42.797847
+    2                         dendritic cell        40.886464
+    4                        epithelial cell        37.195439
+
+    Bottom 5 cell types in Gingiva:
+        Level Two Cell Type  median_distance
+    0             adipocyte        31.576881
+    12  natural killer cell        29.657322
+    1                b cell        29.370338
+    8       langerhans cell        26.245455
+    11   myoepithelial cell        25.924170
+
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+       Level Two Cell Type  median_distance
+    3      epithelial cell        63.242607
+    6  natural killer cell        37.025667
+    9         unknown cell        28.831450
+    8               t cell        28.289618
+    4           fibroblast        25.141972
+
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+                        Level Two Cell Type  median_distance
+    2  endothelial cell of lymphatic vessel        23.013311
+    0                                b cell        22.353669
+    7                            neutrophil        21.579446
+    5                            macrophage        20.110103
+    1                        dendritic cell        19.333714
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3690,21 +3712,22 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-       Level Three Cell Type  mean_distance
-    3        epithelial cell      69.005527
-    6    natural killer cell      46.769140
-    11          unknown cell      42.374333
-    10     t cell:regulatory      40.665551
-    8            t cell:cd4+      38.785521
 
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-                      Level Three Cell Type  mean_distance
-    2  endothelial cell of lymphatic vessel      31.266348
-    7                            neutrophil      30.028958
-    5                            macrophage      25.882874
-    1                        dendritic cell      23.820644
-    0                                b cell      23.196496
+    Top 5 cell types in Submandibular:
+       Level Three Cell Type  mean_distance
+    1                 b cell      49.468888
+    4             fibroblast      45.426189
+    10           t cell:cd4+      40.572532
+    7          myofibroblast      37.834254
+    12     t cell:regulatory      33.265373
+
+    Bottom 5 cell types in Submandibular:
+                       Level Three Cell Type  mean_distance
+    3                epithelial cell:ductal       24.609401
+    11                           t cell:cd8+      23.920693
+    6                     myoepithelial cell      23.571161
+    2   endothelial cell of lymphatic vessel      23.177030
+    9                             neutrophil      21.857157
 
     Top 5 cell types in Gingiva:
                        Level Three Cell Type  mean_distance
@@ -3738,21 +3761,21 @@ for region in unique_regions:
     9        langerhans cell      21.515277
     2         dendritic cell      21.289953
 
-    Top 5 cell types in Submandibular:
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
        Level Three Cell Type  mean_distance
-    1                 b cell      49.468888
-    4             fibroblast      45.426189
-    10           t cell:cd4+      40.572532
-    7          myofibroblast      37.834254
-    12     t cell:regulatory      33.265373
+    3        epithelial cell      69.005527
+    6    natural killer cell      46.769140
+    11          unknown cell      42.374333
+    10     t cell:regulatory      40.665551
+    8            t cell:cd4+      38.785521
 
-    Bottom 5 cell types in Submandibular:
-                       Level Three Cell Type  mean_distance
-    3                epithelial cell:ductal       24.609401
-    11                           t cell:cd8+      23.920693
-    6                     myoepithelial cell      23.571161
-    2   endothelial cell of lymphatic vessel      23.177030
-    9                             neutrophil      21.857157
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+                      Level Three Cell Type  mean_distance
+    2  endothelial cell of lymphatic vessel      31.266348
+    7                            neutrophil      30.028958
+    5                            macrophage      25.882874
+    1                        dendritic cell      23.820644
+    0                                b cell      23.196496
 
     Top 5 cell types in Tongue:
                                   Level Three Cell Type  mean_distance
@@ -3781,21 +3804,22 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
-       Level Three Cell Type  median_distance
-    3        epithelial cell        63.242607
-    6    natural killer cell        37.025667
-    10     t cell:regulatory        30.033398
-    8            t cell:cd4+        29.526032
-    11          unknown cell        28.831450
 
-    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
+    Top 5 cell types in Submandibular:
+       Level Three Cell Type  median_distance
+    1                 b cell        45.465234
+    10           t cell:cd4+        37.560784
+    4             fibroblast        35.755874
+    12     t cell:regulatory        30.085399
+    7          myofibroblast        27.126555
+
+    Bottom 5 cell types in Submandibular:
                       Level Three Cell Type  median_distance
-    2  endothelial cell of lymphatic vessel        23.013311
-    0                                b cell        22.353669
-    7                            neutrophil        21.579446
-    5                            macrophage        20.110103
-    1                        dendritic cell        19.333714
+    8                   natural killer cell        20.705518
+    6                    myoepithelial cell        20.641130
+    3               epithelial cell:ductal         20.199691
+    9                            neutrophil        19.521302
+    2  endothelial cell of lymphatic vessel        17.112130
 
     Top 5 cell types in Gingiva:
                        Level Three Cell Type  median_distance
@@ -3829,21 +3853,21 @@ for region in unique_regions:
     9                        langerhans cell        18.679420
     19                           plasma cell        17.710427
 
-    Top 5 cell types in Submandibular:
+    Top 5 cell types in Buccal Mucosa And Minor Salivary Glands:
        Level Three Cell Type  median_distance
-    1                 b cell        45.465234
-    10           t cell:cd4+        37.560784
-    4             fibroblast        35.755874
-    12     t cell:regulatory        30.085399
-    7          myofibroblast        27.126555
+    3        epithelial cell        63.242607
+    6    natural killer cell        37.025667
+    10     t cell:regulatory        30.033398
+    8            t cell:cd4+        29.526032
+    11          unknown cell        28.831450
 
-    Bottom 5 cell types in Submandibular:
+    Bottom 5 cell types in Buccal Mucosa And Minor Salivary Glands:
                       Level Three Cell Type  median_distance
-    8                   natural killer cell        20.705518
-    6                    myoepithelial cell        20.641130
-    3               epithelial cell:ductal         20.199691
-    9                            neutrophil        19.521302
-    2  endothelial cell of lymphatic vessel        17.112130
+    2  endothelial cell of lymphatic vessel        23.013311
+    0                                b cell        22.353669
+    7                            neutrophil        21.579446
+    5                            macrophage        20.110103
+    1                        dendritic cell        19.333714
 
     Top 5 cell types in Tongue:
                                   Level Three Cell Type  median_distance
@@ -3864,6 +3888,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3895,8 +3920,8 @@ calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_leve
     endothelial cell of lymphatic vessel             40.28  33.01    82.0
     muscle cell:skeletal                             26.37  21.33    80.9
     monocyte                                         26.79  20.86    77.9
-    t cell:cd4+                                      47.81  37.01    77.4
     glial cell/neuron                                24.59  19.04    77.4
+    t cell:cd4+                                      47.81  37.01    77.4
     plasma cell                                      21.63  16.71    77.3
     natural killer cell                              47.10  35.86    76.1
     thymocyte:cd4-intermediate cd8+ double-positive  42.88  32.57    76.0

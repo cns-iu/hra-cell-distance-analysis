@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "skin-celldive-ge" 
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -157,9 +160,9 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>188.500</td>
-<td>342.500</td>
-<td>10.0</td>
+<td>584.500</td>
+<td>203.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -173,13 +176,13 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>136.600</td>
-<td>161.400</td>
-<td>20.0</td>
+<td>359.611</td>
+<td>286.778</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -193,13 +196,13 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>437.500</td>
-<td>363.500</td>
-<td>20.0</td>
+<td>119.500</td>
+<td>338.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -213,13 +216,13 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>203.500</td>
-<td>512.000</td>
-<td>20.0</td>
+<td>115.500</td>
+<td>388.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -233,17 +236,17 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>155.579</td>
-<td>204.895</td>
-<td>0.0</td>
-<td>T-Helper</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
+<td>113.500</td>
+<td>447.000</td>
+<td>6.0</td>
+<td>T-Killer</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -253,7 +256,7 @@ df_all_nodes.head(5)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -294,6 +297,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -365,9 +369,9 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>188.500</td>
-<td>342.500</td>
-<td>10.0</td>
+<td>584.500</td>
+<td>203.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -381,13 +385,13 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>136.600</td>
-<td>161.400</td>
-<td>20.0</td>
+<td>359.611</td>
+<td>286.778</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -401,13 +405,13 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>437.500</td>
-<td>363.500</td>
-<td>20.0</td>
+<td>119.500</td>
+<td>338.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -421,13 +425,13 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>203.500</td>
-<td>512.000</td>
-<td>20.0</td>
+<td>115.500</td>
+<td>388.500</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -441,17 +445,17 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>155.579</td>
-<td>204.895</td>
-<td>0.0</td>
-<td>T-Helper</td>
-<td>t cell:cd4+</td>
-<td>CD4-positive, alpha-beta T cell</td>
-<td>CL:0000624</td>
+<td>113.500</td>
+<td>447.000</td>
+<td>6.0</td>
+<td>T-Killer</td>
+<td>t cell:cd8+</td>
+<td>CD8-positive, alpha-beta T cell</td>
+<td>CL:0000625</td>
 <td>skos:exactMatch</td>
 <td>t cell</td>
 <td>T cell</td>
@@ -461,7 +465,7 @@ df_all_nodes.head()
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -503,28 +507,28 @@ df_all_nodes[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -546,22 +550,25 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['region_1' 'region_10' 'region_11' 'region_2' 'region_3' 'region_4'
-     'region_5' 'region_7' 'region_8' 'region_9']
+    <StringArray>
+    [ 'region_3',  'region_4', 'region_11', 'region_10',  'region_2',  'region_9',
+      'region_1',  'region_5',  'region_7',  'region_8']
+    Length: 10, dtype: str
     Total number of unique regions: 10
 
     Number of unique datasets per unique region:
-    region_1: 1
-    region_10: 1
-    region_11: 1
-    region_2: 1
     region_3: 1
     region_4: 1
+    region_11: 1
+    region_10: 1
+    region_2: 1
+    region_9: 1
+    region_1: 1
     region_5: 1
     region_7: 1
     region_8: 1
-    region_9: 1
 
 ## Process datasets to add region information to Edges files.
 
@@ -603,72 +610,72 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>188.500</td>
-<td>342.500</td>
-<td>10.0</td>
-<td>198.4000</td>
-<td>341.800</td>
-<td>10.0</td>
-<td>9.924717</td>
-<td>region_1</td>
+<td>584.500</td>
+<td>203.500</td>
+<td>6.0</td>
+<td>581.667</td>
+<td>199.333</td>
+<td>7.0</td>
+<td>5.137098</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>4</td>
-<td>155.579</td>
-<td>204.895</td>
-<td>0.0</td>
-<td>156.5000</td>
-<td>201.500</td>
-<td>1.0</td>
-<td>3.657084</td>
-<td>region_1</td>
+<td>11</td>
+<td>408.089</td>
+<td>261.289</td>
+<td>9.0</td>
+<td>415.000</td>
+<td>257.000</td>
+<td>5.0</td>
+<td>9.064074</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>5</td>
-<td>107.500</td>
-<td>223.500</td>
-<td>0.0</td>
-<td>95.6667</td>
-<td>215.667</td>
-<td>1.0</td>
-<td>14.226134</td>
-<td>region_1</td>
+<td>12</td>
+<td>414.867</td>
+<td>264.533</td>
+<td>9.0</td>
+<td>415.889</td>
+<td>268.000</td>
+<td>11.0</td>
+<td>4.130929</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>6</td>
-<td>180.593</td>
-<td>226.519</td>
-<td>0.0</td>
-<td>191.1670</td>
-<td>226.667</td>
-<td>1.0</td>
-<td>10.622212</td>
-<td>region_1</td>
+<td>14</td>
+<td>432.000</td>
+<td>336.500</td>
+<td>9.0</td>
+<td>429.500</td>
+<td>338.750</td>
+<td>9.0</td>
+<td>3.363406</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>7</td>
-<td>188.500</td>
-<td>226.778</td>
-<td>0.0</td>
-<td>191.1670</td>
-<td>226.667</td>
-<td>1.0</td>
-<td>2.850475</td>
-<td>region_1</td>
+<td>15</td>
+<td>439.143</td>
+<td>341.071</td>
+<td>9.0</td>
+<td>435.333</td>
+<td>346.667</td>
+<td>7.0</td>
+<td>7.059130</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -709,28 +716,28 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -752,22 +759,25 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['region_1' 'region_10' 'region_11' 'region_2' 'region_3' 'region_4'
-     'region_5' 'region_7' 'region_8' 'region_9']
+    <StringArray>
+    [ 'region_3',  'region_4', 'region_11', 'region_10',  'region_2',  'region_9',
+      'region_1',  'region_5',  'region_7',  'region_8']
+    Length: 10, dtype: str
     Total number of unique regions: 10
 
     Number of unique datasets per unique region:
-    region_1: 1
-    region_10: 1
-    region_11: 1
-    region_2: 1
     region_3: 1
     region_4: 1
+    region_11: 1
+    region_10: 1
+    region_2: 1
+    region_9: 1
+    region_1: 1
     region_5: 1
     region_7: 1
     region_8: 1
-    region_9: 1
 
 ``` python
 df_all_edges_with_cell_types['Unique Region'] = df_all_edges_with_cell_types['Dataset']
@@ -801,28 +811,28 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -873,9 +883,9 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>188.5</td>
-<td>342.5</td>
-<td>10.0</td>
+<td>584.5</td>
+<td>203.5</td>
+<td>6.0</td>
 <td>T-Killer</td>
 <td>t cell:cd8+</td>
 <td>CD8-positive, alpha-beta T cell</td>
@@ -889,8 +899,8 @@ df_all_nodes.head(1)
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>region_1</td>
-<td>region_1</td>
+<td>region_3</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -936,17 +946,17 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>188.5</td>
-<td>342.5</td>
-<td>10.0</td>
-<td>198.4</td>
-<td>341.8</td>
-<td>10.0</td>
-<td>9.924717</td>
-<td>region_1</td>
+<td>584.5</td>
+<td>203.5</td>
+<td>6.0</td>
+<td>581.667</td>
+<td>199.333</td>
+<td>7.0</td>
+<td>5.137098</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
-<td>region_1</td>
+<td>Level One Cell Type</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -995,20 +1005,20 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>188.5</td>
-<td>342.5</td>
-<td>10.0</td>
-<td>198.4</td>
-<td>341.8</td>
-<td>10.0</td>
-<td>9.924717</td>
-<td>region_1</td>
+<td>584.5</td>
+<td>203.5</td>
+<td>6.0</td>
+<td>581.667</td>
+<td>199.333</td>
+<td>7.0</td>
+<td>5.137098</td>
+<td>region_3</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 <td>t cell:cd8+</td>
 <td>t cell</td>
 <td>immune cell</td>
-<td>region_1</td>
+<td>region_3</td>
 </tr>
 </tbody>
 </table>
@@ -1655,45 +1665,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      10.942273
-    1         immune cell       9.444458
-
-    Bottom 5 cell types in region_1:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      10.942273
-    1         immune cell       9.444458
-
-    Top 5 cell types in region_10:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      12.361319
-    1         immune cell      11.165366
-
-    Bottom 5 cell types in region_10:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      12.361319
-    1         immune cell      11.165366
-
-    Top 5 cell types in region_11:
-      Level One Cell Type  mean_distance
-    1         immune cell      12.004633
-    0     epithelial cell      10.196528
-
-    Bottom 5 cell types in region_11:
-      Level One Cell Type  mean_distance
-    1         immune cell      12.004633
-    0     epithelial cell      10.196528
-
-    Top 5 cell types in region_2:
-      Level One Cell Type  mean_distance
-    1         immune cell      11.998585
-    0     epithelial cell      10.745935
-
-    Bottom 5 cell types in region_2:
-      Level One Cell Type  mean_distance
-    1         immune cell      11.998585
-    0     epithelial cell      10.745935
 
     Top 5 cell types in region_3:
       Level One Cell Type  mean_distance
@@ -1705,6 +1676,26 @@ for region in unique_regions:
     0     epithelial cell      10.267738
     1         immune cell       9.391895
 
+    Top 5 cell types in region_11:
+      Level One Cell Type  mean_distance
+    1         immune cell      12.004633
+    0     epithelial cell      10.196528
+
+    Bottom 5 cell types in region_11:
+      Level One Cell Type  mean_distance
+    1         immune cell      12.004633
+    0     epithelial cell      10.196528
+
+    Top 5 cell types in region_9:
+      Level One Cell Type  mean_distance
+    0     epithelial cell       9.762396
+    1         immune cell       7.853201
+
+    Bottom 5 cell types in region_9:
+      Level One Cell Type  mean_distance
+    0     epithelial cell       9.762396
+    1         immune cell       7.853201
+
     Top 5 cell types in region_4:
       Level One Cell Type  mean_distance
     0     epithelial cell       8.793482
@@ -1714,6 +1705,16 @@ for region in unique_regions:
       Level One Cell Type  mean_distance
     0     epithelial cell       8.793482
     1         immune cell       8.140628
+
+    Top 5 cell types in region_1:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      10.942273
+    1         immune cell       9.444458
+
+    Bottom 5 cell types in region_1:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      10.942273
+    1         immune cell       9.444458
 
     Top 5 cell types in region_5:
       Level One Cell Type  mean_distance
@@ -1725,16 +1726,6 @@ for region in unique_regions:
     0     epithelial cell      15.737377
     1         immune cell       9.762993
 
-    Top 5 cell types in region_7:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      12.058310
-    1         immune cell      10.933319
-
-    Bottom 5 cell types in region_7:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      12.058310
-    1         immune cell      10.933319
-
     Top 5 cell types in region_8:
       Level One Cell Type  mean_distance
     1         immune cell      14.755313
@@ -1745,15 +1736,35 @@ for region in unique_regions:
     1         immune cell      14.755313
     0     epithelial cell       9.839488
 
-    Top 5 cell types in region_9:
+    Top 5 cell types in region_7:
       Level One Cell Type  mean_distance
-    0     epithelial cell       9.762396
-    1         immune cell       7.853201
+    0     epithelial cell      12.058310
+    1         immune cell      10.933319
 
-    Bottom 5 cell types in region_9:
+    Bottom 5 cell types in region_7:
       Level One Cell Type  mean_distance
-    0     epithelial cell       9.762396
-    1         immune cell       7.853201
+    0     epithelial cell      12.058310
+    1         immune cell      10.933319
+
+    Top 5 cell types in region_10:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      12.361319
+    1         immune cell      11.165366
+
+    Bottom 5 cell types in region_10:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      12.361319
+    1         immune cell      11.165366
+
+    Top 5 cell types in region_2:
+      Level One Cell Type  mean_distance
+    1         immune cell      11.998585
+    0     epithelial cell      10.745935
+
+    Bottom 5 cell types in region_2:
+      Level One Cell Type  mean_distance
+    1         immune cell      11.998585
+    0     epithelial cell      10.745935
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1783,45 +1794,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-      Level One Cell Type  median_distance
-    0     epithelial cell        10.290975
-    1         immune cell         8.216023
-
-    Bottom 5 cell types in region_1:
-      Level One Cell Type  median_distance
-    0     epithelial cell        10.290975
-    1         immune cell         8.216023
-
-    Top 5 cell types in region_10:
-      Level One Cell Type  median_distance
-    0     epithelial cell        11.790882
-    1         immune cell         9.002613
-
-    Bottom 5 cell types in region_10:
-      Level One Cell Type  median_distance
-    0     epithelial cell        11.790882
-    1         immune cell         9.002613
-
-    Top 5 cell types in region_11:
-      Level One Cell Type  median_distance
-    1         immune cell         9.287078
-    0     epithelial cell         8.800049
-
-    Bottom 5 cell types in region_11:
-      Level One Cell Type  median_distance
-    1         immune cell         9.287078
-    0     epithelial cell         8.800049
-
-    Top 5 cell types in region_2:
-      Level One Cell Type  median_distance
-    0     epithelial cell         9.035553
-    1         immune cell         8.811683
-
-    Bottom 5 cell types in region_2:
-      Level One Cell Type  median_distance
-    0     epithelial cell         9.035553
-    1         immune cell         8.811683
 
     Top 5 cell types in region_3:
       Level One Cell Type  median_distance
@@ -1833,6 +1805,26 @@ for region in unique_regions:
     0     epithelial cell         9.600986
     1         immune cell         7.059130
 
+    Top 5 cell types in region_11:
+      Level One Cell Type  median_distance
+    1         immune cell         9.287078
+    0     epithelial cell         8.800049
+
+    Bottom 5 cell types in region_11:
+      Level One Cell Type  median_distance
+    1         immune cell         9.287078
+    0     epithelial cell         8.800049
+
+    Top 5 cell types in region_9:
+      Level One Cell Type  median_distance
+    0     epithelial cell         9.006318
+    1         immune cell         6.483046
+
+    Bottom 5 cell types in region_9:
+      Level One Cell Type  median_distance
+    0     epithelial cell         9.006318
+    1         immune cell         6.483046
+
     Top 5 cell types in region_4:
       Level One Cell Type  median_distance
     0     epithelial cell         8.015610
@@ -1842,6 +1834,16 @@ for region in unique_regions:
       Level One Cell Type  median_distance
     0     epithelial cell         8.015610
     1         immune cell         6.722525
+
+    Top 5 cell types in region_1:
+      Level One Cell Type  median_distance
+    0     epithelial cell        10.290975
+    1         immune cell         8.216023
+
+    Bottom 5 cell types in region_1:
+      Level One Cell Type  median_distance
+    0     epithelial cell        10.290975
+    1         immune cell         8.216023
 
     Top 5 cell types in region_5:
       Level One Cell Type  median_distance
@@ -1853,16 +1855,6 @@ for region in unique_regions:
     0     epithelial cell        11.491433
     1         immune cell         5.837830
 
-    Top 5 cell types in region_7:
-      Level One Cell Type  median_distance
-    0     epithelial cell        11.410651
-    1         immune cell         7.632169
-
-    Bottom 5 cell types in region_7:
-      Level One Cell Type  median_distance
-    0     epithelial cell        11.410651
-    1         immune cell         7.632169
-
     Top 5 cell types in region_8:
       Level One Cell Type  median_distance
     1         immune cell         7.585450
@@ -1873,15 +1865,35 @@ for region in unique_regions:
     1         immune cell         7.585450
     0     epithelial cell         7.435609
 
-    Top 5 cell types in region_9:
+    Top 5 cell types in region_7:
       Level One Cell Type  median_distance
-    0     epithelial cell         9.006318
-    1         immune cell         6.483046
+    0     epithelial cell        11.410651
+    1         immune cell         7.632169
 
-    Bottom 5 cell types in region_9:
+    Bottom 5 cell types in region_7:
       Level One Cell Type  median_distance
-    0     epithelial cell         9.006318
-    1         immune cell         6.483046
+    0     epithelial cell        11.410651
+    1         immune cell         7.632169
+
+    Top 5 cell types in region_10:
+      Level One Cell Type  median_distance
+    0     epithelial cell        11.790882
+    1         immune cell         9.002613
+
+    Bottom 5 cell types in region_10:
+      Level One Cell Type  median_distance
+    0     epithelial cell        11.790882
+    1         immune cell         9.002613
+
+    Top 5 cell types in region_2:
+      Level One Cell Type  median_distance
+    0     epithelial cell         9.035553
+    1         immune cell         8.811683
+
+    Bottom 5 cell types in region_2:
+      Level One Cell Type  median_distance
+    0     epithelial cell         9.035553
+    1         immune cell         8.811683
 
 ``` python
 # Calculate regional variability
@@ -1916,6 +1928,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1954,6 +1967,7 @@ regions = sorted(regions, key=region_sort_key)
 print("\nRegions in the data:")
 print(regions)
 ```
+
 
     Regions in the data:
     ['region_1', 'region_2', 'region_3', 'region_4', 'region_5', 'region_7', 'region_8', 'region_9', 'region_10', 'region_11']
@@ -2455,53 +2469,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-      Level Two Cell Type  mean_distance
-    1          macrophage      12.153733
-    0        keratinocyte      10.942273
-    2              t cell       8.851605
-
-    Bottom 5 cell types in region_1:
-      Level Two Cell Type  mean_distance
-    1          macrophage      12.153733
-    0        keratinocyte      10.942273
-    2              t cell       8.851605
-
-    Top 5 cell types in region_10:
-      Level Two Cell Type  mean_distance
-    1          macrophage      13.729961
-    0        keratinocyte      12.361319
-    2              t cell      10.834249
-
-    Bottom 5 cell types in region_10:
-      Level Two Cell Type  mean_distance
-    1          macrophage      13.729961
-    0        keratinocyte      12.361319
-    2              t cell      10.834249
-
-    Top 5 cell types in region_11:
-      Level Two Cell Type  mean_distance
-    1          macrophage      13.436212
-    2              t cell      11.911482
-    0        keratinocyte      10.196528
-
-    Bottom 5 cell types in region_11:
-      Level Two Cell Type  mean_distance
-    1          macrophage      13.436212
-    2              t cell      11.911482
-    0        keratinocyte      10.196528
-
-    Top 5 cell types in region_2:
-      Level Two Cell Type  mean_distance
-    2              t cell      12.195435
-    0        keratinocyte      10.745935
-    1          macrophage       9.360803
-
-    Bottom 5 cell types in region_2:
-      Level Two Cell Type  mean_distance
-    2              t cell      12.195435
-    0        keratinocyte      10.745935
-    1          macrophage       9.360803
 
     Top 5 cell types in region_3:
       Level Two Cell Type  mean_distance
@@ -2515,6 +2482,30 @@ for region in unique_regions:
     0        keratinocyte      10.267738
     2              t cell       8.925282
 
+    Top 5 cell types in region_11:
+      Level Two Cell Type  mean_distance
+    1          macrophage      13.436212
+    2              t cell      11.911482
+    0        keratinocyte      10.196528
+
+    Bottom 5 cell types in region_11:
+      Level Two Cell Type  mean_distance
+    1          macrophage      13.436212
+    2              t cell      11.911482
+    0        keratinocyte      10.196528
+
+    Top 5 cell types in region_9:
+      Level Two Cell Type  mean_distance
+    0        keratinocyte       9.762396
+    1          macrophage       9.206533
+    2              t cell       7.712074
+
+    Bottom 5 cell types in region_9:
+      Level Two Cell Type  mean_distance
+    0        keratinocyte       9.762396
+    1          macrophage       9.206533
+    2              t cell       7.712074
+
     Top 5 cell types in region_4:
       Level Two Cell Type  mean_distance
     1          macrophage      10.673730
@@ -2526,6 +2517,18 @@ for region in unique_regions:
     1          macrophage      10.673730
     0        keratinocyte       8.793482
     2              t cell       7.970098
+
+    Top 5 cell types in region_1:
+      Level Two Cell Type  mean_distance
+    1          macrophage      12.153733
+    0        keratinocyte      10.942273
+    2              t cell       8.851605
+
+    Bottom 5 cell types in region_1:
+      Level Two Cell Type  mean_distance
+    1          macrophage      12.153733
+    0        keratinocyte      10.942273
+    2              t cell       8.851605
 
     Top 5 cell types in region_5:
       Level Two Cell Type  mean_distance
@@ -2539,18 +2542,6 @@ for region in unique_regions:
     0        keratinocyte      15.737377
     2              t cell       8.817685
 
-    Top 5 cell types in region_7:
-      Level Two Cell Type  mean_distance
-    1          macrophage      12.524120
-    0        keratinocyte      12.058310
-    2              t cell      10.763346
-
-    Bottom 5 cell types in region_7:
-      Level Two Cell Type  mean_distance
-    1          macrophage      12.524120
-    0        keratinocyte      12.058310
-    2              t cell      10.763346
-
     Top 5 cell types in region_8:
       Level Two Cell Type  mean_distance
     1          macrophage      21.218305
@@ -2563,17 +2554,41 @@ for region in unique_regions:
     2              t cell      14.409407
     0        keratinocyte       9.839488
 
-    Top 5 cell types in region_9:
+    Top 5 cell types in region_7:
       Level Two Cell Type  mean_distance
-    0        keratinocyte       9.762396
-    1          macrophage       9.206533
-    2              t cell       7.712074
+    1          macrophage      12.524120
+    0        keratinocyte      12.058310
+    2              t cell      10.763346
 
-    Bottom 5 cell types in region_9:
+    Bottom 5 cell types in region_7:
       Level Two Cell Type  mean_distance
-    0        keratinocyte       9.762396
-    1          macrophage       9.206533
-    2              t cell       7.712074
+    1          macrophage      12.524120
+    0        keratinocyte      12.058310
+    2              t cell      10.763346
+
+    Top 5 cell types in region_10:
+      Level Two Cell Type  mean_distance
+    1          macrophage      13.729961
+    0        keratinocyte      12.361319
+    2              t cell      10.834249
+
+    Bottom 5 cell types in region_10:
+      Level Two Cell Type  mean_distance
+    1          macrophage      13.729961
+    0        keratinocyte      12.361319
+    2              t cell      10.834249
+
+    Top 5 cell types in region_2:
+      Level Two Cell Type  mean_distance
+    2              t cell      12.195435
+    0        keratinocyte      10.745935
+    1          macrophage       9.360803
+
+    Bottom 5 cell types in region_2:
+      Level Two Cell Type  mean_distance
+    2              t cell      12.195435
+    0        keratinocyte      10.745935
+    1          macrophage       9.360803
 
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
@@ -2586,53 +2601,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-      Level Two Cell Type  median_distance
-    1          macrophage        11.313708
-    0        keratinocyte        10.290975
-    2              t cell         7.679430
-
-    Bottom 5 cell types in region_1:
-      Level Two Cell Type  median_distance
-    1          macrophage        11.313708
-    0        keratinocyte        10.290975
-    2              t cell         7.679430
-
-    Top 5 cell types in region_10:
-      Level Two Cell Type  median_distance
-    1          macrophage        11.883401
-    0        keratinocyte        11.790882
-    2              t cell         8.697919
-
-    Bottom 5 cell types in region_10:
-      Level Two Cell Type  median_distance
-    1          macrophage        11.883401
-    0        keratinocyte        11.790882
-    2              t cell         8.697919
-
-    Top 5 cell types in region_11:
-      Level Two Cell Type  median_distance
-    1          macrophage        13.851233
-    2              t cell         9.146366
-    0        keratinocyte         8.800049
-
-    Bottom 5 cell types in region_11:
-      Level Two Cell Type  median_distance
-    1          macrophage        13.851233
-    2              t cell         9.146366
-    0        keratinocyte         8.800049
-
-    Top 5 cell types in region_2:
-      Level Two Cell Type  median_distance
-    0        keratinocyte         9.035553
-    2              t cell         8.816336
-    1          macrophage         8.807030
-
-    Bottom 5 cell types in region_2:
-      Level Two Cell Type  median_distance
-    0        keratinocyte         9.035553
-    2              t cell         8.816336
-    1          macrophage         8.807030
 
     Top 5 cell types in region_3:
       Level Two Cell Type  median_distance
@@ -2646,53 +2614,17 @@ for region in unique_regions:
     0        keratinocyte         9.600986
     2              t cell         6.864764
 
-    Top 5 cell types in region_4:
+    Top 5 cell types in region_11:
       Level Two Cell Type  median_distance
-    0        keratinocyte         8.015610
-    1          macrophage         7.864254
-    2              t cell         6.587342
+    1          macrophage        13.851233
+    2              t cell         9.146366
+    0        keratinocyte         8.800049
 
-    Bottom 5 cell types in region_4:
+    Bottom 5 cell types in region_11:
       Level Two Cell Type  median_distance
-    0        keratinocyte         8.015610
-    1          macrophage         7.864254
-    2              t cell         6.587342
-
-    Top 5 cell types in region_5:
-      Level Two Cell Type  median_distance
-    0        keratinocyte        11.491433
-    1          macrophage        10.868533
-    2              t cell         5.475750
-
-    Bottom 5 cell types in region_5:
-      Level Two Cell Type  median_distance
-    0        keratinocyte        11.491433
-    1          macrophage        10.868533
-    2              t cell         5.475750
-
-    Top 5 cell types in region_7:
-      Level Two Cell Type  median_distance
-    0        keratinocyte        11.410651
-    1          macrophage         9.291776
-    2              t cell         7.423672
-
-    Bottom 5 cell types in region_7:
-      Level Two Cell Type  median_distance
-    0        keratinocyte        11.410651
-    1          macrophage         9.291776
-    2              t cell         7.423672
-
-    Top 5 cell types in region_8:
-      Level Two Cell Type  median_distance
-    1          macrophage        10.655786
-    2              t cell         7.497366
-    0        keratinocyte         7.435609
-
-    Bottom 5 cell types in region_8:
-      Level Two Cell Type  median_distance
-    1          macrophage        10.655786
-    2              t cell         7.497366
-    0        keratinocyte         7.435609
+    1          macrophage        13.851233
+    2              t cell         9.146366
+    0        keratinocyte         8.800049
 
     Top 5 cell types in region_9:
       Level Two Cell Type  median_distance
@@ -2706,9 +2638,94 @@ for region in unique_regions:
     1          macrophage         7.681363
     2              t cell         6.400335
 
+    Top 5 cell types in region_4:
+      Level Two Cell Type  median_distance
+    0        keratinocyte         8.015610
+    1          macrophage         7.864254
+    2              t cell         6.587342
+
+    Bottom 5 cell types in region_4:
+      Level Two Cell Type  median_distance
+    0        keratinocyte         8.015610
+    1          macrophage         7.864254
+    2              t cell         6.587342
+
+    Top 5 cell types in region_1:
+      Level Two Cell Type  median_distance
+    1          macrophage        11.313708
+    0        keratinocyte        10.290975
+    2              t cell         7.679430
+
+    Bottom 5 cell types in region_1:
+      Level Two Cell Type  median_distance
+    1          macrophage        11.313708
+    0        keratinocyte        10.290975
+    2              t cell         7.679430
+
+    Top 5 cell types in region_5:
+      Level Two Cell Type  median_distance
+    0        keratinocyte        11.491433
+    1          macrophage        10.868533
+    2              t cell         5.475750
+
+    Bottom 5 cell types in region_5:
+      Level Two Cell Type  median_distance
+    0        keratinocyte        11.491433
+    1          macrophage        10.868533
+    2              t cell         5.475750
+
+    Top 5 cell types in region_8:
+      Level Two Cell Type  median_distance
+    1          macrophage        10.655786
+    2              t cell         7.497366
+    0        keratinocyte         7.435609
+
+    Bottom 5 cell types in region_8:
+      Level Two Cell Type  median_distance
+    1          macrophage        10.655786
+    2              t cell         7.497366
+    0        keratinocyte         7.435609
+
+    Top 5 cell types in region_7:
+      Level Two Cell Type  median_distance
+    0        keratinocyte        11.410651
+    1          macrophage         9.291776
+    2              t cell         7.423672
+
+    Bottom 5 cell types in region_7:
+      Level Two Cell Type  median_distance
+    0        keratinocyte        11.410651
+    1          macrophage         9.291776
+    2              t cell         7.423672
+
+    Top 5 cell types in region_10:
+      Level Two Cell Type  median_distance
+    1          macrophage        11.883401
+    0        keratinocyte        11.790882
+    2              t cell         8.697919
+
+    Bottom 5 cell types in region_10:
+      Level Two Cell Type  median_distance
+    1          macrophage        11.883401
+    0        keratinocyte        11.790882
+    2              t cell         8.697919
+
+    Top 5 cell types in region_2:
+      Level Two Cell Type  median_distance
+    0        keratinocyte         9.035553
+    2              t cell         8.816336
+    1          macrophage         8.807030
+
+    Bottom 5 cell types in region_2:
+      Level Two Cell Type  median_distance
+    0        keratinocyte         9.035553
+    2              t cell         8.816336
+    1          macrophage         8.807030
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3446,21 +3463,22 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-                  Level Three Cell Type  mean_distance
-    3                        macrophage      12.153733
-    1  keratinocyte:ki67+ proliferating      11.107341
-    0                keratinocyte:ddb2+      10.886045
-    2                keratinocyte:p53+        9.158517
-    4                       t cell:cd4+       8.869032
 
-    Bottom 5 cell types in region_1:
-      Level Three Cell Type  mean_distance
-    0    keratinocyte:ddb2+      10.886045
-    2    keratinocyte:p53+        9.158517
-    4           t cell:cd4+       8.869032
-    6     t cell:regulatory       8.787226
-    5           t cell:cd8+       8.244478
+    Top 5 cell types in region_4:
+                  Level Three Cell Type  mean_distance
+    3                        macrophage      10.673730
+    2                keratinocyte:p53+        9.004084
+    1  keratinocyte:ki67+ proliferating       8.975061
+    0                keratinocyte:ddb2+       8.325188
+    4                       t cell:cd4+       8.072624
+
+    Bottom 5 cell types in region_4:
+                  Level Three Cell Type  mean_distance
+    1  keratinocyte:ki67+ proliferating       8.975061
+    0                keratinocyte:ddb2+       8.325188
+    4                       t cell:cd4+       8.072624
+    5                       t cell:cd8+       7.850566
+    6                 t cell:regulatory       7.487842
 
     Top 5 cell types in region_10:
                   Level Three Cell Type  mean_distance
@@ -3478,22 +3496,6 @@ for region in unique_regions:
     4           t cell:cd4+      10.829794
     5           t cell:cd8+       7.954718
 
-    Top 5 cell types in region_11:
-                  Level Three Cell Type  mean_distance
-    3                        macrophage      13.436212
-    4                       t cell:cd4+      12.440926
-    0                keratinocyte:ddb2+      10.904713
-    1  keratinocyte:ki67+ proliferating       8.990549
-    2                keratinocyte:p53+        8.154073
-
-    Bottom 5 cell types in region_11:
-                  Level Three Cell Type  mean_distance
-    0                keratinocyte:ddb2+      10.904713
-    1  keratinocyte:ki67+ proliferating       8.990549
-    2                keratinocyte:p53+        8.154073
-    6                 t cell:regulatory       7.093294
-    5                       t cell:cd8+       6.451790
-
     Top 5 cell types in region_2:
                   Level Three Cell Type  mean_distance
     4                       t cell:cd4+      12.332629
@@ -3510,37 +3512,21 @@ for region in unique_regions:
     2                keratinocyte:p53+        8.990985
     5                       t cell:cd8+       7.394594
 
-    Top 5 cell types in region_3:
+    Top 5 cell types in region_9:
                   Level Three Cell Type  mean_distance
-    3                        macrophage      15.824493
-    1  keratinocyte:ki67+ proliferating      11.058889
-    0                keratinocyte:ddb2+       9.982988
-    4                       t cell:cd4+       9.109696
-    2                keratinocyte:p53+        8.552662
+    2                keratinocyte:p53+       10.087026
+    1  keratinocyte:ki67+ proliferating      10.018056
+    0                keratinocyte:ddb2+       9.230936
+    3                        macrophage       9.206533
+    4                       t cell:cd4+       7.732470
 
-    Bottom 5 cell types in region_3:
+    Bottom 5 cell types in region_9:
       Level Three Cell Type  mean_distance
-    0    keratinocyte:ddb2+       9.982988
-    4           t cell:cd4+       9.109696
-    2    keratinocyte:p53+        8.552662
-    6     t cell:regulatory       8.460577
-    5           t cell:cd8+       5.435333
-
-    Top 5 cell types in region_4:
-                  Level Three Cell Type  mean_distance
-    3                        macrophage      10.673730
-    2                keratinocyte:p53+        9.004084
-    1  keratinocyte:ki67+ proliferating       8.975061
-    0                keratinocyte:ddb2+       8.325188
-    4                       t cell:cd4+       8.072624
-
-    Bottom 5 cell types in region_4:
-                  Level Three Cell Type  mean_distance
-    1  keratinocyte:ki67+ proliferating       8.975061
-    0                keratinocyte:ddb2+       8.325188
-    4                       t cell:cd4+       8.072624
-    5                       t cell:cd8+       7.850566
-    6                 t cell:regulatory       7.487842
+    0    keratinocyte:ddb2+       9.230936
+    3            macrophage       9.206533
+    4           t cell:cd4+       7.732470
+    6     t cell:regulatory       7.522635
+    5           t cell:cd8+       6.739554
 
     Top 5 cell types in region_5:
                   Level Three Cell Type  mean_distance
@@ -3574,6 +3560,54 @@ for region in unique_regions:
     5           t cell:cd8+       8.015370
     6     t cell:regulatory       7.311479
 
+    Top 5 cell types in region_11:
+                  Level Three Cell Type  mean_distance
+    3                        macrophage      13.436212
+    4                       t cell:cd4+      12.440926
+    0                keratinocyte:ddb2+      10.904713
+    1  keratinocyte:ki67+ proliferating       8.990549
+    2                keratinocyte:p53+        8.154073
+
+    Bottom 5 cell types in region_11:
+                  Level Three Cell Type  mean_distance
+    0                keratinocyte:ddb2+      10.904713
+    1  keratinocyte:ki67+ proliferating       8.990549
+    2                keratinocyte:p53+        8.154073
+    6                 t cell:regulatory       7.093294
+    5                       t cell:cd8+       6.451790
+
+    Top 5 cell types in region_1:
+                  Level Three Cell Type  mean_distance
+    3                        macrophage      12.153733
+    1  keratinocyte:ki67+ proliferating      11.107341
+    0                keratinocyte:ddb2+      10.886045
+    2                keratinocyte:p53+        9.158517
+    4                       t cell:cd4+       8.869032
+
+    Bottom 5 cell types in region_1:
+      Level Three Cell Type  mean_distance
+    0    keratinocyte:ddb2+      10.886045
+    2    keratinocyte:p53+        9.158517
+    4           t cell:cd4+       8.869032
+    6     t cell:regulatory       8.787226
+    5           t cell:cd8+       8.244478
+
+    Top 5 cell types in region_3:
+                  Level Three Cell Type  mean_distance
+    3                        macrophage      15.824493
+    1  keratinocyte:ki67+ proliferating      11.058889
+    0                keratinocyte:ddb2+       9.982988
+    4                       t cell:cd4+       9.109696
+    2                keratinocyte:p53+        8.552662
+
+    Bottom 5 cell types in region_3:
+      Level Three Cell Type  mean_distance
+    0    keratinocyte:ddb2+       9.982988
+    4           t cell:cd4+       9.109696
+    2    keratinocyte:p53+        8.552662
+    6     t cell:regulatory       8.460577
+    5           t cell:cd8+       5.435333
+
     Top 5 cell types in region_8:
                   Level Three Cell Type  mean_distance
     3                        macrophage      21.218305
@@ -3590,22 +3624,6 @@ for region in unique_regions:
     0                keratinocyte:ddb2+       9.996099
     2                keratinocyte:p53+        9.087552
 
-    Top 5 cell types in region_9:
-                  Level Three Cell Type  mean_distance
-    2                keratinocyte:p53+       10.087026
-    1  keratinocyte:ki67+ proliferating      10.018056
-    0                keratinocyte:ddb2+       9.230936
-    3                        macrophage       9.206533
-    4                       t cell:cd4+       7.732470
-
-    Bottom 5 cell types in region_9:
-      Level Three Cell Type  mean_distance
-    0    keratinocyte:ddb2+       9.230936
-    3            macrophage       9.206533
-    4           t cell:cd4+       7.732470
-    6     t cell:regulatory       7.522635
-    5           t cell:cd8+       6.739554
-
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -3617,21 +3635,22 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in region_1:
-                  Level Three Cell Type  median_distance
-    3                        macrophage        11.313708
-    1  keratinocyte:ki67+ proliferating        10.514693
-    0                keratinocyte:ddb2+        10.001243
-    2                keratinocyte:p53+          8.938114
-    5                       t cell:cd8+         8.892451
 
-    Bottom 5 cell types in region_1:
+    Top 5 cell types in region_4:
+                  Level Three Cell Type  median_distance
+    1  keratinocyte:ki67+ proliferating         8.276537
+    2                keratinocyte:p53+          7.899297
+    3                        macrophage         7.864254
+    0                keratinocyte:ddb2+         7.424621
+    6                 t cell:regulatory         6.726198
+
+    Bottom 5 cell types in region_4:
       Level Three Cell Type  median_distance
-    0    keratinocyte:ddb2+        10.001243
-    2    keratinocyte:p53+          8.938114
-    5           t cell:cd8+         8.892451
-    4           t cell:cd4+         7.679430
-    6     t cell:regulatory         7.174825
+    3            macrophage         7.864254
+    0    keratinocyte:ddb2+         7.424621
+    6     t cell:regulatory         6.726198
+    5           t cell:cd8+         6.707015
+    4           t cell:cd4+         6.564481
 
     Top 5 cell types in region_10:
                   Level Three Cell Type  median_distance
@@ -3649,22 +3668,6 @@ for region in unique_regions:
     4           t cell:cd4+         8.514538
     5           t cell:cd8+         7.856321
 
-    Top 5 cell types in region_11:
-                  Level Three Cell Type  median_distance
-    3                        macrophage        13.851233
-    4                       t cell:cd4+         9.661269
-    0                keratinocyte:ddb2+         9.290249
-    1  keratinocyte:ki67+ proliferating         8.309499
-    2                keratinocyte:p53+          8.066404
-
-    Bottom 5 cell types in region_11:
-                  Level Three Cell Type  median_distance
-    0                keratinocyte:ddb2+         9.290249
-    1  keratinocyte:ki67+ proliferating         8.309499
-    2                keratinocyte:p53+          8.066404
-    6                 t cell:regulatory         5.994383
-    5                       t cell:cd8+         4.291658
-
     Top 5 cell types in region_2:
                   Level Three Cell Type  median_distance
     6                 t cell:regulatory        11.280465
@@ -3681,37 +3684,21 @@ for region in unique_regions:
     2    keratinocyte:p53+          7.118084
     5           t cell:cd8+         6.544165
 
-    Top 5 cell types in region_3:
+    Top 5 cell types in region_9:
                   Level Three Cell Type  median_distance
-    3                        macrophage        10.586142
-    1  keratinocyte:ki67+ proliferating        10.331021
-    0                keratinocyte:ddb2+         9.486833
-    2                keratinocyte:p53+          8.046103
-    4                       t cell:cd4+         6.992530
+    1  keratinocyte:ki67+ proliferating         9.308546
+    2                keratinocyte:p53+          8.807506
+    0                keratinocyte:ddb2+         8.503737
+    3                        macrophage         7.681363
+    5                       t cell:cd8+         6.994015
 
-    Bottom 5 cell types in region_3:
+    Bottom 5 cell types in region_9:
       Level Three Cell Type  median_distance
-    0    keratinocyte:ddb2+         9.486833
-    2    keratinocyte:p53+          8.046103
-    4           t cell:cd4+         6.992530
-    6     t cell:regulatory         6.972035
-    5           t cell:cd8+         4.130929
-
-    Top 5 cell types in region_4:
-                  Level Three Cell Type  median_distance
-    1  keratinocyte:ki67+ proliferating         8.276537
-    2                keratinocyte:p53+          7.899297
-    3                        macrophage         7.864254
-    0                keratinocyte:ddb2+         7.424621
-    6                 t cell:regulatory         6.726198
-
-    Bottom 5 cell types in region_4:
-      Level Three Cell Type  median_distance
-    3            macrophage         7.864254
-    0    keratinocyte:ddb2+         7.424621
-    6     t cell:regulatory         6.726198
-    5           t cell:cd8+         6.707015
-    4           t cell:cd4+         6.564481
+    0    keratinocyte:ddb2+         8.503737
+    3            macrophage         7.681363
+    5           t cell:cd8+         6.994015
+    6     t cell:regulatory         6.563314
+    4           t cell:cd4+         6.392814
 
     Top 5 cell types in region_5:
                   Level Three Cell Type  median_distance
@@ -3745,6 +3732,54 @@ for region in unique_regions:
     6     t cell:regulatory         6.963491
     5           t cell:cd8+         5.935751
 
+    Top 5 cell types in region_11:
+                  Level Three Cell Type  median_distance
+    3                        macrophage        13.851233
+    4                       t cell:cd4+         9.661269
+    0                keratinocyte:ddb2+         9.290249
+    1  keratinocyte:ki67+ proliferating         8.309499
+    2                keratinocyte:p53+          8.066404
+
+    Bottom 5 cell types in region_11:
+                  Level Three Cell Type  median_distance
+    0                keratinocyte:ddb2+         9.290249
+    1  keratinocyte:ki67+ proliferating         8.309499
+    2                keratinocyte:p53+          8.066404
+    6                 t cell:regulatory         5.994383
+    5                       t cell:cd8+         4.291658
+
+    Top 5 cell types in region_1:
+                  Level Three Cell Type  median_distance
+    3                        macrophage        11.313708
+    1  keratinocyte:ki67+ proliferating        10.514693
+    0                keratinocyte:ddb2+        10.001243
+    2                keratinocyte:p53+          8.938114
+    5                       t cell:cd8+         8.892451
+
+    Bottom 5 cell types in region_1:
+      Level Three Cell Type  median_distance
+    0    keratinocyte:ddb2+        10.001243
+    2    keratinocyte:p53+          8.938114
+    5           t cell:cd8+         8.892451
+    4           t cell:cd4+         7.679430
+    6     t cell:regulatory         7.174825
+
+    Top 5 cell types in region_3:
+                  Level Three Cell Type  median_distance
+    3                        macrophage        10.586142
+    1  keratinocyte:ki67+ proliferating        10.331021
+    0                keratinocyte:ddb2+         9.486833
+    2                keratinocyte:p53+          8.046103
+    4                       t cell:cd4+         6.992530
+
+    Bottom 5 cell types in region_3:
+      Level Three Cell Type  median_distance
+    0    keratinocyte:ddb2+         9.486833
+    2    keratinocyte:p53+          8.046103
+    4           t cell:cd4+         6.992530
+    6     t cell:regulatory         6.972035
+    5           t cell:cd8+         4.130929
+
     Top 5 cell types in region_8:
                   Level Three Cell Type  median_distance
     3                        macrophage        10.655786
@@ -3761,25 +3796,10 @@ for region in unique_regions:
     6     t cell:regulatory         6.118109
     5           t cell:cd8+         6.025874
 
-    Top 5 cell types in region_9:
-                  Level Three Cell Type  median_distance
-    1  keratinocyte:ki67+ proliferating         9.308546
-    2                keratinocyte:p53+          8.807506
-    0                keratinocyte:ddb2+         8.503737
-    3                        macrophage         7.681363
-    5                       t cell:cd8+         6.994015
-
-    Bottom 5 cell types in region_9:
-      Level Three Cell Type  median_distance
-    0    keratinocyte:ddb2+         8.503737
-    3            macrophage         7.681363
-    5           t cell:cd8+         6.994015
-    6     t cell:regulatory         6.563314
-    4           t cell:cd4+         6.392814
-
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region

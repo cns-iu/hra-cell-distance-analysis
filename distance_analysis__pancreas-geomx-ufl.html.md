@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "pancreas-geomx-ufl"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -96,6 +96,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -157,8 +160,8 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -172,50 +175,31 @@ df_all_nodes.head(5)
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>10790.9</td>
-<td>7852.3</td>
-<td>unknown</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>6474.3</td>
+<td>1960.8</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>10805.0</td>
-<td>7859.6</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>P2-13</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>10858.9</td>
-<td>7861.8</td>
+<td>6490.0</td>
+<td>1958.5</td>
 <td>unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -229,26 +213,45 @@ df_all_nodes.head(5)
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>P3-13A</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>6501.2</td>
+<td>1960.1</td>
+<td>unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>10758.2</td>
-<td>7862.8</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>P2-13</td>
+<td>5657.2</td>
+<td>1959.3</td>
+<td>unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>P3-13A</td>
 </tr>
 </tbody>
 </table>
@@ -293,6 +296,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -381,8 +385,8 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -396,50 +400,31 @@ df_all_nodes.head()
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>10790.9</td>
-<td>7852.3</td>
-<td>unknown</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>unknown cell</td>
-<td>cell:unknown</td>
-<td>CL:0000000</td>
-<td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>6474.3</td>
+<td>1960.8</td>
+<td>Endothelial</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>endothelial cell</td>
+<td>endothelial cell</td>
+<td>CL:0000115</td>
+<td>skos:exactMatch</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>10805.0</td>
-<td>7859.6</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>P2-13</td>
-</tr>
-<tr>
-<td data-quarto-table-cell-role="th">3</td>
-<td>10858.9</td>
-<td>7861.8</td>
+<td>6490.0</td>
+<td>1958.5</td>
 <td>unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -453,26 +438,45 @@ df_all_nodes.head()
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>P2-13</td>
+<td>P3-13A</td>
+</tr>
+<tr>
+<td data-quarto-table-cell-role="th">3</td>
+<td>6501.2</td>
+<td>1960.1</td>
+<td>unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>P3-13A</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>10758.2</td>
-<td>7862.8</td>
-<td>Endothelial</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>endothelial cell</td>
-<td>endothelial cell</td>
-<td>CL:0000115</td>
-<td>skos:exactMatch</td>
-<td>P2-13</td>
+<td>5657.2</td>
+<td>1959.3</td>
+<td>unknown</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>unknown cell</td>
+<td>cell:unknown</td>
+<td>CL:0000000</td>
+<td>skos:narrowMatch</td>
+<td>P3-13A</td>
 </tr>
 </tbody>
 </table>
@@ -516,33 +520,33 @@ df_all_nodes[['Dataset', 'Donor', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -569,19 +573,22 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_donors}")
 ```
 
+
     Unique Regions in the data:
-    ['Body' 'Tail' 'Head' 'Neck']
+    <StringArray>
+    ['Tail', 'Head', 'Body', 'Neck']
+    Length: 4, dtype: str
 
     Unique Donors in the data:
-    ['P2' 'P3' 'P4']
+    ['P3' 'P4' 'P2']
 
     Total number of unique donors: 3
     Total number of unique regions: 4
 
     Number of unique donors per unique region:
-    Body: 3
     Tail: 3
     Head: 3
+    Body: 3
     Neck: 3
 
 ## Process datasets to add region information to Edges files.
@@ -624,72 +631,72 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>0</td>
-<td>10758.2</td>
-<td>7862.8</td>
+<td>6474.3</td>
+<td>1960.8</td>
 <td>0</td>
-<td>17.159254</td>
-<td>P2-13</td>
+<td>8.962700</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1</td>
-<td>10790.9</td>
-<td>7852.3</td>
+<td>2</td>
+<td>6490.0</td>
+<td>1958.5</td>
 <td>0</td>
-<td>10805.0</td>
-<td>7859.6</td>
+<td>6474.3</td>
+<td>1960.8</td>
 <td>0</td>
-<td>15.877657</td>
-<td>P2-13</td>
+<td>15.867577</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>5</td>
-<td>10788.8</td>
-<td>7867.4</td>
+<td>3</td>
+<td>6501.2</td>
+<td>1960.1</td>
 <td>0</td>
-<td>10805.0</td>
-<td>7859.6</td>
+<td>6474.3</td>
+<td>1960.8</td>
 <td>0</td>
-<td>17.979989</td>
-<td>P2-13</td>
+<td>26.909106</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>6</td>
-<td>10778.4</td>
-<td>7872.1</td>
+<td>14</td>
+<td>6442.8</td>
+<td>1960.5</td>
 <td>0</td>
-<td>10763.9</td>
-<td>7874.8</td>
+<td>6451.0</td>
+<td>1970.1</td>
 <td>0</td>
-<td>14.749237</td>
-<td>P2-13</td>
+<td>12.625371</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>7</td>
-<td>10683.4</td>
-<td>7871.0</td>
+<td>15</td>
+<td>6456.4</td>
+<td>1961.5</td>
 <td>0</td>
-<td>10690.7</td>
-<td>7883.8</td>
+<td>6451.0</td>
+<td>1970.1</td>
 <td>0</td>
-<td>14.735332</td>
-<td>P2-13</td>
+<td>10.154802</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 </tr>
 </tbody>
 </table>
@@ -730,33 +737,33 @@ df_all_edges[['Dataset', 'Donor', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -783,19 +790,22 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_donors}")
 ```
 
+
     Unique Regions in the data:
-    ['Body' 'Tail' 'Head' 'Neck']
+    <StringArray>
+    ['Tail', 'Head', 'Body', 'Neck']
+    Length: 4, dtype: str
 
     Unique Donors in the data:
-    ['P2' 'P3' 'P4']
+    ['P3' 'P4' 'P2']
 
     Total number of unique donors: 3
     Total number of unique regions: 4
 
     Number of unique donors per unique region:
-    Body: 3
     Tail: 3
     Head: 3
+    Body: 3
     Neck: 3
 
 ``` python
@@ -831,33 +841,33 @@ df_all_edges_with_cell_types[['Dataset', 'Donor', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -908,8 +918,8 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>unknown</td>
 <td>unknown cell</td>
 <td>cell:unknown</td>
@@ -923,9 +933,9 @@ df_all_nodes.head(1)
 <td>cell:unknown</td>
 <td>CL:0000000</td>
 <td>skos:narrowMatch</td>
-<td>P2-13</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3-13A</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -972,18 +982,18 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>0</td>
-<td>10758.2</td>
-<td>7862.8</td>
+<td>6474.3</td>
+<td>1960.8</td>
 <td>0</td>
-<td>17.159254</td>
-<td>P2-13</td>
+<td>8.9627</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
-<td>P2</td>
-<td>Body</td>
+<td>Level One Cell Type</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -1033,21 +1043,21 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>10774.2</td>
-<td>7856.6</td>
+<td>6465.5</td>
+<td>1959.1</td>
 <td>0</td>
-<td>10758.2</td>
-<td>7862.8</td>
+<td>6474.3</td>
+<td>1960.8</td>
 <td>0</td>
-<td>17.159254</td>
-<td>P2-13</td>
+<td>8.9627</td>
+<td>P3-13A</td>
 <td>endothelial cell</td>
-<td>Level Three Cell Type</td>
+<td>Level One Cell Type</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
 <td>unknown cell</td>
-<td>P2</td>
-<td>Body</td>
+<td>P3</td>
+<td>Tail</td>
 </tr>
 </tbody>
 </table>
@@ -1406,15 +1416,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      18.965929
-    1        unknown cell      18.036458
-
-    Bottom 5 cell types in Body:
-      Level One Cell Type  mean_distance
-    0     epithelial cell      18.965929
-    1        unknown cell      18.036458
 
     Top 5 cell types in Tail:
       Level One Cell Type  mean_distance
@@ -1425,6 +1426,16 @@ for region in unique_regions:
       Level One Cell Type  mean_distance
     0     epithelial cell      18.714225
     1        unknown cell      17.291476
+
+    Top 5 cell types in Body:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      18.965929
+    1        unknown cell      18.036458
+
+    Bottom 5 cell types in Body:
+      Level One Cell Type  mean_distance
+    0     epithelial cell      18.965929
+    1        unknown cell      18.036458
 
     Top 5 cell types in Head:
       Level One Cell Type  mean_distance
@@ -1474,15 +1485,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-      Level One Cell Type  median_distance
-    0     epithelial cell        16.368873
-    1        unknown cell        13.952061
-
-    Bottom 5 cell types in Body:
-      Level One Cell Type  median_distance
-    0     epithelial cell        16.368873
-    1        unknown cell        13.952061
 
     Top 5 cell types in Tail:
       Level One Cell Type  median_distance
@@ -1493,6 +1495,16 @@ for region in unique_regions:
       Level One Cell Type  median_distance
     0     epithelial cell        16.245923
     1        unknown cell        13.764447
+
+    Top 5 cell types in Body:
+      Level One Cell Type  median_distance
+    0     epithelial cell        16.368873
+    1        unknown cell        13.952061
+
+    Bottom 5 cell types in Body:
+      Level One Cell Type  median_distance
+    0     epithelial cell        16.368873
+    1        unknown cell        13.952061
 
     Top 5 cell types in Head:
       Level One Cell Type  median_distance
@@ -1547,6 +1559,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -1950,17 +1963,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-         Level Two Cell Type  mean_distance
-    0              beta cell      29.846050
-    1  gland epithelium cell      18.637023
-    2           unknown cell      18.036458
-
-    Bottom 5 cell types in Body:
-         Level Two Cell Type  mean_distance
-    0              beta cell      29.846050
-    1  gland epithelium cell      18.637023
-    2           unknown cell      18.036458
 
     Top 5 cell types in Tail:
          Level Two Cell Type  mean_distance
@@ -1973,6 +1975,18 @@ for region in unique_regions:
     0              beta cell      26.932770
     1  gland epithelium cell      18.298722
     2           unknown cell      17.291476
+
+    Top 5 cell types in Body:
+         Level Two Cell Type  mean_distance
+    0              beta cell      29.846050
+    1  gland epithelium cell      18.637023
+    2           unknown cell      18.036458
+
+    Bottom 5 cell types in Body:
+         Level Two Cell Type  mean_distance
+    0              beta cell      29.846050
+    1  gland epithelium cell      18.637023
+    2           unknown cell      18.036458
 
     Top 5 cell types in Head:
          Level Two Cell Type  mean_distance
@@ -2009,17 +2023,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-         Level Two Cell Type  median_distance
-    0              beta cell        26.362284
-    1  gland epithelium cell        16.194135
-    2           unknown cell        13.952061
-
-    Bottom 5 cell types in Body:
-         Level Two Cell Type  median_distance
-    0              beta cell        26.362284
-    1  gland epithelium cell        16.194135
-    2           unknown cell        13.952061
 
     Top 5 cell types in Tail:
          Level Two Cell Type  median_distance
@@ -2032,6 +2035,18 @@ for region in unique_regions:
     0              beta cell        23.086793
     1  gland epithelium cell        16.007811
     2           unknown cell        13.764447
+
+    Top 5 cell types in Body:
+         Level Two Cell Type  median_distance
+    0              beta cell        26.362284
+    1  gland epithelium cell        16.194135
+    2           unknown cell        13.952061
+
+    Bottom 5 cell types in Body:
+         Level Two Cell Type  median_distance
+    0              beta cell        26.362284
+    1  gland epithelium cell        16.194135
+    2           unknown cell        13.952061
 
     Top 5 cell types in Head:
          Level Two Cell Type  median_distance
@@ -2060,6 +2075,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2277,17 +2293,18 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-         Level Three Cell Type  mean_distance
-    0     beta cell:pancreatic      29.846050
-    1  epithelial cell:ductal       18.637023
-    2             unknown cell      18.036458
 
-    Bottom 5 cell types in Body:
+    Top 5 cell types in Head:
          Level Three Cell Type  mean_distance
-    0     beta cell:pancreatic      29.846050
-    1  epithelial cell:ductal       18.637023
-    2             unknown cell      18.036458
+    0     beta cell:pancreatic      26.123536
+    1  epithelial cell:ductal       17.119328
+    2             unknown cell      16.176917
+
+    Bottom 5 cell types in Head:
+         Level Three Cell Type  mean_distance
+    0     beta cell:pancreatic      26.123536
+    1  epithelial cell:ductal       17.119328
+    2             unknown cell      16.176917
 
     Top 5 cell types in Tail:
          Level Three Cell Type  mean_distance
@@ -2301,17 +2318,17 @@ for region in unique_regions:
     1  epithelial cell:ductal       18.298722
     2             unknown cell      17.291476
 
-    Top 5 cell types in Head:
+    Top 5 cell types in Body:
          Level Three Cell Type  mean_distance
-    0     beta cell:pancreatic      26.123536
-    1  epithelial cell:ductal       17.119328
-    2             unknown cell      16.176917
+    0     beta cell:pancreatic      29.846050
+    1  epithelial cell:ductal       18.637023
+    2             unknown cell      18.036458
 
-    Bottom 5 cell types in Head:
+    Bottom 5 cell types in Body:
          Level Three Cell Type  mean_distance
-    0     beta cell:pancreatic      26.123536
-    1  epithelial cell:ductal       17.119328
-    2             unknown cell      16.176917
+    0     beta cell:pancreatic      29.846050
+    1  epithelial cell:ductal       18.637023
+    2             unknown cell      18.036458
 
     Top 5 cell types in Neck:
          Level Three Cell Type  mean_distance
@@ -2336,17 +2353,18 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in Body:
-         Level Three Cell Type  median_distance
-    0     beta cell:pancreatic        26.362284
-    1  epithelial cell:ductal         16.194135
-    2             unknown cell        13.952061
 
-    Bottom 5 cell types in Body:
+    Top 5 cell types in Head:
          Level Three Cell Type  median_distance
-    0     beta cell:pancreatic        26.362284
-    1  epithelial cell:ductal         16.194135
-    2             unknown cell        13.952061
+    0     beta cell:pancreatic        22.600111
+    1  epithelial cell:ductal         15.395129
+    2             unknown cell        13.418271
+
+    Bottom 5 cell types in Head:
+         Level Three Cell Type  median_distance
+    0     beta cell:pancreatic        22.600111
+    1  epithelial cell:ductal         15.395129
+    2             unknown cell        13.418271
 
     Top 5 cell types in Tail:
          Level Three Cell Type  median_distance
@@ -2360,17 +2378,17 @@ for region in unique_regions:
     1  epithelial cell:ductal         16.007811
     2             unknown cell        13.764447
 
-    Top 5 cell types in Head:
+    Top 5 cell types in Body:
          Level Three Cell Type  median_distance
-    0     beta cell:pancreatic        22.600111
-    1  epithelial cell:ductal         15.395129
-    2             unknown cell        13.418271
+    0     beta cell:pancreatic        26.362284
+    1  epithelial cell:ductal         16.194135
+    2             unknown cell        13.952061
 
-    Bottom 5 cell types in Head:
+    Bottom 5 cell types in Body:
          Level Three Cell Type  median_distance
-    0     beta cell:pancreatic        22.600111
-    1  epithelial cell:ductal         15.395129
-    2             unknown cell        13.418271
+    0     beta cell:pancreatic        26.362284
+    1  epithelial cell:ductal         16.194135
+    2             unknown cell        13.952061
 
     Top 5 cell types in Neck:
          Level Three Cell Type  median_distance
@@ -2387,6 +2405,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region

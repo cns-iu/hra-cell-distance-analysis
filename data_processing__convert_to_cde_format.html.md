@@ -20,7 +20,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 orig_filedir = "data-original"
 dest_filedir = "data-processed-nodes"
 ```
@@ -73,7 +73,7 @@ def get_hubmap_uuid(hubmap_id):
 print(len(os.listdir(os.path.join(basepath, orig_filedir))), os.listdir(os.path.join(basepath, orig_filedir)))
 ```
 
-    14 ['bonemarrow-codex-chop', 'colon-cycif-sorgerlab', 'colon-xenium-stanford', 'esophagus-codex-stanford', 'intestine-codex-stanford', 'lung-codex-urmc', 'lymphnode-codex-yale', 'maternalfetalinterface-mibitof-stanford', 'mouth-codex-czi', 'pancreas-geomx-ufl', 'skin-celldive-ge', 'skin-confocal-sorgerlab', 'spleen-codex-ufl', 'tonsil-codex-stanford']
+    14 ['skin-confocal-sorgerlab', 'colon-xenium-stanford', 'colon-cycif-sorgerlab', 'maternalfetalinterface-mibitof-stanford', 'pancreas-geomx-ufl', 'intestine-codex-stanford', 'mouth-codex-czi', 'lymphnode-codex-yale', 'spleen-codex-ufl', 'tonsil-codex-stanford', 'lung-codex-urmc', 'esophagus-codex-stanford', 'skin-celldive-ge', 'bonemarrow-codex-chop']
 
 ``` python
 # Create destination directory. Overwrite if it exists.
@@ -85,7 +85,7 @@ else:
 os.makedirs(os.path.join(basepath, dest_filedir), exist_ok=False)
 ```
 
-    Directory 'data-processed-nodes' already exists and has been removed. New directory will be created.
+    Directory 'data-processed-nodes' does not exist and will be created.
 
 # Processsing Individual Datasets
 
@@ -152,12 +152,18 @@ for label in unique_regions:
         json.dump(dataset_json, f, indent=4)
 ```
 
-    ['NK' 'Enterocyte' 'MUC1+ Enterocyte' 'TA' 'CD66+ Enterocyte' 'Paneth'
-     'Smooth muscle' 'M1 Macrophage' 'Goblet' 'Neuroendocrine'
-     'CD57+ Enterocyte' 'Lymphatic' 'CD8+ T' 'DC' 'M2 Macrophage' 'B'
-     'Neutrophil' 'Endothelial' 'Cycling TA' 'Plasma' 'CD4+ T cell' 'Stroma'
-     'Nerve' 'ICC' 'CD7+ Immune']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/intestine-codex-stanford' created successfully.
+    <StringArray>
+    [              'NK',       'Enterocyte', 'MUC1+ Enterocyte',
+                   'TA', 'CD66+ Enterocyte',           'Paneth',
+        'Smooth muscle',    'M1 Macrophage',           'Goblet',
+       'Neuroendocrine', 'CD57+ Enterocyte',        'Lymphatic',
+               'CD8+ T',               'DC',    'M2 Macrophage',
+                    'B',       'Neutrophil',      'Endothelial',
+           'Cycling TA',           'Plasma',      'CD4+ T cell',
+               'Stroma',            'Nerve',              'ICC',
+          'CD7+ Immune']
+    Length: 25, dtype: str
+    Directory '../data/data-processed-nodes/intestine-codex-stanford' created successfully.
 
 ## tonsil-codex-stanford
 
@@ -202,10 +208,14 @@ for label in unique_regions:
         df_Region_1.to_csv(f"{target_dir}/{label_clean}-nodes.csv", index=False, header=True, mode="w")
 ```
 
-    ['Innate' 'PDPN' 'Endothelial' 'B' 'T' 'Squamous_epithelial' 'Stroma'
-     'SmoothMuscle' 'Plasma' 'Nerve' 'Glandular_epi' 'Secretory_epithelial'
-     'Paneth']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/tonsil-codex-stanford' created successfully.
+    <StringArray>
+    [              'Innate',                 'PDPN',          'Endothelial',
+                        'B',                    'T',  'Squamous_epithelial',
+                   'Stroma',         'SmoothMuscle',               'Plasma',
+                    'Nerve',        'Glandular_epi', 'Secretory_epithelial',
+                   'Paneth']
+    Length: 13, dtype: str
+    Directory '../data/data-processed-nodes/tonsil-codex-stanford' created successfully.
 
 ## esophagus-codex-stanford
 
@@ -249,10 +259,14 @@ for label in unique_regions:
         df_Region_1.to_csv(f"{target_dir}/esophagus-nodes.csv", index=False, header=True, mode="w")
 ```
 
-    ['Innate' 'PDPN' 'Endothelial' 'B' 'T' 'Squamous_epithelial' 'Stroma'
-     'SmoothMuscle' 'Plasma' 'Nerve' 'Glandular_epi' 'Secretory_epithelial'
-     'Paneth']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/esophagus-codex-stanford' created successfully.
+    <StringArray>
+    [              'Innate',                 'PDPN',          'Endothelial',
+                        'B',                    'T',  'Squamous_epithelial',
+                   'Stroma',         'SmoothMuscle',               'Plasma',
+                    'Nerve',        'Glandular_epi', 'Secretory_epithelial',
+                   'Paneth']
+    Length: 13, dtype: str
+    Directory '../data/data-processed-nodes/esophagus-codex-stanford' created successfully.
 
 ## colon-cycif-sorgerlab
 
@@ -335,12 +349,16 @@ for label in unique_regions:
         json.dump(dataset_json, f, indent=4)
 ```
 
-    ['Other' 'PDL1+ Macrophage' 'Tumor/Epithelial' 'Lymphocyte(III)' 'Treg'
-     'Endothelial' 'Muscle/Fibroblast' 'Tc cell' 'PDL1+ Tumor/Epithelial'
-     'Macrophage(IV)' 'B cells' 'PD1+ Tc' 'Macrophage(III)' 'DN Lymphocyte'
-     'DP Lymphocyte' 'T helper' 'Macrophage(II)' 'Macrophage(I)'
-     'Ki67+ Tumor/Epithelial' 'PD1+ T helper' 'PDL1+ lymphocyte']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/colon-cycif-sorgerlab' created successfully.
+    <StringArray>
+    [                 'Other',       'PDL1+ Macrophage',       'Tumor/Epithelial',
+            'Lymphocyte(III)',                   'Treg',            'Endothelial',
+          'Muscle/Fibroblast',                'Tc cell', 'PDL1+ Tumor/Epithelial',
+             'Macrophage(IV)',                'B cells',                'PD1+ Tc',
+            'Macrophage(III)',          'DN Lymphocyte',          'DP Lymphocyte',
+                   'T helper',         'Macrophage(II)',          'Macrophage(I)',
+     'Ki67+ Tumor/Epithelial',          'PD1+ T helper',       'PDL1+ lymphocyte']
+    Length: 21, dtype: str
+    Directory '../data/data-processed-nodes/colon-cycif-sorgerlab' created successfully.
 
 ## colon-xenium-stanford
 
@@ -377,17 +395,30 @@ for label in unique_regions:
     df_Region_1.to_csv(f"{target_dir}/layer_{label}-nodes.csv", index=False, header=True, mode="w")
 ```
 
-    ['Immature Goblet' 'Tuft' 'TA1' 'CD4+' 'Pericytes' 'Macrophages'
-     'CyclingTA' 'Cancer Associated Fibroblasts' 'Best4+ Enterocytes' 'Stem'
-     'CD8+' 'Endothelial' 'TA2' 'Myofibroblasts/Smooth Muscle 3'
-     'Unknown_lowcount' 'Myofibroblasts/Smooth Muscle 1' 'Crypt Fibroblasts 3'
-     'Crypt Fibroblasts 1' 'Glia' 'Crypt Fibroblasts 4' 'Adipocytes' 'Plasma'
-     'GC' 'Mast' 'Enteroendocrine' 'Tregs' 'Lymphatic endothelial cells'
-     'Goblet' 'Immature Enterocytes' 'Enterocyte Progenitors' 'Enterocytes'
-     'Myofibroblasts/Smooth Muscle 2' 'Naive T' 'Villus Fibroblasts WNT5B+'
-     'Naive B' 'Neurons' 'Memory B' 'Crypt Fibroblasts 2' 'ILCs' 'Unknown'
-     'DC']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/colon-xenium-stanford' created successfully.
+    <StringArray>
+    [               'Immature Goblet',                           'Tuft',
+                                'TA1',                           'CD4+',
+                          'Pericytes',                    'Macrophages',
+                          'CyclingTA',  'Cancer Associated Fibroblasts',
+                 'Best4+ Enterocytes',                           'Stem',
+                               'CD8+',                    'Endothelial',
+                                'TA2', 'Myofibroblasts/Smooth Muscle 3',
+                   'Unknown_lowcount', 'Myofibroblasts/Smooth Muscle 1',
+                'Crypt Fibroblasts 3',            'Crypt Fibroblasts 1',
+                               'Glia',            'Crypt Fibroblasts 4',
+                         'Adipocytes',                         'Plasma',
+                                 'GC',                           'Mast',
+                    'Enteroendocrine',                          'Tregs',
+        'Lymphatic endothelial cells',                         'Goblet',
+               'Immature Enterocytes',         'Enterocyte Progenitors',
+                        'Enterocytes', 'Myofibroblasts/Smooth Muscle 2',
+                            'Naive T',      'Villus Fibroblasts WNT5B+',
+                            'Naive B',                        'Neurons',
+                           'Memory B',            'Crypt Fibroblasts 2',
+                               'ILCs',                        'Unknown',
+                                 'DC']
+    Length: 41, dtype: str
+    Directory '../data/data-processed-nodes/colon-xenium-stanford' created successfully.
 
 ## lymphnode-codex-yale
 
@@ -422,8 +453,8 @@ for raw_filename in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/lymphnode-codex-yale' created successfully.
-    {'DC_CCR7+', 'B_plasma', 'Mast', 'T_CD8+_cytotoxic', 'Macrophages_M2', 'T_CD8+_naive', 'DC_pDC', 'VSMC', 'T_CD4+_TfH_GC', 'B_GC_DZ', 'B_naive', 'B_GC_LZ', 'T_CD4+', 'DC_cDC1', 'NK', 'B_mem', 'T_CD4+_naive', 'B_preGC', 'B_IFN', 'B_activated', 'T_CD4+_TfH', 'B_GC_prePB', 'Monocytes', 'NKT', 'Endothelial', 'T_CD8+_CD161+', 'T_TfR', 'T_TIM3+', 'DC_cDC2', 'FDC', 'T_Treg', 'Macrophages_M1', 'B_Cycling', 'ILC'}
+    Directory '../data/data-processed-nodes/lymphnode-codex-yale' created successfully.
+    {'T_CD8+_CD161+', 'DC_pDC', 'B_plasma', 'T_CD4+_TfH_GC', 'B_mem', 'NKT', 'DC_cDC2', 'DC_cDC1', 'B_IFN', 'T_TfR', 'Mast', 'T_CD8+_cytotoxic', 'VSMC', 'B_preGC', 'B_naive', 'B_Cycling', 'T_CD4+_naive', 'T_CD4+', 'B_activated', 'Macrophages_M1', 'B_GC_prePB', 'T_TIM3+', 'Endothelial', 'T_CD4+_TfH', 'NK', 'FDC', 'B_GC_DZ', 'T_Treg', 'ILC', 'B_GC_LZ', 'DC_CCR7+', 'T_CD8+_naive', 'Macrophages_M2', 'Monocytes'}
 
 ## maternalfetalinterface-mibitof-stanford
 
@@ -468,11 +499,16 @@ for label in unique_regions:
     df_Region_1.to_csv(f"{target_dir}/{label}-nodes.csv", index=False, header=True, mode="w")
 ```
 
-    ['Mac2a' 'other' 'NK1' 'Fibroblasts' 'NKT' 'Endothelial' 'Myofibroblasts'
-     'Mac1a' 'EVT1a' 'Mac1b' 'CD8T' 'EVT1b' 'Mac2c' 'NK2' 'muscle' 'NK3'
-     'EVT2' 'Mac2b' 'DC' 'Glandular' 'CD4T' 'EVT1c' 'NK4' 'Mast' 'Treg'
-     'Placental_Mac']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/maternalfetalinterface-mibitof-stanford' created successfully.
+    <StringArray>
+    [         'Mac2a',          'other',            'NK1',    'Fibroblasts',
+                'NKT',    'Endothelial', 'Myofibroblasts',          'Mac1a',
+              'EVT1a',          'Mac1b',           'CD8T',          'EVT1b',
+              'Mac2c',            'NK2',         'muscle',            'NK3',
+               'EVT2',          'Mac2b',             'DC',      'Glandular',
+               'CD4T',          'EVT1c',            'NK4',           'Mast',
+               'Treg',  'Placental_Mac']
+    Length: 26, dtype: str
+    Directory '../data/data-processed-nodes/maternalfetalinterface-mibitof-stanford' created successfully.
 
 ## mouth-codex-czi
 
@@ -531,8 +567,8 @@ for raw_filename in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/mouth-codex-czi' already exists.
-    {'Others', 'Melanocytes', 'myofibroblast', 'Plasma Cells', 'Skeletal Myocytes', 'Suprabasal Keratinocytes', 'Dendritic Cells', 'Macrophage', 'Vascular Endothelial Cells', 'CD8 T Cells', 'Monocyte-Macrophage', 'Glial/Neuron', 'Basal Keratincytes', 'Ducts', 'B Cells', 'Epithelial', 'Tc', 'Lymphatic Endothelial Cells', 'Adipocytes', 'Myoepithelial Cells', 'Neutrophils', 'Acinar Cells', 'Lymphatic Vascular Cells', 'DP', 'Mural Cells', 'CD4 T Cells', 'gd T Cells', 'VEC Progen', 'Ionocytes', 'Langerhans Cells', 'Fibroblasts', 'Th', 'Acini', 'Mast Cells', 'Merkel Cells', 'NK Cells', 'Ductal Epithelial Cells', 'Keratinocyte', 'Treg'}
+    Directory '../data/data-processed-nodes/mouth-codex-czi' created successfully.
+    {'B Cells', 'Epithelial', 'Langerhans Cells', 'Ionocytes', 'Adipocytes', 'NK Cells', 'Melanocytes', 'Vascular Endothelial Cells', 'Mast Cells', 'Suprabasal Keratinocytes', 'Myoepithelial Cells', 'CD4 T Cells', 'Lymphatic Endothelial Cells', 'Acinar Cells', 'CD8 T Cells', 'Monocyte-Macrophage', 'Acini', 'Ductal Epithelial Cells', 'Th', 'Merkel Cells', 'myofibroblast', 'Others', 'Lymphatic Vascular Cells', 'Skeletal Myocytes', 'gd T Cells', 'Fibroblasts', 'Ducts', 'Mural Cells', 'Treg', 'Neutrophils', 'Macrophage', 'VEC Progen', 'DP', 'Basal Keratincytes', 'Keratinocyte', 'Tc', 'Plasma Cells', 'Dendritic Cells', 'Glial/Neuron'}
 
 ## pancreas-geomx-ufl
 
@@ -603,8 +639,8 @@ for raw_filename in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/pancreas-geomx-ufl' created successfully.
-    {'Beta cell', 'Ductal cell', 'unknown', 'Endothelial'}
+    Directory '../data/data-processed-nodes/pancreas-geomx-ufl' created successfully.
+    {'unknown', 'Endothelial', 'Beta cell', 'Ductal cell'}
 
 ## skin-celldive-ge
 
@@ -680,8 +716,8 @@ for region in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/skin-celldive-ge' created successfully.
-    {'KI67', 'Endothelial', 'P53', 'DDB2', 'CD68', 'T-Reg', 'T-Killer', 'T-Helper'}
+    Directory '../data/data-processed-nodes/skin-celldive-ge' created successfully.
+    {'T-Reg', 'CD68', 'Endothelial', 'P53', 'T-Killer', 'KI67', 'T-Helper', 'DDB2'}
 
 ## skin-confocal-sorgerlab
 
@@ -727,8 +763,8 @@ for raw_filename in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/skin-confocal-sorgerlab' created successfully.
-    {'Unknown', 'Dendritic cells', 'Tumor', 'Endothelial', 'Macrophage', 'Other Immune', 'B cells', 'Myeloid', 'Tissue T', 'Langerhan cells', 'CD11B+ CD11C- cells', 'CD8 T', 'CD4 T', 'keratinocytes', 'T reg'}
+    Directory '../data/data-processed-nodes/skin-confocal-sorgerlab' created successfully.
+    {'Tumor', 'Unknown', 'CD11B+ CD11C- cells', 'Macrophage', 'T reg', 'Other Immune', 'CD4 T', 'Tissue T', 'Endothelial', 'keratinocytes', 'B cells', 'Langerhan cells', 'Dendritic cells', 'Myeloid', 'CD8 T'}
 
 ## spleen-codex-ufl
 
@@ -798,8 +834,8 @@ for raw_filename in os.listdir(raw_filedir):
 print(ct)
 ```
 
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/spleen-codex-ufl' created successfully.
-    {'Myeloid cells', 'Sinusoidal cells', 'CD8 Memory T cells', 'Macrophages', 'indistinct', 'B cells, red pulp', 'Ki67 proliferating', 'Fol B cells', 'blood endothelial', 'Neutrophils/Monocytes', 'Podoplanin', 'CD4 Memory T cells'}
+    Directory '../data/data-processed-nodes/spleen-codex-ufl' created successfully.
+    {'Sinusoidal cells', 'Fol B cells', 'blood endothelial', 'Macrophages', 'Myeloid cells', 'Ki67 proliferating', 'Podoplanin', 'Neutrophils/Monocytes', 'B cells, red pulp', 'indistinct', 'CD4 Memory T cells', 'CD8 Memory T cells'}
 
 ## lung-codex-urmc
 
@@ -980,22 +1016,32 @@ unique_cell_types = pd.concat([df1['Cell Type'], df1['Cell Type']]).unique()
 print(unique_cell_types)
 ```
 
-    Reading file: /u/yashjain/hra-cell-distance-analysis/data/data-original/lung-codex-urmc/D265_final_annotated.h5ad
+    Reading file: ../data/data-original/lung-codex-urmc/D265_final_annotated.h5ad
 
-    Data successfully saved to: /u/yashjain/hra-cell-distance-analysis/data/data-original/lung-codex-urmc/D265_final_annotated_cells.csv
-    Reading file: /u/yashjain/hra-cell-distance-analysis/data/data-original/lung-codex-urmc/D115_final_annotated.h5ad
+    Data successfully saved to: ../data/data-original/lung-codex-urmc/D265_final_annotated_cells.csv
+    Reading file: ../data/data-original/lung-codex-urmc/D115_final_annotated.h5ad
 
-    Data successfully saved to: /u/yashjain/hra-cell-distance-analysis/data/data-original/lung-codex-urmc/D115_final_annotated_cells.csv
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/lung-codex-urmc' created successfully.
-    ['CD4_+_Tcell/macrophage' 'CD8+_T_cell_1' 'macrophage_3' 'ENDO_1'
-     'ENDO_CD8+_T_Cell' 'CD4+_T_cell_1' 'Lung_Epithelial_1' 'CAP_ENDO'
-     'macrophage_CD1c+_myeloidDC' 'ENDO_SMC' 'Endo_p'
-     'Lung_Epithelil_2_CD4+_T_cell' 'AT2_2' 'AT2_1' 'CD8+_T_cell_2'
-     'macrophage_2' 'macrophage_p' 'CD4+_T_cell_2' 'AT2_p' 'SMC_2' 'SMC_1'
-     'CD8+_T_cell_3' 'B_cell_1' 'Lung_Epithelial_p' 'CD8+_T_cell_CD_4+_T_cell'
-     'Lung_Epithelial_4' 'UNK_5_ambiguous' 'UNK_1_APC' 'CD4+_T_cell_3'
-     'B_cell_macrophage_p?' 'UNK_3_(col1a1-driven_cluster)'
-     'Lymphatic_Endothelium' 'UNK_4_(col1a1_driven_cluster)']
+    Data successfully saved to: ../data/data-original/lung-codex-urmc/D115_final_annotated_cells.csv
+    Directory '../data/data-processed-nodes/lung-codex-urmc' created successfully.
+    <StringArray>
+    [       'CD4_+_Tcell/macrophage',                 'CD8+_T_cell_1',
+                      'macrophage_3',                        'ENDO_1',
+                  'ENDO_CD8+_T_Cell',                 'CD4+_T_cell_1',
+                 'Lung_Epithelial_1',                      'CAP_ENDO',
+        'macrophage_CD1c+_myeloidDC',                      'ENDO_SMC',
+                            'Endo_p',  'Lung_Epithelil_2_CD4+_T_cell',
+                             'AT2_2',                         'AT2_1',
+                     'CD8+_T_cell_2',                  'macrophage_2',
+                      'macrophage_p',                 'CD4+_T_cell_2',
+                             'AT2_p',                         'SMC_2',
+                             'SMC_1',                 'CD8+_T_cell_3',
+                          'B_cell_1',             'Lung_Epithelial_p',
+          'CD8+_T_cell_CD_4+_T_cell',             'Lung_Epithelial_4',
+                   'UNK_5_ambiguous',                     'UNK_1_APC',
+                     'CD4+_T_cell_3',          'B_cell_macrophage_p?',
+     'UNK_3_(col1a1-driven_cluster)',         'Lymphatic_Endothelium',
+     'UNK_4_(col1a1_driven_cluster)']
+    Length: 33, dtype: str
 
 ## bonemarrow-codex-chop
 
@@ -1043,16 +1089,28 @@ for filename in data_merged['filename'].unique():
     data_subset.to_csv(f'{target_dir}/{filename}-nodes.csv', index=False)
 ```
 
-    ['Erythroid' 'B-Cells' 'AEC' 'Early Myeloid Progenitor' 'SEC'
-     'Intermediate Myeloid' 'Mature Myeloid' 'CD8+ T-Cell' 'Plasma Cells'
-     'Erythroblast' 'Adipocyte' 'Monocytes' 'Adipo-MSC' 'Endosteal'
-     'THY1+ MSC' 'CD4+ T-Cell' 'GMP/Myeloblast' 'GATA1pos_Mks'
-     'Immature_B_Cell' 'Macrophages' 'SPINK2+ HSPC' 'pDC'
-     'Non-Classical Monocyte' 'GATA1neg_Mks' 'HSPC' 'VSMC' 'GMP'
-     'MEP/Early Erythroblast' 'CLP' 'CD34+ CD61+' 'HSC' 'NPM1 Mutant Blast'
-     'Schwann Cells' 'Artifact' 'Undetermined' 'Autofluorescent'
-     'CD44+ Undetermined']
-    Directory '/u/yashjain/hra-cell-distance-analysis/data/data-processed-nodes/bonemarrow-codex-chop' created successfully.
+    <StringArray>
+    [               'Erythroid',                  'B-Cells',
+                          'AEC', 'Early Myeloid Progenitor',
+                          'SEC',     'Intermediate Myeloid',
+               'Mature Myeloid',              'CD8+ T-Cell',
+                 'Plasma Cells',             'Erythroblast',
+                    'Adipocyte',                'Monocytes',
+                    'Adipo-MSC',                'Endosteal',
+                    'THY1+ MSC',              'CD4+ T-Cell',
+               'GMP/Myeloblast',             'GATA1pos_Mks',
+              'Immature_B_Cell',              'Macrophages',
+                 'SPINK2+ HSPC',                      'pDC',
+       'Non-Classical Monocyte',             'GATA1neg_Mks',
+                         'HSPC',                     'VSMC',
+                          'GMP',   'MEP/Early Erythroblast',
+                          'CLP',              'CD34+ CD61+',
+                          'HSC',        'NPM1 Mutant Blast',
+                'Schwann Cells',                 'Artifact',
+                 'Undetermined',          'Autofluorescent',
+           'CD44+ Undetermined']
+    Length: 37, dtype: str
+    Directory '../data/data-processed-nodes/bonemarrow-codex-chop' created successfully.
 
 ``` python
 # Print final message

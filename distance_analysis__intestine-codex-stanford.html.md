@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "intestine-codex-stanford"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -156,98 +159,98 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>444.22334</td>
+<td>521.97186</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1958.05496</td>
-<td>1553.46072</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2845.36938</td>
+<td>3408.10260</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>2290.93940</td>
-<td>1187.36332</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2751.01438</td>
+<td>3076.35042</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>2863.48554</td>
-<td>891.08862</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>374.77806</td>
+<td>345.33930</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>2563.43664</td>
-<td>1468.54122</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2735.91758</td>
+<td>3087.29560</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 </tbody>
 </table>
@@ -288,6 +291,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -383,98 +387,98 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>444.22334</td>
+<td>521.97186</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1958.05496</td>
-<td>1553.46072</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2845.36938</td>
+<td>3408.10260</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>2290.93940</td>
-<td>1187.36332</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2751.01438</td>
+<td>3076.35042</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>2863.48554</td>
-<td>891.08862</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>374.77806</td>
+<td>345.33930</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>2563.43664</td>
-<td>1468.54122</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>2735.91758</td>
+<td>3087.29560</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
+<td>B008_Proximaljejunum</td>
 </tr>
 </tbody>
 </table>
@@ -517,33 +521,33 @@ df_all_nodes[['Dataset', 'Donor', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
 </tr>
 </tbody>
 </table>
@@ -584,15 +588,21 @@ print(f"\nTotal number of unique datasets in Small Intestine: {df_all_nodes[df_a
 print(f"Total number of unique datasets in Large Intestine: {df_all_nodes[df_all_nodes['Tissue Subtype'] == 'Large Intestine']['Dataset'].nunique()}")
 ```
 
+
     Unique Regions in the data:
-    ['Ascending' 'Descending' 'Duodenum' 'Ileum' 'Mid Jejunum'
-     'Proximal Jejunum' 'Transverse' 'Sigmoid']
+    <StringArray>
+    ['Proximal Jejunum',         'Duodenum',       'Transverse',
+          'Mid Jejunum',            'Ileum',          'Sigmoid',
+           'Descending',        'Ascending']
+    Length: 8, dtype: str
 
     Unique Donors in the data:
-    ['B004' 'B005' 'B006' 'B009' 'B010' 'B011' 'B012' 'B008']
+    ['B008' 'B006' 'B011' 'B009' 'B005' 'B012' 'B004' 'B010']
 
     Unique Tissue Subtypes in the data:
-    ['Large Intestine' 'Small Intestine']
+    <StringArray>
+    ['Small Intestine', 'Large Intestine']
+    Length: 2, dtype: str
 
     Number of donors in Small Intestine:
     8
@@ -648,70 +658,70 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
+<td>444.22334</td>
+<td>521.97186</td>
 <td>0</td>
-<td>1541.00586</td>
-<td>1229.63436</td>
+<td>394.78132</td>
+<td>483.85244</td>
 <td>0</td>
-<td>61.372252</td>
-<td>B004_Ascending</td>
+<td>62.430790</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>726</td>
-<td>1428.15728</td>
-<td>1210.38594</td>
+<td>17</td>
+<td>452.90400</td>
+<td>547.63642</td>
 <td>0</td>
-<td>1404.75724</td>
-<td>1149.62132</td>
+<td>394.78132</td>
+<td>483.85244</td>
 <td>0</td>
-<td>65.114522</td>
-<td>B004_Ascending</td>
+<td>86.293928</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>727</td>
-<td>1428.15728</td>
-<td>1216.80208</td>
+<td>47</td>
+<td>451.77174</td>
+<td>516.31056</td>
 <td>0</td>
-<td>1404.75724</td>
-<td>1149.62132</td>
+<td>394.78132</td>
+<td>483.85244</td>
 <td>0</td>
-<td>71.139415</td>
-<td>B004_Ascending</td>
+<td>65.585345</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>729</td>
-<td>1433.06374</td>
-<td>1202.83754</td>
+<td>54</td>
+<td>580.09454</td>
+<td>549.52352</td>
 <td>0</td>
-<td>1404.75724</td>
-<td>1149.62132</td>
+<td>528.76542</td>
+<td>406.85876</td>
 <td>0</td>
-<td>60.276231</td>
-<td>B004_Ascending</td>
+<td>151.617652</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>730</td>
-<td>1437.21536</td>
-<td>1248.50536</td>
+<td>73</td>
+<td>411.01038</td>
+<td>591.41714</td>
 <td>0</td>
-<td>1404.75724</td>
-<td>1149.62132</td>
+<td>340.05542</td>
+<td>631.80108</td>
 <td>0</td>
-<td>104.074891</td>
-<td>B004_Ascending</td>
+<td>81.642323</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
 </tr>
@@ -756,38 +766,38 @@ df_all_edges[['Dataset', 'Donor', 'Unique Region', 'Tissue Subtype']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 </tbody>
 </table>
@@ -823,15 +833,21 @@ print(f"\nTotal number of unique datasets in Small Intestine: {df_all_edges[df_a
 print(f"Total number of unique datasets in Large Intestine: {df_all_edges[df_all_edges['Tissue Subtype'] == 'Large Intestine']['Dataset'].nunique()}")
 ```
 
+
     Unique Regions in the data:
-    ['Ascending' 'Descending' 'Duodenum' 'Ileum' 'Mid Jejunum'
-     'Proximal Jejunum' 'Transverse' 'Sigmoid']
+    <StringArray>
+    ['Proximal Jejunum',         'Duodenum',       'Transverse',
+          'Mid Jejunum',            'Ileum',          'Sigmoid',
+           'Descending',        'Ascending']
+    Length: 8, dtype: str
 
     Unique Donors in the data:
-    ['B004' 'B005' 'B006' 'B009' 'B010' 'B011' 'B012' 'B008']
+    ['B008' 'B006' 'B011' 'B009' 'B005' 'B012' 'B004' 'B010']
 
     Unique Tissue Subtypes in the data:
-    ['Large Intestine' 'Small Intestine']
+    <StringArray>
+    ['Small Intestine', 'Large Intestine']
+    Length: 2, dtype: str
 
     Number of donors in Small Intestine:
     8
@@ -882,38 +898,38 @@ df_all_edges_with_cell_types[['Dataset', 'Donor', 'Unique Region', 'Tissue Subty
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 </tbody>
 </table>
@@ -965,25 +981,25 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
-<td>NK</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>444.22334</td>
+<td>521.97186</td>
+<td>DC</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
-<td>CL:0000623</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
+<td>CL:0000451</td>
 <td>skos:exactMatch</td>
 <td>immune cell</td>
 <td>leukocyte</td>
 <td>CL:0000738</td>
 <td>skos:exactMatch</td>
-<td>B004_Ascending</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008_Proximaljejunum</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 </tbody>
 </table>
@@ -1031,19 +1047,19 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
+<td>444.22334</td>
+<td>521.97186</td>
 <td>0</td>
-<td>1541.00586</td>
-<td>1229.63436</td>
+<td>394.78132</td>
+<td>483.85244</td>
 <td>0</td>
-<td>61.372252</td>
-<td>B004_Ascending</td>
+<td>62.43079</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 </tbody>
 </table>
@@ -1094,22 +1110,22 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>1503.64128</td>
-<td>1278.32154</td>
+<td>444.22334</td>
+<td>521.97186</td>
 <td>0</td>
-<td>1541.00586</td>
-<td>1229.63436</td>
+<td>394.78132</td>
+<td>483.85244</td>
 <td>0</td>
-<td>61.372252</td>
-<td>B004_Ascending</td>
+<td>62.43079</td>
+<td>B008_Proximaljejunum</td>
 <td>endothelial cell of lymphatic vessel</td>
 <td>Level Three Cell Type</td>
-<td>natural killer cell</td>
-<td>natural killer cell</td>
+<td>dendritic cell</td>
+<td>dendritic cell</td>
 <td>immune cell</td>
-<td>B004</td>
-<td>Ascending</td>
-<td>Large Intestine</td>
+<td>B008</td>
+<td>Proximal Jejunum</td>
+<td>Small Intestine</td>
 </tr>
 </tbody>
 </table>
@@ -1797,6 +1813,7 @@ print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
 
+
     Top 5 cell types in Small Intestine:
       Level One Cell Type  mean_distance
     0     epithelial cell      43.213764
@@ -1855,6 +1872,7 @@ print(top_bottom_li[0])
 print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
+
 
     Top 5 cell types in Small Intestine:
       Level One Cell Type  median_distance
@@ -1917,6 +1935,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -2457,6 +2476,7 @@ print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
 
+
     Top 5 cell types in Small Intestine:
        Level Two Cell Type  mean_distance
     6        lymphoid cell      63.133067
@@ -2520,6 +2540,7 @@ print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
 
+
     Top 5 cell types in Small Intestine:
        Level Two Cell Type  median_distance
     6        lymphoid cell        43.305553
@@ -2555,6 +2576,7 @@ print(top_bottom_li[1])
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3125,6 +3147,7 @@ print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
 
+
     Top 5 cell types in Small Intestine:
           Level Three Cell Type  mean_distance
     5          enterocyte:cd66+      77.146245
@@ -3188,6 +3211,7 @@ print("\nBottom 5 cell types in Large Intestine:")
 print(top_bottom_li[1])
 ```
 
+
     Top 5 cell types in Small Intestine:
           Level Three Cell Type  median_distance
     5          enterocyte:cd66+        62.703991
@@ -3223,6 +3247,7 @@ print(top_bottom_li[1])
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region

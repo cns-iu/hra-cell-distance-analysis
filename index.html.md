@@ -59,21 +59,74 @@ Documentation to embed the CDE in webpages as a lightweight component is
 available at
 (<https://github.com/hubmapconsortium/hra-ui/blob/main/apps/cde-visualization-wc/EMBEDDING.md>).
 
+## Setup & running
+
+The notebooks in `nbs/` run end to end on Python 3.14. All data paths
+are relative to the `nbs/` folder (`basepath = "../data"`), so nothing
+needs to be edited after cloning.
+
+**1. Create the environment**
+
+    conda env create -f environment.yml
+    conda activate cde-env
+
+Or, with pip in a Python 3.14 virtual environment:
+`pip install -r requirements.txt`.
+
+`kaleido` (used by Plotly to save the donut charts in notebook 02) needs
+a local Chrome or Chromium install. If one is not found, run
+`plotly_get_chrome` once.
+
+**2. Add the raw data**
+
+Download the original datasets (see *Data Availability* above) and place
+each dataset in its own folder under `data/data-original/`, for example
+`data/data-original/lung-codex-urmc/`. The `data/mapping_files/` folder
+ships with the repository. All other folders under `data/`
+(`data-processed-nodes`,
+`data-processed-nodes-with-harmonized-cell-types`,
+`data-processed-edges`) are created by the notebooks, and figures are
+written to `data/generated-figures/`.
+
+**3. Launch Jupyter from `nbs/`**
+
+Open the notebooks in VS Code with the `cde-env` kernel, or start
+Jupyter from the `nbs/` folder (install `jupyterlab` first if needed):
+
+    cd nbs
+    jupyter lab
+
+The working directory must be `nbs/`, because the paths are relative and
+notebooks 03 to 15 import `_cde_compute_edges_from_nodes.py` from that
+folder.
+
+**4. Run the notebooks in order, 00 to 16**
+
+Each notebook reads what the earlier ones wrote, so run them in numeric
+order: `00` converts the raw data to the CDE format, `01` harmonizes
+cell types, `02` summarizes the datasets, `03` computes distances, `04`
+to `15` analyze each dataset, and `16` runs the statistical tests.
+
 ## For Developers
 
 The repository uses [`quarto`](https://quarto.org/) for documentation
 and [`nbdev`](https://nbdev.fast.ai/) for notebook processing.
 
+These commands come with `nbdev` (installed by
+`environment.yml`/`requirements.txt`), so activate the environment
+first: `conda activate cde-env`. In nbdev 3 the commands are hyphenated
+(`nbdev-readme`), not underscored.
+
 To update the README file from the `nbs/index.ipynb` notebook, run the
 following command in the root directory of the repository:
 
-    nbdev_readme
+    nbdev-readme
 
 Then, to save the notebooks and render them using the `nbdev` library,
 you can run the following command in the root directory of the
 repository:
 
-    rm -rf _proc && nbdev_proc_nbs && cd _proc && quarto publish gh-pages --no-prompt
+    rm -rf _proc && nbdev-proc-nbs && cd _proc && quarto publish gh-pages --no-prompt
 
 Then, push to GitHub:
 

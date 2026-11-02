@@ -35,7 +35,7 @@ MIN_SAMPLES_PER_GROUP = 3
 
 # Where the master results table (CSV) will be written.
 
-basepath = "/Users/yashjain/Coding/cns/hra-cell-distance-analysis/data"
+basepath = "../data"
 
 RESULTS_OUTPUT_PATH = basepath + "/distance_analysis_statistical_results.csv"
 ```
@@ -94,6 +94,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True)
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 
@@ -138,6 +141,9 @@ def read_all_edge_datasets_lung(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True)
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -711,7 +717,7 @@ print(f"Saved {len(master_results)} rows to {RESULTS_OUTPUT_PATH}")
 master_results
 ```
 
-    Saved 443 rows to distance_analysis_statistical_results.csv
+    Saved 443 rows to ../data/distance_analysis_statistical_results.csv
 
 <div>
 <style scoped>
@@ -928,11 +934,11 @@ Glands</th>
 <td>Tested</td>
 <td>32.0</td>
 <td>32.0</td>
-<td>288.000000</td>
-<td>2.691221e-03</td>
-<td>-0.437500</td>
+<td>289.000000</td>
+<td>2.812309e-03</td>
+<td>-0.435547</td>
 <td>Cliff's delta</td>
-<td>1.076488e-02</td>
+<td>1.124924e-02</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -3160,11 +3166,11 @@ Glands</th>
 <td>Tested</td>
 <td>32.0</td>
 <td>31.0</td>
-<td>143.000000</td>
-<td>1.258303e-06</td>
-<td>-0.711694</td>
+<td>142.000000</td>
+<td>1.173994e-06</td>
+<td>-0.713710</td>
 <td>Cliff's delta</td>
-<td>4.314183e-06</td>
+<td>4.025121e-06</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -3656,11 +3662,11 @@ Glands</th>
 <td>Tested</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>11.968859</td>
-<td>1.015876e-01</td>
-<td>0.189982</td>
+<td>11.875667</td>
+<td>1.047225e-01</td>
+<td>0.188503</td>
 <td>epsilon-squared</td>
-<td>4.063504e-01</td>
+<td>4.188900e-01</td>
 <td>8.0</td>
 <td>8.0</td>
 <td>8.0</td>
@@ -5888,11 +5894,11 @@ Glands</th>
 <td>Tested</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>26.159003</td>
-<td>4.717566e-04</td>
-<td>0.421919</td>
+<td>26.298140</td>
+<td>4.454665e-04</td>
+<td>0.424164</td>
 <td>epsilon-squared</td>
-<td>1.550057e-03</td>
+<td>1.463676e-03</td>
 <td>8.0</td>
 <td>8.0</td>
 <td>8.0</td>
@@ -29722,11 +29728,11 @@ Glands</th>
 <td>Tested</td>
 <td>32.0</td>
 <td>31.0</td>
-<td>143.000000</td>
-<td>1.258303e-06</td>
-<td>-0.711694</td>
+<td>142.000000</td>
+<td>1.173994e-06</td>
+<td>-0.713710</td>
 <td>Cliff's delta</td>
-<td>4.314183e-06</td>
+<td>4.025121e-06</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -32946,11 +32952,11 @@ Glands</th>
 <td>Tested</td>
 <td>32.0</td>
 <td>32.0</td>
-<td>288.000000</td>
-<td>2.691221e-03</td>
-<td>-0.437500</td>
+<td>289.000000</td>
+<td>2.812309e-03</td>
+<td>-0.435547</td>
 <td>Cliff's delta</td>
-<td>1.076488e-02</td>
+<td>1.124924e-02</td>
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
@@ -33070,11 +33076,11 @@ Glands</th>
 <td>Tested</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>26.159003</td>
-<td>4.717566e-04</td>
-<td>0.421919</td>
+<td>26.298140</td>
+<td>4.454665e-04</td>
+<td>0.424164</td>
 <td>epsilon-squared</td>
-<td>1.550057e-03</td>
+<td>1.463676e-03</td>
 <td>8.0</td>
 <td>8.0</td>
 <td>8.0</td>
@@ -34378,7 +34384,7 @@ if len(significant) > 0:
                 cbar_kws={'label': 'Effect size (Cliff\'s delta / epsilon-sq)'})
     plt.title('Effect sizes for statistically significant comparisons (FDR < 0.05)')
     plt.tight_layout()
-    plt.savefig('distance_analysis_effect_size_heatmap.png', dpi=300, bbox_inches='tight')
+    plt.savefig(os.path.join(basepath, 'distance_analysis_effect_size_heatmap.png'), dpi=300, bbox_inches='tight')
     plt.show()
 else:
     print("No comparisons currently in `significant`.")

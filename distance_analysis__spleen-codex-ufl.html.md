@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "spleen-codex-ufl"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -288,6 +291,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -538,17 +542,20 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['FSLD' 'KSFB' 'NGPL' 'PBVN' 'PKHL' 'XXCD']
+    <StringArray>
+    ['FSLD', 'PKHL', 'PBVN', 'XXCD', 'KSFB', 'NGPL']
+    Length: 6, dtype: str
     Total number of unique regions: 6
 
     Number of unique datasets per unique region:
     FSLD: 1
+    PKHL: 1
+    PBVN: 1
+    XXCD: 1
     KSFB: 1
     NGPL: 1
-    PBVN: 1
-    PKHL: 1
-    XXCD: 1
 
 ## Process datasets to add region information to Edges files.
 
@@ -739,17 +746,20 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['FSLD' 'KSFB' 'NGPL' 'PBVN' 'PKHL' 'XXCD']
+    <StringArray>
+    ['FSLD', 'PKHL', 'PBVN', 'XXCD', 'KSFB', 'NGPL']
+    Length: 6, dtype: str
     Total number of unique regions: 6
 
     Number of unique datasets per unique region:
     FSLD: 1
+    PKHL: 1
+    PBVN: 1
+    XXCD: 1
     KSFB: 1
     NGPL: 1
-    PBVN: 1
-    PKHL: 1
-    XXCD: 1
 
 ``` python
 df_all_edges_with_cell_types['Unique Region'] = df_all_edges_with_cell_types['Dataset']
@@ -1683,45 +1693,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in FSLD:
-      Level One Cell Type  mean_distance
-    0         immune cell      12.325330
-    1        unknown cell       9.336397
-
-    Bottom 5 cell types in FSLD:
-      Level One Cell Type  mean_distance
-    0         immune cell      12.325330
-    1        unknown cell       9.336397
-
-    Top 5 cell types in KSFB:
-      Level One Cell Type  mean_distance
-    0         immune cell      19.574997
-    1        unknown cell      12.696620
-
-    Bottom 5 cell types in KSFB:
-      Level One Cell Type  mean_distance
-    0         immune cell      19.574997
-    1        unknown cell      12.696620
-
-    Top 5 cell types in NGPL:
-      Level One Cell Type  mean_distance
-    0         immune cell      21.022792
-    1        unknown cell      10.879824
-
-    Bottom 5 cell types in NGPL:
-      Level One Cell Type  mean_distance
-    0         immune cell      21.022792
-    1        unknown cell      10.879824
-
-    Top 5 cell types in PBVN:
-      Level One Cell Type  mean_distance
-    0         immune cell      17.059760
-    1        unknown cell      14.605778
-
-    Bottom 5 cell types in PBVN:
-      Level One Cell Type  mean_distance
-    0         immune cell      17.059760
-    1        unknown cell      14.605778
 
     Top 5 cell types in PKHL:
       Level One Cell Type  mean_distance
@@ -1733,6 +1704,26 @@ for region in unique_regions:
     1        unknown cell      22.720231
     0         immune cell      22.544364
 
+    Top 5 cell types in FSLD:
+      Level One Cell Type  mean_distance
+    0         immune cell      12.325330
+    1        unknown cell       9.336397
+
+    Bottom 5 cell types in FSLD:
+      Level One Cell Type  mean_distance
+    0         immune cell      12.325330
+    1        unknown cell       9.336397
+
+    Top 5 cell types in PBVN:
+      Level One Cell Type  mean_distance
+    0         immune cell      17.059760
+    1        unknown cell      14.605778
+
+    Bottom 5 cell types in PBVN:
+      Level One Cell Type  mean_distance
+    0         immune cell      17.059760
+    1        unknown cell      14.605778
+
     Top 5 cell types in XXCD:
       Level One Cell Type  mean_distance
     0         immune cell      17.306820
@@ -1742,6 +1733,26 @@ for region in unique_regions:
       Level One Cell Type  mean_distance
     0         immune cell      17.306820
     1        unknown cell      14.710918
+
+    Top 5 cell types in NGPL:
+      Level One Cell Type  mean_distance
+    0         immune cell      21.022792
+    1        unknown cell      10.879824
+
+    Bottom 5 cell types in NGPL:
+      Level One Cell Type  mean_distance
+    0         immune cell      21.022792
+    1        unknown cell      10.879824
+
+    Top 5 cell types in KSFB:
+      Level One Cell Type  mean_distance
+    0         immune cell      19.574997
+    1        unknown cell      12.696620
+
+    Bottom 5 cell types in KSFB:
+      Level One Cell Type  mean_distance
+    0         immune cell      19.574997
+    1        unknown cell      12.696620
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1771,45 +1782,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in FSLD:
-      Level One Cell Type  median_distance
-    0         immune cell        10.515530
-    1        unknown cell         7.997378
-
-    Bottom 5 cell types in FSLD:
-      Level One Cell Type  median_distance
-    0         immune cell        10.515530
-    1        unknown cell         7.997378
-
-    Top 5 cell types in KSFB:
-      Level One Cell Type  median_distance
-    0         immune cell        13.498495
-    1        unknown cell        10.633133
-
-    Bottom 5 cell types in KSFB:
-      Level One Cell Type  median_distance
-    0         immune cell        13.498495
-    1        unknown cell        10.633133
-
-    Top 5 cell types in NGPL:
-      Level One Cell Type  median_distance
-    0         immune cell        13.514280
-    1        unknown cell         9.311213
-
-    Bottom 5 cell types in NGPL:
-      Level One Cell Type  median_distance
-    0         immune cell        13.514280
-    1        unknown cell         9.311213
-
-    Top 5 cell types in PBVN:
-      Level One Cell Type  median_distance
-    0         immune cell        12.983258
-    1        unknown cell        11.783889
-
-    Bottom 5 cell types in PBVN:
-      Level One Cell Type  median_distance
-    0         immune cell        12.983258
-    1        unknown cell        11.783889
 
     Top 5 cell types in PKHL:
       Level One Cell Type  median_distance
@@ -1821,6 +1793,26 @@ for region in unique_regions:
     1        unknown cell        16.105447
     0         immune cell        14.330960
 
+    Top 5 cell types in FSLD:
+      Level One Cell Type  median_distance
+    0         immune cell        10.515530
+    1        unknown cell         7.997378
+
+    Bottom 5 cell types in FSLD:
+      Level One Cell Type  median_distance
+    0         immune cell        10.515530
+    1        unknown cell         7.997378
+
+    Top 5 cell types in PBVN:
+      Level One Cell Type  median_distance
+    0         immune cell        12.983258
+    1        unknown cell        11.783889
+
+    Bottom 5 cell types in PBVN:
+      Level One Cell Type  median_distance
+    0         immune cell        12.983258
+    1        unknown cell        11.783889
+
     Top 5 cell types in XXCD:
       Level One Cell Type  median_distance
     0         immune cell        12.644964
@@ -1830,6 +1822,26 @@ for region in unique_regions:
       Level One Cell Type  median_distance
     0         immune cell        12.644964
     1        unknown cell        12.308920
+
+    Top 5 cell types in NGPL:
+      Level One Cell Type  median_distance
+    0         immune cell        13.514280
+    1        unknown cell         9.311213
+
+    Bottom 5 cell types in NGPL:
+      Level One Cell Type  median_distance
+    0         immune cell        13.514280
+    1        unknown cell         9.311213
+
+    Top 5 cell types in KSFB:
+      Level One Cell Type  median_distance
+    0         immune cell        13.498495
+    1        unknown cell        10.633133
+
+    Bottom 5 cell types in KSFB:
+      Level One Cell Type  median_distance
+    0         immune cell        13.498495
+    1        unknown cell        10.633133
 
 ``` python
 # Calculate regional variability
@@ -1865,6 +1877,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
 
+
     Regional Variability Analysis:
     Mean: Average distance in each region
     Std: Standard deviation of distances
@@ -1891,8 +1904,9 @@ print("\nRegions in the data:")
 print(regions)
 ```
 
+
     Regions in the data:
-    ['FSLD', 'KSFB', 'NGPL', 'PBVN', 'PKHL', 'XXCD']
+    ['FSLD', 'PKHL', 'PBVN', 'XXCD', 'KSFB', 'NGPL']
 
 ``` python
 # Generate Violin Plot
@@ -2553,6 +2567,23 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
+    Top 5 cell types in NGPL:
+                        Level Two Cell Type  mean_distance
+    0                                b cell      62.721335
+    1  endothelial cell of lymphatic vessel      43.458134
+    6                                t cell      36.643007
+    2     endothelial cell of vascular tree      26.593129
+    3                            macrophage      19.867353
+
+    Bottom 5 cell types in NGPL:
+                     Level Two Cell Type  mean_distance
+    2  endothelial cell of vascular tree      26.593129
+    3                         macrophage      19.867353
+    4                       myeloid cell      18.322417
+    5                         neutrophil      17.447778
+    7                       unknown cell      14.866453
+
     Top 5 cell types in FSLD:
                         Level Two Cell Type  mean_distance
     1  endothelial cell of lymphatic vessel      29.642101
@@ -2585,37 +2616,21 @@ for region in unique_regions:
     4                       myeloid cell      19.470228
     5                         neutrophil      17.949726
 
-    Top 5 cell types in NGPL:
+    Top 5 cell types in XXCD:
                         Level Two Cell Type  mean_distance
-    0                                b cell      62.721335
-    1  endothelial cell of lymphatic vessel      43.458134
-    6                                t cell      36.643007
-    2     endothelial cell of vascular tree      26.593129
-    3                            macrophage      19.867353
+    0                                b cell      60.047765
+    1  endothelial cell of lymphatic vessel      36.088648
+    2     endothelial cell of vascular tree      25.129076
+    7                          unknown cell      20.205180
+    6                                t cell      19.165004
 
-    Bottom 5 cell types in NGPL:
-                     Level Two Cell Type  mean_distance
-    2  endothelial cell of vascular tree      26.593129
-    3                         macrophage      19.867353
-    4                       myeloid cell      18.322417
-    5                         neutrophil      17.447778
-    7                       unknown cell      14.866453
-
-    Top 5 cell types in PBVN:
-                        Level Two Cell Type  mean_distance
-    0                                b cell      43.296183
-    1  endothelial cell of lymphatic vessel      32.893007
-    6                                t cell      26.348933
-    2     endothelial cell of vascular tree      23.699591
-    7                          unknown cell      20.411115
-
-    Bottom 5 cell types in PBVN:
-                     Level Two Cell Type  mean_distance
-    2  endothelial cell of vascular tree      23.699591
-    7                       unknown cell      20.411115
-    3                         macrophage      16.594531
-    5                         neutrophil      16.360062
-    4                       myeloid cell      14.973737
+    Bottom 5 cell types in XXCD:
+      Level Two Cell Type  mean_distance
+    7        unknown cell      20.205180
+    6              t cell      19.165004
+    3          macrophage      16.401596
+    4        myeloid cell      15.418976
+    5          neutrophil      14.615880
 
     Top 5 cell types in PKHL:
                         Level Two Cell Type  mean_distance
@@ -2633,21 +2648,21 @@ for region in unique_regions:
     4                       myeloid cell      17.663756
     5                         neutrophil      15.311728
 
-    Top 5 cell types in XXCD:
+    Top 5 cell types in PBVN:
                         Level Two Cell Type  mean_distance
-    0                                b cell      60.047765
-    1  endothelial cell of lymphatic vessel      36.088648
-    2     endothelial cell of vascular tree      25.129076
-    7                          unknown cell      20.205180
-    6                                t cell      19.165004
+    0                                b cell      43.296183
+    1  endothelial cell of lymphatic vessel      32.893007
+    6                                t cell      26.348933
+    2     endothelial cell of vascular tree      23.699591
+    7                          unknown cell      20.411115
 
-    Bottom 5 cell types in XXCD:
-      Level Two Cell Type  mean_distance
-    7        unknown cell      20.205180
-    6              t cell      19.165004
-    3          macrophage      16.401596
-    4        myeloid cell      15.418976
-    5          neutrophil      14.615880
+    Bottom 5 cell types in PBVN:
+                     Level Two Cell Type  mean_distance
+    2  endothelial cell of vascular tree      23.699591
+    7                       unknown cell      20.411115
+    3                         macrophage      16.594531
+    5                         neutrophil      16.360062
+    4                       myeloid cell      14.973737
 
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
@@ -2659,6 +2674,23 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
+
+    Top 5 cell types in NGPL:
+                        Level Two Cell Type  median_distance
+    0                                b cell        50.108392
+    1  endothelial cell of lymphatic vessel        39.208000
+    2     endothelial cell of vascular tree        22.220624
+    6                                t cell        21.725801
+    3                            macrophage        15.475379
+
+    Bottom 5 cell types in NGPL:
+      Level Two Cell Type  median_distance
+    6              t cell        21.725801
+    3          macrophage        15.475379
+    4        myeloid cell        13.660724
+    5          neutrophil        12.069889
+    7        unknown cell         9.960223
 
     Top 5 cell types in FSLD:
                         Level Two Cell Type  median_distance
@@ -2692,37 +2724,21 @@ for region in unique_regions:
     5          neutrophil        13.151844
     7        unknown cell        12.210378
 
-    Top 5 cell types in NGPL:
+    Top 5 cell types in XXCD:
                         Level Two Cell Type  median_distance
-    0                                b cell        50.108392
-    1  endothelial cell of lymphatic vessel        39.208000
-    2     endothelial cell of vascular tree        22.220624
-    6                                t cell        21.725801
-    3                            macrophage        15.475379
+    0                                b cell        41.497409
+    1  endothelial cell of lymphatic vessel        32.225229
+    2     endothelial cell of vascular tree        22.500300
+    7                          unknown cell        14.483867
+    3                            macrophage        14.395280
 
-    Bottom 5 cell types in NGPL:
+    Bottom 5 cell types in XXCD:
       Level Two Cell Type  median_distance
-    6              t cell        21.725801
-    3          macrophage        15.475379
-    4        myeloid cell        13.660724
-    5          neutrophil        12.069889
-    7        unknown cell         9.960223
-
-    Top 5 cell types in PBVN:
-                        Level Two Cell Type  median_distance
-    1  endothelial cell of lymphatic vessel        27.726806
-    0                                b cell        27.544230
-    2     endothelial cell of vascular tree        21.791122
-    6                                t cell        17.818984
-    3                            macrophage        14.813750
-
-    Bottom 5 cell types in PBVN:
-      Level Two Cell Type  median_distance
-    6              t cell        17.818984
-    3          macrophage        14.813750
-    7        unknown cell        14.025211
-    5          neutrophil        13.328963
-    4        myeloid cell        12.823543
+    7        unknown cell        14.483867
+    3          macrophage        14.395280
+    6              t cell        13.707463
+    4        myeloid cell        12.795804
+    5          neutrophil        12.140337
 
     Top 5 cell types in PKHL:
                         Level Two Cell Type  median_distance
@@ -2740,25 +2756,26 @@ for region in unique_regions:
     4        myeloid cell        13.994776
     5          neutrophil        12.492303
 
-    Top 5 cell types in XXCD:
+    Top 5 cell types in PBVN:
                         Level Two Cell Type  median_distance
-    0                                b cell        41.497409
-    1  endothelial cell of lymphatic vessel        32.225229
-    2     endothelial cell of vascular tree        22.500300
-    7                          unknown cell        14.483867
-    3                            macrophage        14.395280
+    1  endothelial cell of lymphatic vessel        27.726806
+    0                                b cell        27.544230
+    2     endothelial cell of vascular tree        21.791122
+    6                                t cell        17.818984
+    3                            macrophage        14.813750
 
-    Bottom 5 cell types in XXCD:
+    Bottom 5 cell types in PBVN:
       Level Two Cell Type  median_distance
-    7        unknown cell        14.483867
-    3          macrophage        14.395280
-    6              t cell        13.707463
-    4        myeloid cell        12.795804
-    5          neutrophil        12.140337
+    6              t cell        17.818984
+    3          macrophage        14.813750
+    7        unknown cell        14.025211
+    5          neutrophil        13.328963
+    4        myeloid cell        12.823543
 
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3461,6 +3478,7 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
     Top 5 cell types in FSLD:
                       Level Three Cell Type  mean_distance
     1                     b cell:follicular      44.741041
@@ -3477,21 +3495,21 @@ for region in unique_regions:
     6                    myeloid cell      12.219064
     10                   unknown cell       9.064110
 
-    Top 5 cell types in KSFB:
-                       Level Three Cell Type  mean_distance
-    1                      b cell:follicular      98.262190
-    3   endothelial cell of lymphatic vessel      61.887568
-    8          t cell:cd4+ alpha-beta memory      59.324035
-    4      endothelial cell of vascular tree      29.505573
-    10                          unknown cell      25.388738
+    Top 5 cell types in PBVN:
+                      Level Three Cell Type  mean_distance
+    1                     b cell:follicular      62.807603
+    8         t cell:cd4+ alpha-beta memory      41.516702
+    3  endothelial cell of lymphatic vessel      32.893007
+    4     endothelial cell of vascular tree      23.699591
+    2                    cell:proliferating      22.825014
 
-    Bottom 5 cell types in KSFB:
+    Bottom 5 cell types in PBVN:
                Level Three Cell Type  mean_distance
-    5                     macrophage      19.576427
-    6                   myeloid cell      19.470228
-    9  t cell:cd8+ alpha-beta memory      18.510546
-    7            neutrophil/monocyte      17.949726
-    2             cell:proliferating      16.776125
+    0                         b cell      18.469944
+    9  t cell:cd8+ alpha-beta memory      16.785163
+    5                     macrophage      16.594531
+    7            neutrophil/monocyte      16.360062
+    6                   myeloid cell      14.973737
 
     Top 5 cell types in NGPL:
                       Level Three Cell Type  mean_distance
@@ -3508,22 +3526,6 @@ for region in unique_regions:
     7             neutrophil/monocyte      17.447778
     2              cell:proliferating      16.035974
     10                   unknown cell      13.683767
-
-    Top 5 cell types in PBVN:
-                      Level Three Cell Type  mean_distance
-    1                     b cell:follicular      62.807603
-    8         t cell:cd4+ alpha-beta memory      41.516702
-    3  endothelial cell of lymphatic vessel      32.893007
-    4     endothelial cell of vascular tree      23.699591
-    2                    cell:proliferating      22.825014
-
-    Bottom 5 cell types in PBVN:
-               Level Three Cell Type  mean_distance
-    0                         b cell      18.469944
-    9  t cell:cd8+ alpha-beta memory      16.785163
-    5                     macrophage      16.594531
-    7            neutrophil/monocyte      16.360062
-    6                   myeloid cell      14.973737
 
     Top 5 cell types in PKHL:
                        Level Three Cell Type  mean_distance
@@ -3557,6 +3559,22 @@ for region in unique_regions:
     7            neutrophil/monocyte      14.615880
     9  t cell:cd8+ alpha-beta memory      14.440700
 
+    Top 5 cell types in KSFB:
+                       Level Three Cell Type  mean_distance
+    1                      b cell:follicular      98.262190
+    3   endothelial cell of lymphatic vessel      61.887568
+    8          t cell:cd4+ alpha-beta memory      59.324035
+    4      endothelial cell of vascular tree      29.505573
+    10                          unknown cell      25.388738
+
+    Bottom 5 cell types in KSFB:
+               Level Three Cell Type  mean_distance
+    5                     macrophage      19.576427
+    6                   myeloid cell      19.470228
+    9  t cell:cd8+ alpha-beta memory      18.510546
+    7            neutrophil/monocyte      17.949726
+    2             cell:proliferating      16.776125
+
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -3567,6 +3585,7 @@ for region in unique_regions:
     print(f"\nBottom 5 cell types in {region}:")
     print(top_bottom[1])
 ```
+
 
     Top 5 cell types in FSLD:
                       Level Three Cell Type  median_distance
@@ -3584,21 +3603,21 @@ for region in unique_regions:
     6                    myeloid cell        10.122992
     10                   unknown cell         7.511672
 
-    Top 5 cell types in KSFB:
+    Top 5 cell types in PBVN:
                       Level Three Cell Type  median_distance
-    1                     b cell:follicular        94.780079
-    3  endothelial cell of lymphatic vessel        50.581903
-    8         t cell:cd4+ alpha-beta memory        41.748388
-    4     endothelial cell of vascular tree        23.603934
-    0                                b cell        16.424398
+    1                     b cell:follicular        52.209394
+    8         t cell:cd4+ alpha-beta memory        27.747302
+    3  endothelial cell of lymphatic vessel        27.726806
+    4     endothelial cell of vascular tree        21.791122
+    2                    cell:proliferating        15.856425
 
-    Bottom 5 cell types in KSFB:
+    Bottom 5 cell types in PBVN:
                 Level Three Cell Type  median_distance
-    9   t cell:cd8+ alpha-beta memory        15.197356
-    6                    myeloid cell        14.640032
-    7             neutrophil/monocyte        13.151844
-    2              cell:proliferating        12.308920
-    10                   unknown cell        12.022695
+    9   t cell:cd8+ alpha-beta memory        14.871205
+    5                      macrophage        14.813750
+    7             neutrophil/monocyte        13.328963
+    10                   unknown cell        13.086842
+    6                    myeloid cell        12.823543
 
     Top 5 cell types in NGPL:
                       Level Three Cell Type  median_distance
@@ -3615,22 +3634,6 @@ for region in unique_regions:
     7             neutrophil/monocyte        12.069889
     2              cell:proliferating        11.196329
     10                   unknown cell         8.744450
-
-    Top 5 cell types in PBVN:
-                      Level Three Cell Type  median_distance
-    1                     b cell:follicular        52.209394
-    8         t cell:cd4+ alpha-beta memory        27.747302
-    3  endothelial cell of lymphatic vessel        27.726806
-    4     endothelial cell of vascular tree        21.791122
-    2                    cell:proliferating        15.856425
-
-    Bottom 5 cell types in PBVN:
-                Level Three Cell Type  median_distance
-    9   t cell:cd8+ alpha-beta memory        14.871205
-    5                      macrophage        14.813750
-    7             neutrophil/monocyte        13.328963
-    10                   unknown cell        13.086842
-    6                    myeloid cell        12.823543
 
     Top 5 cell types in PKHL:
                        Level Three Cell Type  median_distance
@@ -3664,9 +3667,26 @@ for region in unique_regions:
     9  t cell:cd8+ alpha-beta memory        12.549061
     7            neutrophil/monocyte        12.140337
 
+    Top 5 cell types in KSFB:
+                      Level Three Cell Type  median_distance
+    1                     b cell:follicular        94.780079
+    3  endothelial cell of lymphatic vessel        50.581903
+    8         t cell:cd4+ alpha-beta memory        41.748388
+    4     endothelial cell of vascular tree        23.603934
+    0                                b cell        16.424398
+
+    Bottom 5 cell types in KSFB:
+                Level Three Cell Type  median_distance
+    9   t cell:cd8+ alpha-beta memory        15.197356
+    6                    myeloid cell        14.640032
+    7             neutrophil/monocyte        13.151844
+    2              cell:proliferating        12.308920
+    10                   unknown cell        12.022695
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region

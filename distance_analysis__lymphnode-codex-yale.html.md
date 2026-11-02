@@ -26,7 +26,7 @@ warnings.filterwarnings("ignore")
 ```
 
 ``` python
-basepath = "/u/yashjain/hra-cell-distance-analysis/data"
+basepath = "../data"
 dataset_dir = "lymphnode-codex-yale"
 data_filedir = os.path.join("data-processed-nodes-with-harmonized-cell-types", dataset_dir)
 output_edge_dir = os.path.join("data-processed-edges", dataset_dir)
@@ -95,6 +95,9 @@ def read_all_edge_datasets(basepath, data_filedir, output_edge_dir):
     merged_edges = pd.concat(all_edges_files, ignore_index=True)
     merged_nodes = pd.concat(all_nodes_files, ignore_index=True)
     merged_nodes_for_all_edges = pd.concat(all_nodes_edges_files, ignore_index=True) 
+    # Concatenation can leave Distance as object dtype with newer pandas, which breaks pivot_table/heatmaps; force float.
+    merged_edges["Distance"] = merged_edges["Distance"].astype(float)
+    merged_nodes_for_all_edges["Distance"] = merged_nodes_for_all_edges["Distance"].astype(float)
 
     return merged_nodes, merged_edges, merged_nodes_for_all_edges
 ```
@@ -156,8 +159,8 @@ df_all_nodes.head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -171,12 +174,12 @@ df_all_nodes.head(5)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>15214.596774</td>
-<td>11441.217742</td>
+<td>1122.064516</td>
+<td>10876.795699</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -190,12 +193,12 @@ df_all_nodes.head(5)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>7498.846154</td>
-<td>12306.583333</td>
+<td>25439.423077</td>
+<td>23404.746154</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -209,12 +212,12 @@ df_all_nodes.head(5)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>26618.031142</td>
-<td>18349.024221</td>
+<td>11325.861905</td>
+<td>4141.542857</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -228,12 +231,12 @@ df_all_nodes.head(5)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>8325.500000</td>
-<td>12150.222222</td>
+<td>1135.940594</td>
+<td>10548.801980</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -247,7 +250,7 @@ df_all_nodes.head(5)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -288,6 +291,7 @@ for level, cell_types in endothelial_cell_types.items():
     for cell in cell_types:
         print(f"  - {cell}")
 ```
+
 
     Endothelial cell types per cell type annotation level:
 
@@ -358,8 +362,8 @@ df_all_nodes.head()
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -373,12 +377,12 @@ df_all_nodes.head()
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>15214.596774</td>
-<td>11441.217742</td>
+<td>1122.064516</td>
+<td>10876.795699</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -392,12 +396,12 @@ df_all_nodes.head()
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>7498.846154</td>
-<td>12306.583333</td>
+<td>25439.423077</td>
+<td>23404.746154</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -411,12 +415,12 @@ df_all_nodes.head()
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>26618.031142</td>
-<td>18349.024221</td>
+<td>11325.861905</td>
+<td>4141.542857</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -430,12 +434,12 @@ df_all_nodes.head()
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>8325.500000</td>
-<td>12150.222222</td>
+<td>1135.940594</td>
+<td>10548.801980</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -449,7 +453,7 @@ df_all_nodes.head()
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -491,28 +495,28 @@ df_all_nodes[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -534,14 +538,17 @@ for region in df_all_nodes['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['LN00560' 'LN00837' 'LN22921' 'LN24336' 'LN27766']
+    <StringArray>
+    ['LN22921', 'LN00560', 'LN00837', 'LN24336', 'LN27766']
+    Length: 5, dtype: str
     Total number of unique regions: 5
 
     Number of unique datasets per unique region:
+    LN22921: 1
     LN00560: 1
     LN00837: 1
-    LN22921: 1
     LN24336: 1
     LN27766: 1
 
@@ -585,70 +592,70 @@ df_all_edges.head(5)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>0</td>
-<td>26183.569536</td>
-<td>8838.370861</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>27.744582</td>
-<td>LN00560</td>
+<td>106.681830</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>1297</td>
-<td>26171.400000</td>
-<td>8972.626667</td>
+<td>24952</td>
+<td>22617.617647</td>
+<td>6387.409091</td>
 <td>0</td>
-<td>26264.875000</td>
-<td>8904.781250</td>
+<td>22585.880435</td>
+<td>6418.690217</td>
 <td>0</td>
-<td>115.501412</td>
-<td>LN00560</td>
+<td>44.561862</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>3106</td>
-<td>26140.166667</td>
-<td>8974.675000</td>
+<td>24953</td>
+<td>22624.903743</td>
+<td>6247.294118</td>
 <td>0</td>
-<td>26054.031088</td>
-<td>8889.103627</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>121.415805</td>
-<td>LN00560</td>
+<td>13.427454</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>3497</td>
-<td>26051.509259</td>
-<td>8961.282407</td>
+<td>24955</td>
+<td>22645.796438</td>
+<td>6243.872774</td>
 <td>0</td>
-<td>26054.031088</td>
-<td>8889.103627</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>72.222822</td>
-<td>LN00560</td>
+<td>18.352711</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>49397</td>
-<td>26015.800000</td>
-<td>8832.882759</td>
+<td>55284</td>
+<td>22728.764706</td>
+<td>6246.529412</td>
 <td>0</td>
-<td>26054.031088</td>
-<td>8889.103627</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>67.988250</td>
-<td>LN00560</td>
+<td>95.836452</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 </tr>
@@ -691,28 +698,28 @@ df_all_edges[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -734,14 +741,17 @@ for region in df_all_edges['Unique Region'].unique():
     print(f"{region}: {num_datasets}")
 ```
 
+
     Unique Regions in the data:
-    ['LN00560' 'LN00837' 'LN22921' 'LN24336' 'LN27766']
+    <StringArray>
+    ['LN22921', 'LN00560', 'LN00837', 'LN24336', 'LN27766']
+    Length: 5, dtype: str
     Total number of unique regions: 5
 
     Number of unique datasets per unique region:
+    LN22921: 1
     LN00560: 1
     LN00837: 1
-    LN22921: 1
     LN24336: 1
     LN27766: 1
 
@@ -777,28 +787,28 @@ df_all_edges_with_cell_types[['Dataset', 'Unique Region']].head(5)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">1</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">2</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">3</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 <tr>
 <td data-quarto-table-cell-role="th">4</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -848,8 +858,8 @@ df_all_nodes.head(1)
 <tbody>
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>FDC</td>
 <td>dendritic cell:follicular</td>
 <td>follicular dendritic cell</td>
@@ -863,8 +873,8 @@ df_all_nodes.head(1)
 <td>mesenchymal cell</td>
 <td>CL:0008019</td>
 <td>skos:exactMatch</td>
-<td>LN00560</td>
-<td>LN00560</td>
+<td>LN22921</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -910,17 +920,17 @@ df_all_edges.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>0</td>
-<td>26183.569536</td>
-<td>8838.370861</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>27.744582</td>
-<td>LN00560</td>
+<td>106.68183</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -969,20 +979,20 @@ df_all_edges_with_cell_types.head(1)
 <tr>
 <td data-quarto-table-cell-role="th">0</td>
 <td>0</td>
-<td>26180.447514</td>
-<td>8865.939227</td>
+<td>22739.375566</td>
+<td>6271.158371</td>
 <td>0</td>
-<td>26183.569536</td>
-<td>8838.370861</td>
+<td>22633.564593</td>
+<td>6257.555024</td>
 <td>0</td>
-<td>27.744582</td>
-<td>LN00560</td>
+<td>106.68183</td>
+<td>LN22921</td>
 <td>endothelial cell</td>
 <td>Level Three Cell Type</td>
 <td>dendritic cell:follicular</td>
 <td>dendritic cell</td>
 <td>mesenchymal cell</td>
-<td>LN00560</td>
+<td>LN22921</td>
 </tr>
 </tbody>
 </table>
@@ -1389,15 +1399,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in LN00560:
-      Level One Cell Type  mean_distance
-    1    mesenchymal cell      88.029798
-    0         immune cell      86.230167
-
-    Bottom 5 cell types in LN00560:
-      Level One Cell Type  mean_distance
-    1    mesenchymal cell      88.029798
-    0         immune cell      86.230167
 
     Top 5 cell types in LN00837:
       Level One Cell Type  mean_distance
@@ -1409,15 +1410,25 @@ for region in unique_regions:
     0         immune cell      65.658556
     1    mesenchymal cell      64.156297
 
-    Top 5 cell types in LN22921:
+    Top 5 cell types in LN00560:
       Level One Cell Type  mean_distance
-    0         immune cell      69.098860
-    1    mesenchymal cell      42.860136
+    1    mesenchymal cell      88.029798
+    0         immune cell      86.230167
 
-    Bottom 5 cell types in LN22921:
+    Bottom 5 cell types in LN00560:
       Level One Cell Type  mean_distance
-    0         immune cell      69.098860
-    1    mesenchymal cell      42.860136
+    1    mesenchymal cell      88.029798
+    0         immune cell      86.230167
+
+    Top 5 cell types in LN27766:
+      Level One Cell Type  mean_distance
+    1    mesenchymal cell      63.171914
+    0         immune cell      48.323776
+
+    Bottom 5 cell types in LN27766:
+      Level One Cell Type  mean_distance
+    1    mesenchymal cell      63.171914
+    0         immune cell      48.323776
 
     Top 5 cell types in LN24336:
       Level One Cell Type  mean_distance
@@ -1429,15 +1440,15 @@ for region in unique_regions:
     0         immune cell      62.325526
     1    mesenchymal cell      45.284939
 
-    Top 5 cell types in LN27766:
+    Top 5 cell types in LN22921:
       Level One Cell Type  mean_distance
-    1    mesenchymal cell      63.171914
-    0         immune cell      48.323776
+    0         immune cell      69.098860
+    1    mesenchymal cell      42.860136
 
-    Bottom 5 cell types in LN27766:
+    Bottom 5 cell types in LN22921:
       Level One Cell Type  mean_distance
-    1    mesenchymal cell      63.171914
-    0         immune cell      48.323776
+    0         immune cell      69.098860
+    1    mesenchymal cell      42.860136
 
 ``` python
 # Get top five and bottom five cell types with respect to median distance in each unique region separately.
@@ -1467,15 +1478,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in LN00560:
-      Level One Cell Type  median_distance
-    1    mesenchymal cell        81.864293
-    0         immune cell        78.283379
-
-    Bottom 5 cell types in LN00560:
-      Level One Cell Type  median_distance
-    1    mesenchymal cell        81.864293
-    0         immune cell        78.283379
 
     Top 5 cell types in LN00837:
       Level One Cell Type  median_distance
@@ -1487,15 +1489,25 @@ for region in unique_regions:
     0         immune cell        55.426203
     1    mesenchymal cell        47.402660
 
-    Top 5 cell types in LN22921:
+    Top 5 cell types in LN00560:
       Level One Cell Type  median_distance
-    0         immune cell        58.969275
-    1    mesenchymal cell        30.269759
+    1    mesenchymal cell        81.864293
+    0         immune cell        78.283379
 
-    Bottom 5 cell types in LN22921:
+    Bottom 5 cell types in LN00560:
       Level One Cell Type  median_distance
-    0         immune cell        58.969275
-    1    mesenchymal cell        30.269759
+    1    mesenchymal cell        81.864293
+    0         immune cell        78.283379
+
+    Top 5 cell types in LN27766:
+      Level One Cell Type  median_distance
+    1    mesenchymal cell        49.198156
+    0         immune cell        37.625713
+
+    Bottom 5 cell types in LN27766:
+      Level One Cell Type  median_distance
+    1    mesenchymal cell        49.198156
+    0         immune cell        37.625713
 
     Top 5 cell types in LN24336:
       Level One Cell Type  median_distance
@@ -1507,15 +1519,15 @@ for region in unique_regions:
     0         immune cell        51.657698
     1    mesenchymal cell        34.253833
 
-    Top 5 cell types in LN27766:
+    Top 5 cell types in LN22921:
       Level One Cell Type  median_distance
-    1    mesenchymal cell        49.198156
-    0         immune cell        37.625713
+    0         immune cell        58.969275
+    1    mesenchymal cell        30.269759
 
-    Bottom 5 cell types in LN27766:
+    Bottom 5 cell types in LN22921:
       Level One Cell Type  median_distance
-    1    mesenchymal cell        49.198156
-    0         immune cell        37.625713
+    0         immune cell        58.969275
+    1    mesenchymal cell        30.269759
 
 ``` python
 # Calculate regional variability
@@ -1551,6 +1563,7 @@ def calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
 
+
     Regional Variability Analysis:
     Mean: Average distance in each region
     Std: Standard deviation of distances
@@ -1576,8 +1589,9 @@ print("\nRegions in the data:")
 print(regions)
 ```
 
+
     Regions in the data:
-    ['LN00560', 'LN00837', 'LN22921', 'LN24336', 'LN27766']
+    ['LN22921', 'LN00560', 'LN00837', 'LN24336', 'LN27766']
 
 ``` python
 # Generate Violin Plot
@@ -2211,21 +2225,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in LN00560:
-       Level Two Cell Type  mean_distance
-    4            mast cell      99.372310
-    5             monocyte      89.144747
-    0               b cell      88.672883
-    2        lymphoid cell      87.916868
-    7  natural killer cell      86.771851
-
-    Bottom 5 cell types in LN00560:
-       Level Two Cell Type  mean_distance
-    7  natural killer cell      86.771851
-    6          muscle cell      86.522830
-    8               t cell      86.289131
-    3           macrophage      78.607505
-    1       dendritic cell      69.328460
 
     Top 5 cell types in LN00837:
        Level Two Cell Type  mean_distance
@@ -2243,37 +2242,21 @@ for region in unique_regions:
     5             monocyte      55.526799
     2        lymphoid cell      47.074148
 
-    Top 5 cell types in LN22921:
+    Top 5 cell types in LN00560:
        Level Two Cell Type  mean_distance
-    0               b cell      82.039046
-    1       dendritic cell      73.651623
-    2        lymphoid cell      66.159509
-    8               t cell      60.493650
-    7  natural killer cell      57.361924
+    4            mast cell      99.372310
+    5             monocyte      89.144747
+    0               b cell      88.672883
+    2        lymphoid cell      87.916868
+    7  natural killer cell      86.771851
 
-    Bottom 5 cell types in LN22921:
+    Bottom 5 cell types in LN00560:
        Level Two Cell Type  mean_distance
-    7  natural killer cell      57.361924
-    3           macrophage      54.901756
-    4            mast cell      52.593234
-    5             monocyte      50.021763
-    6          muscle cell      39.150671
-
-    Top 5 cell types in LN24336:
-       Level Two Cell Type  mean_distance
-    4            mast cell      85.567104
-    7  natural killer cell      85.475053
-    3           macrophage      79.116158
-    2        lymphoid cell      71.342591
-    0               b cell      64.496210
-
-    Bottom 5 cell types in LN24336:
-      Level Two Cell Type  mean_distance
-    0              b cell      64.496210
-    5            monocyte      60.846991
-    1      dendritic cell      59.716750
-    8              t cell      56.612429
-    6         muscle cell      43.536294
+    7  natural killer cell      86.771851
+    6          muscle cell      86.522830
+    8               t cell      86.289131
+    3           macrophage      78.607505
+    1       dendritic cell      69.328460
 
     Top 5 cell types in LN27766:
       Level Two Cell Type  mean_distance
@@ -2291,6 +2274,38 @@ for region in unique_regions:
     8               t cell      40.031514
     7  natural killer cell      35.518688
 
+    Top 5 cell types in LN24336:
+       Level Two Cell Type  mean_distance
+    4            mast cell      85.567104
+    7  natural killer cell      85.475053
+    3           macrophage      79.116158
+    2        lymphoid cell      71.342591
+    0               b cell      64.496210
+
+    Bottom 5 cell types in LN24336:
+      Level Two Cell Type  mean_distance
+    0              b cell      64.496210
+    5            monocyte      60.846991
+    1      dendritic cell      59.716750
+    8              t cell      56.612429
+    6         muscle cell      43.536294
+
+    Top 5 cell types in LN22921:
+       Level Two Cell Type  mean_distance
+    0               b cell      82.039046
+    1       dendritic cell      73.651623
+    2        lymphoid cell      66.159509
+    8               t cell      60.493650
+    7  natural killer cell      57.361924
+
+    Bottom 5 cell types in LN22921:
+       Level Two Cell Type  mean_distance
+    7  natural killer cell      57.361924
+    3           macrophage      54.901756
+    4            mast cell      52.593234
+    5             monocyte      50.021763
+    6          muscle cell      39.150671
+
 ``` python
 # Get top and bottom cell types for each unique region in the dataset.
 unique_regions = df_all_edges_with_cell_type_level['Unique Region'].unique()
@@ -2302,21 +2317,6 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
-    Top 5 cell types in LN00560:
-      Level Two Cell Type  median_distance
-    4           mast cell        96.167629
-    5            monocyte        82.996331
-    2       lymphoid cell        81.987260
-    0              b cell        81.031234
-    6         muscle cell        80.072416
-
-    Bottom 5 cell types in LN00560:
-       Level Two Cell Type  median_distance
-    6          muscle cell        80.072416
-    7  natural killer cell        79.778126
-    8               t cell        78.881215
-    3           macrophage        68.799241
-    1       dendritic cell        57.716266
 
     Top 5 cell types in LN00837:
        Level Two Cell Type  median_distance
@@ -2334,37 +2334,21 @@ for region in unique_regions:
     6          muscle cell        44.506487
     2        lymphoid cell        39.426220
 
-    Top 5 cell types in LN22921:
-       Level Two Cell Type  median_distance
-    0               b cell        72.283854
-    1       dendritic cell        60.772678
-    8               t cell        53.470688
-    2        lymphoid cell        52.261744
-    7  natural killer cell        51.657575
-
-    Bottom 5 cell types in LN22921:
-       Level Two Cell Type  median_distance
-    7  natural killer cell        51.657575
-    3           macrophage        47.901377
-    4            mast cell        44.533122
-    5             monocyte        40.595156
-    6          muscle cell        28.447433
-
-    Top 5 cell types in LN24336:
-       Level Two Cell Type  median_distance
-    7  natural killer cell        75.480916
-    4            mast cell        74.870233
-    3           macrophage        67.811076
-    2        lymphoid cell        58.007388
-    0               b cell        53.491989
-
-    Bottom 5 cell types in LN24336:
+    Top 5 cell types in LN00560:
       Level Two Cell Type  median_distance
-    0              b cell        53.491989
-    1      dendritic cell        50.896772
-    8              t cell        47.942598
-    5            monocyte        44.274679
-    6         muscle cell        30.191094
+    4           mast cell        96.167629
+    5            monocyte        82.996331
+    2       lymphoid cell        81.987260
+    0              b cell        81.031234
+    6         muscle cell        80.072416
+
+    Bottom 5 cell types in LN00560:
+       Level Two Cell Type  median_distance
+    6          muscle cell        80.072416
+    7  natural killer cell        79.778126
+    8               t cell        78.881215
+    3           macrophage        68.799241
+    1       dendritic cell        57.716266
 
     Top 5 cell types in LN27766:
       Level Two Cell Type  median_distance
@@ -2382,9 +2366,42 @@ for region in unique_regions:
     1       dendritic cell        31.531565
     7  natural killer cell        30.995884
 
+    Top 5 cell types in LN24336:
+       Level Two Cell Type  median_distance
+    7  natural killer cell        75.480916
+    4            mast cell        74.870233
+    3           macrophage        67.811076
+    2        lymphoid cell        58.007388
+    0               b cell        53.491989
+
+    Bottom 5 cell types in LN24336:
+      Level Two Cell Type  median_distance
+    0              b cell        53.491989
+    1      dendritic cell        50.896772
+    8              t cell        47.942598
+    5            monocyte        44.274679
+    6         muscle cell        30.191094
+
+    Top 5 cell types in LN22921:
+       Level Two Cell Type  median_distance
+    0               b cell        72.283854
+    1       dendritic cell        60.772678
+    8               t cell        53.470688
+    2        lymphoid cell        52.261744
+    7  natural killer cell        51.657575
+
+    Bottom 5 cell types in LN22921:
+       Level Two Cell Type  median_distance
+    7  natural killer cell        51.657575
+    3           macrophage        47.901377
+    4            mast cell        44.533122
+    5             monocyte        40.595156
+    6          muscle cell        28.447433
+
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
@@ -3753,6 +3770,23 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
+    Top 5 cell types in LN22921:
+                        Level Three Cell Type  mean_distance
+    6              b cell:pre-germinal center     132.997491
+    3                       b cell:interferon     131.162456
+    1                  b cell:germinal center     126.062410
+    2  b cell:germinal center pre-plasmablast     124.921662
+    0                        b cell:activated     109.313037
+
+    Bottom 5 cell types in LN22921:
+                Level Three Cell Type  mean_distance
+    27                   t cell:tim3+      51.362474
+    16                       monocyte      50.021763
+    9   dendritic cell:conventional 2      48.714428
+    10      dendritic cell:follicular      46.702944
+    17             muscle cell:smooth      39.150671
+
     Top 5 cell types in LN00560:
                         Level Three Cell Type  mean_distance
     6              b cell:pre-germinal center     125.145570
@@ -3784,22 +3818,6 @@ for region in unique_regions:
     7            b cell:proliferating      51.889082
     13           lymphoid cell:innate      47.074148
     19                    plasma cell      44.038633
-
-    Top 5 cell types in LN22921:
-                        Level Three Cell Type  mean_distance
-    6              b cell:pre-germinal center     132.997491
-    3                       b cell:interferon     131.162456
-    1                  b cell:germinal center     126.062410
-    2  b cell:germinal center pre-plasmablast     124.921662
-    0                        b cell:activated     109.313037
-
-    Bottom 5 cell types in LN22921:
-                Level Three Cell Type  mean_distance
-    27                   t cell:tim3+      51.362474
-    16                       monocyte      50.021763
-    9   dendritic cell:conventional 2      48.714428
-    10      dendritic cell:follicular      46.702944
-    17             muscle cell:smooth      39.150671
 
     Top 5 cell types in LN24336:
                 Level Three Cell Type  mean_distance
@@ -3844,6 +3862,23 @@ for region in unique_regions:
     print(top_bottom[1])
 ```
 
+
+    Top 5 cell types in LN22921:
+                        Level Three Cell Type  median_distance
+    6              b cell:pre-germinal center       140.357258
+    3                       b cell:interferon       139.595461
+    1                  b cell:germinal center       132.087548
+    2  b cell:germinal center pre-plasmablast       129.269694
+    0                        b cell:activated       109.134587
+
+    Bottom 5 cell types in LN22921:
+                Level Three Cell Type  median_distance
+    15                      mast cell        44.533122
+    9   dendritic cell:conventional 2        41.297008
+    16                       monocyte        40.595156
+    10      dendritic cell:follicular        32.311309
+    17             muscle cell:smooth        28.447433
+
     Top 5 cell types in LN00560:
                         Level Three Cell Type  median_distance
     6              b cell:pre-germinal center       131.985475
@@ -3875,22 +3910,6 @@ for region in unique_regions:
     7   b cell:proliferating        42.257876
     13  lymphoid cell:innate        39.426220
     19           plasma cell        35.479895
-
-    Top 5 cell types in LN22921:
-                        Level Three Cell Type  median_distance
-    6              b cell:pre-germinal center       140.357258
-    3                       b cell:interferon       139.595461
-    1                  b cell:germinal center       132.087548
-    2  b cell:germinal center pre-plasmablast       129.269694
-    0                        b cell:activated       109.134587
-
-    Bottom 5 cell types in LN22921:
-                Level Three Cell Type  median_distance
-    15                      mast cell        44.533122
-    9   dendritic cell:conventional 2        41.297008
-    16                       monocyte        40.595156
-    10      dendritic cell:follicular        32.311309
-    17             muscle cell:smooth        28.447433
 
     Top 5 cell types in LN24336:
                 Level Three Cell Type  median_distance
@@ -3927,6 +3946,7 @@ for region in unique_regions:
 ``` python
 calculate_regional_variability(df_all_edges_with_cell_type_level, cell_type_level)
 ```
+
 
     Regional Variability Analysis:
     Mean: Average distance in each region
