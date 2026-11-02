@@ -1,0 +1,32 @@
+name: cde-env
+channels:
+  - defaults
+dependencies:
+  - python=3.14.7
+  - pip
+  # Core data / plotting stack
+  - numpy=2.5.2
+  - pandas=3.0.5
+  - scipy=1.18.0
+  - matplotlib=3.11.0
+  - seaborn=0.13.2
+  # Kernel used to run the notebooks (VS Code / Jupyter)
+  - ipykernel=7.3.0
+  - pip:
+      # Plotly + static image export (fig.write_image) and notebook rendering (fig.show)
+      - plotly==7.1.0
+      - kaleido==1.5.0      # needs a local Chrome/Chromium install, see "Setup & running" in nbs/index.ipynb
+      - nbformat==5.11.1
+      # Reading inputs: pd.read_excel (.xlsx) and scanpy.read_h5ad (.h5ad)
+      - openpyxl==3.1.5
+      - scanpy==1.12.5      # pulls in anndata and h5py
+      - anndata==0.13.4
+      - h5py==3.16.0
+      # Statistics (notebook 16) and sklearn import (notebooks 02-15)
+      - statsmodels==0.15.0
+      - scikit-learn==1.9.1
+      - scikit-posthocs==0.16.1
+      # Notebook 00 downloads files
+      - requests==2.34.2
+      # Building the docs / README (nbdev_readme, nbdev_proc_nbs)
+      - nbdev==3.3.15
