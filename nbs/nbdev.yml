@@ -7,3 +7,8 @@ website:
   description: "Cell Distance Analysis for Spatial Omics Datasets, primarily focused on vascular cells."
   repo-branch: main
   repo-url: "https://github.com/cns-iu/hra-cell-distance-analysis"
+
+format-links:
+  - html
+  - format: commonmark
+    text: Markdown
